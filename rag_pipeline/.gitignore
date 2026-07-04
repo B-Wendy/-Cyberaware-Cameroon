@@ -1,0 +1,6 @@
+venv/
+chroma_db/
+tfidf_embedder.json
+.env
+__pycache__/
+*.pyc

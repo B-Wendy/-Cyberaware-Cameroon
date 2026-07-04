@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CyberAware Cameroon – Cybersecurity Chatbot</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { height: 100%; overflow: hidden; }
+:root {
+  --blue-900:#1E3A8A; --blue-700:#1D4ED8; --blue-600:#2563EB;
+  --blue-100:#DBEAFE; --blue-50:#EFF6FF; --white:#FFFFFF;
+  --bg:#F1F5F9; --gray-100:#F3F4F6; --gray-200:#E5E7EB;
+  --gray-400:#9CA3AF; --gray-500:#6B7280; --gray-900:#111827;
+  --red-500:#EF4444; --green-400:#34D399;
+  --font:'Inter',system-ui,sans-serif; --radius:16px;
+  --shadow:0 1px 3px rgba(0,0,0,.08),0 1px 2px rgba(0,0,0,.06);
+  --shadow-md:0 4px 6px -1px rgba(0,0,0,.10),0 2px 4px -1px rgba(0,0,0,.06);
+}
+body { display:flex; flex-direction:column; font-family:var(--font); background:var(--bg); color:var(--gray-900); }
+header { flex-shrink:0; background:var(--blue-700); color:var(--white); padding:0 20px; height:64px; display:flex; align-items:center; justify-content:space-between; box-shadow:var(--shadow-md); z-index:10; }
+.header-left { display:flex; align-items:center; gap:12px; }
+.logo-wrap { width:40px; height:40px; background:rgba(255,255,255,.15); border-radius:10px; display:grid; place-items:center; font-size:20px; flex-shrink:0; }
+.header-title h1 { font-size:16px; font-weight:700; letter-spacing:-0.3px; line-height:1.2; }
+.header-title p { font-size:11px; opacity:0.75; }
+.header-right { display:flex; align-items:center; gap:10px; }
+.status { display:flex; align-items:center; gap:6px; font-size:12px; opacity:0.85; }
+.status-dot { width:7px; height:7px; background:var(--green-400); border-radius:50%; animation:blink 2s ease-in-out infinite; }
+@keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.35} }
+#langSelect { background:rgba(255,255,255,.15); border:1px solid rgba(255,255,255,.25); color:var(--white); border-radius:8px; padding:6px 10px; font-size:13px; font-family:var(--font); cursor:pointer; outline:none; -webkit-appearance:none; appearance:none; }
+#langSelect option { background:var(--blue-900); color:var(--white); }
+.clear-btn { background:rgba(255,255,255,.15); border:1px solid rgba(255,255,255,.25); color:var(--white); border-radius:8px; padding:6px 12px; font-size:12px; font-family:var(--font); cursor:pointer; transition:background .2s; }
+.clear-btn:hover { background:rgba(255,255,255,.25); }
+main { flex:1; overflow-y:auto; padding:24px 16px 16px; display:flex; flex-direction:column; gap:16px; scroll-behavior:smooth; }
+main::-webkit-scrollbar { width:5px; }
+main::-webkit-scrollbar-thumb { background:var(--gray-200); border-radius:10px; }
+.msg-row { display:flex; gap:10px; max-width:780px; width:100%; margin:0 auto; }
+.msg-row.user { flex-direction:row-reverse; }
+.avatar { width:34px; height:34px; border-radius:50%; flex-shrink:0; display:grid; place-items:center; font-size:16px; background:var(--blue-100); margin-top:2px; }
+.msg-row.user .avatar { background:var(--blue-600); color:var(--white); }
+.bubble-wrap { display:flex; flex-direction:column; gap:4px; max-width:calc(100% - 44px); }
+.bubble { padding:12px 16px; border-radius:var(--radius); line-height:1.65; font-size:14px; box-shadow:var(--shadow); word-break:break-word; }
+.msg-row.bot .bubble { background:var(--white); border-top-left-radius:4px; }
+.msg-row.user .bubble { background:var(--blue-600); color:var(--white); border-top-right-radius:4px; align-self:flex-end; }
+.bubble ul,.bubble ol { margin:8px 0 8px 20px; }
+.bubble li { margin:4px 0; }
+.bubble p { margin:4px 0; }
+.bubble strong { font-weight:600; }
+.timestamp { font-size:11px; color:var(--gray-400); padding:0 4px; }
+.msg-row.user .timestamp { text-align:right; }
+.sources-wrap { display:flex; flex-wrap:wrap; gap:6px; padding:0 4px; }
+.source-pill { font-size:11px; background:var(--blue-50); color:var(--blue-700); border:1px solid var(--blue-100); border-radius:20px; padding:3px 10px; font-weight:500; text-transform:capitalize; }
+.typing-bubble { display:flex; align-items:center; gap:5px; padding:14px 18px; background:var(--white); border-radius:var(--radius); border-top-left-radius:4px; box-shadow:var(--shadow); width:fit-content; }
+.typing-dot { width:7px; height:7px; border-radius:50%; background:var(--gray-400); animation:bounce 1.4s ease-in-out infinite; }
+.typing-dot:nth-child(2){animation-delay:.2s} .typing-dot:nth-child(3){animation-delay:.4s}
+@keyframes bounce { 0%,60%,100%{transform:translateY(0)} 30%{transform:translateY(-8px)} }
+.welcome-card { background:var(--white); border-radius:var(--radius); border:1px solid var(--blue-100); padding:24px 28px; max-width:520px; margin:auto; text-align:center; box-shadow:var(--shadow); }
+.welcome-card .icon { font-size:44px; margin-bottom:14px; }
+.welcome-card h2 { font-size:18px; font-weight:700; margin-bottom:8px; color:var(--blue-700); }
+.welcome-card p { font-size:13px; color:var(--gray-500); line-height:1.65; margin-bottom:20px; }
+.suggestions { display:flex; flex-direction:column; gap:8px; }
+.suggestion-btn { background:var(--blue-50); border:1px solid var(--blue-100); border-radius:10px; padding:11px 14px; font-size:13px; color:var(--blue-700); font-family:var(--font); cursor:pointer; text-align:left; transition:background .15s,border-color .15s; font-weight:500; }
+.suggestion-btn:hover { background:var(--blue-100); border-color:var(--blue-600); }
+footer { flex-shrink:0; background:var(--white); border-top:1px solid var(--gray-200); padding:12px 16px 14px; box-shadow:0 -1px 4px rgba(0,0,0,.05); }
+#voiceBanner { display:none; text-align:center; font-size:12px; color:var(--red-500); font-weight:600; margin-bottom:8px; max-width:780px; margin-left:auto; margin-right:auto; animation:pulse-text 1.5s ease-in-out infinite; }
+@keyframes pulse-text { 0%,100%{opacity:1} 50%{opacity:0.5} }
+.input-row { display:flex; align-items:flex-end; gap:8px; max-width:780px; margin:0 auto; }
+#messageInput { flex:1; border:1.5px solid var(--gray-200); border-radius:12px; padding:10px 14px; font-size:14px; font-family:var(--font); resize:none; min-height:44px; max-height:120px; line-height:1.5; outline:none; transition:border-color .2s; color:var(--gray-900); background:var(--gray-100); overflow-y:auto; }
+#messageInput:focus { border-color:var(--blue-600); background:var(--white); }
+#messageInput::placeholder { color:var(--gray-400); }
+.icon-btn { width:44px; height:44px; border-radius:50%; border:none; cursor:pointer; display:grid; place-items:center; flex-shrink:0; position:relative; transition:transform .15s,background .15s; }
+.icon-btn:active { transform:scale(.93); }
+#micBtn { background:var(--gray-100); color:var(--gray-500); border:1.5px solid var(--gray-200); }
+#micBtn:hover { background:var(--gray-200); }
+#micBtn.recording { background:var(--red-500)!important; color:var(--white)!important; border-color:var(--red-500)!important; }
+#micBtn.recording::before,#micBtn.recording::after { content:''; position:absolute; inset:-4px; border-radius:50%; border:2px solid var(--red-500); animation:mic-ring 1.6s ease-out infinite; pointer-events:none; }
+#micBtn.recording::after { animation-delay:.8s; }
+@keyframes mic-ring { 0%{opacity:.8;transform:scale(1)} 100%{opacity:0;transform:scale(2)} }
+#sendBtn { background:var(--blue-600); color:var(--white); }
+#sendBtn:hover:not(:disabled) { background:var(--blue-700); }
+#sendBtn:disabled { background:var(--gray-200); color:var(--gray-400); cursor:not-allowed; }
+.footer-note { text-align:center; font-size:11px; color:var(--gray-400); margin-top:8px; max-width:780px; margin-left:auto; margin-right:auto; line-height:1.5; }
+#noMicNotice { display:none; font-size:11px; color:var(--gray-400); text-align:center; margin-top:6px; }
+@media(max-width:600px) { .header-title p,.status span{display:none} main{padding:16px 10px 10px} .welcome-card{padding:20px 18px} }
+</style>
+</head>
+<body>
+<header>
+  <div class="header-left">
+    <div class="logo-wrap">🛡️</div>
+    <div class="header-title">
+      <h1>CyberAware Cameroon</h1>
+      <p>Grounded in ANTIC / CIRT-Cameroun guidance</p>
+    </div>
+  </div>
+  <div class="header-right">
+    <div class="status"><div class="status-dot"></div><span>Online</span></div>
+    <select id="langSelect" title="Select your language">
+      <option value="en">🇬🇧 English</option>
+      <option value="fr">🇫🇷 Français</option>
+      <option value="pidgin">🇨🇲 Pidgin</option>
+    </select>
+    <button class="clear-btn" onclick="clearChat()">🗑 Clear</button>
+  </div>
+</header>
+
+<main id="chatContainer"></main>
+
+<footer>
+  <div id="voiceBanner">🎙️ Listening… speak now</div>
+  <div class="input-row">
+    <textarea id="messageInput" rows="1" placeholder="Type your cybersecurity question…"></textarea>
+    <button class="icon-btn" id="micBtn" title="Voice input" onclick="toggleVoice()">
+      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/>
+        <path d="M19 10v2a7 7 0 0 1-14 0v-2"/>
+        <line x1="12" y1="19" x2="12" y2="23"/>
+        <line x1="8" y1="23" x2="16" y2="23"/>
+      </svg>
+    </button>
+    <button class="icon-btn" id="sendBtn" title="Send" onclick="sendMessage()">
+      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="22" y1="2" x2="11" y2="13"/>
+        <polygon points="22 2 15 22 11 13 2 9 22 2"/>
+      </svg>
+    </button>
+  </div>
+  <p id="noMicNotice">⚠️ Voice input requires Chrome or Edge browser.</p>
+  <p class="footer-note">Answers grounded in official ANTIC/CIRT-Cameroun guidance. &nbsp;|&nbsp; Helpline: <strong>8202</strong> (free, 24/7) &nbsp;·&nbsp; <strong>alerts@cirt.antic.cm</strong></p>
+</footer>
+
+<script>
+let currentLang='en',isRecording=false,recognition=null;
+function detectLanguage(){const bl=(navigator.language||'en').toLowerCase();currentLang=bl.startsWith('fr')?'fr':'en';document.getElementById('langSelect').value=currentLang;}
+document.getElementById('langSelect').addEventListener('change',function(){currentLang=this.value;const c=document.getElementById('chatContainer');if(c.querySelector('.welcome-card'))renderWelcome();});
+const WM={
+  en:{title:'Welcome to CyberAware Cameroon',sub:'Ask me anything about cybersecurity in English, French, or Cameroonian Pidgin. I draw only from official ANTIC/CIRT-Cameroun guidance.',tips:['🎣 How do I recognise a phishing SMS?','📱 How do I secure my Mobile Money account?','🔐 What makes a strong password?','🚨 My Facebook was hacked — what do I do?','📞 How do I report a cybercrime to ANTIC?']},
+  fr:{title:'Bienvenue sur CyberAware Cameroun',sub:'Posez vos questions de cybersécurité en français, anglais ou pidgin. Je m\'appuie uniquement sur les recommandations officielles de l\'ANTIC/CIRT-Cameroun.',tips:['🎣 Comment reconnaître un SMS de phishing ?','📱 Comment sécuriser mon compte Mobile Money ?','🔐 Qu\'est-ce qu\'un mot de passe robuste ?','🚨 Mon Facebook a été piraté — que faire ?','📞 Comment signaler une cybercriminalité ?']},
+  pidgin:{title:'Welcome CyberAware Cameroon',sub:'Ask me your cybersecurity questions for English, Français na Pidgin. I dey use only ANTIC/CIRT-Cameroun information.',tips:['🎣 How I go know say one SMS na scam?','📱 How I go protect my Mobile Money?','🔐 Wetin make password strong?','🚨 Dem hack my Facebook — wetin I go do?','📞 How I go report cybercrime to ANTIC?']}
+};
+function renderWelcome(){const w=WM[currentLang]||WM.en;document.getElementById('chatContainer').innerHTML=`<div class="welcome-card"><div class="icon">🛡️</div><h2>${w.title}</h2><p>${w.sub}</p><div class="suggestions">${w.tips.map(t=>`<button class="suggestion-btn" onclick="useSuggestion(this)">${t}</button>`).join('')}</div></div>`;}
+function useSuggestion(btn){const text=btn.textContent.replace(/^[\u{1F000}-\u{1FFFF}✅❌⚠️📞🎣📱🔐🚨]\s*/u,'').trim();document.getElementById('messageInput').value=text;sendMessage();}
+function escHtml(t){return t.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+function md(text){let t=escHtml(text);t=t.replace(/\*\*(.*?)\*\*/g,'<strong>$1</strong>');t=t.replace(/\*(.*?)\*/g,'<em>$1</em>');const lines=t.split('\n');let out='',inList=false;for(const line of lines){const b=line.match(/^[\-•]\s+(.*)/),n=line.match(/^\d+\.\s+(.*)/);if(b||n){if(!inList){out+='<ul>';inList=true;}out+=`<li>${(b||n)[1]}</li>`;}else{if(inList){out+='</ul>';inList=false;}out+=line?`<p>${line}</p>`:'';}};if(inList)out+='</ul>';return out||`<p>${t}</p>`;}
+function nowTime(){return new Date().toLocaleTimeString([],{hour:'2-digit',minute:'2-digit'});}
+function appendMessage(role,text,sources=[]){const c=document.getElementById('chatContainer');const w=c.querySelector('.welcome-card');if(w)w.remove();const row=document.createElement('div');row.className=`msg-row ${role}`;const avatar=role==='bot'?'🛡️':'👤';const content=role==='bot'?md(text):`<p>${escHtml(text)}</p>`;const seen=new Set();const pills=sources.filter(s=>s.topic&&!seen.has(s.topic)&&seen.add(s.topic)).map(s=>`<span class="source-pill" title="${s.source_url||''}">${s.topic.replace(/_/g,' ')}</span>`).join('');const sourcesHtml=pills?`<div class="sources-wrap">${pills}</div>`:'';row.innerHTML=`<div class="avatar">${avatar}</div><div class="bubble-wrap"><div class="bubble">${content}</div>${sourcesHtml}<span class="timestamp">${nowTime()}</span></div>`;c.appendChild(row);c.scrollTop=c.scrollHeight;}
+function showTyping(){const c=document.getElementById('chatContainer');const row=document.createElement('div');row.id='typingRow';row.className='msg-row bot';row.innerHTML=`<div class="avatar">🛡️</div><div class="bubble-wrap"><div class="typing-bubble"><div class="typing-dot"></div><div class="typing-dot"></div><div class="typing-dot"></div></div></div>`;c.appendChild(row);c.scrollTop=c.scrollHeight;}
+function hideTyping(){const r=document.getElementById('typingRow');if(r)r.remove();}
+async function sendMessage(){const input=document.getElementById('messageInput');const text=input.value.trim();if(!text)return;input.value='';input.style.height='auto';document.getElementById('sendBtn').disabled=true;appendMessage('user',text);showTyping();try{const res=await fetch('/chat',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({message:text,language:currentLang})});if(!res.ok)throw new Error(`HTTP ${res.status}`);const data=await res.json();hideTyping();appendMessage('bot',data.answer,data.sources||[]);}catch(err){hideTyping();const e={en:'⚠️ Could not reach the server. Make sure uvicorn is running.',fr:'⚠️ Impossible de joindre le serveur. Vérifiez que uvicorn tourne.',pidgin:'⚠️ I no fit reach server. Check say uvicorn dey run.'};appendMessage('bot',e[currentLang]||e.en);}finally{document.getElementById('sendBtn').disabled=false;}}
+function clearChat(){renderWelcome();}
+const msgInput=document.getElementById('messageInput');
+msgInput.addEventListener('input',function(){this.style.height='auto';this.style.height=Math.min(this.scrollHeight,120)+'px';});
+msgInput.addEventListener('keydown',function(e){if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();sendMessage();}});
+const SR=window.SpeechRecognition||window.webkitSpeechRecognition;
+if(!SR){document.getElementById('micBtn').style.opacity='0.4';document.getElementById('micBtn').style.cursor='not-allowed';document.getElementById('micBtn').onclick=null;document.getElementById('noMicNotice').style.display='block';}
+else{recognition=new SR();recognition.continuous=false;recognition.interimResults=true;recognition.onstart=()=>{document.getElementById('voiceBanner').style.display='block';document.getElementById('micBtn').classList.add('recording');};recognition.onresult=(event)=>{let final='',interim='';for(let i=event.resultIndex;i<event.results.length;i++){const t=event.results[i][0].transcript;if(event.results[i].isFinal)final+=t;else interim+=t;}document.getElementById('messageInput').value=final||interim;};recognition.onend=()=>{isRecording=false;document.getElementById('micBtn').classList.remove('recording');document.getElementById('voiceBanner').style.display='none';};recognition.onerror=(event)=>{isRecording=false;document.getElementById('micBtn').classList.remove('recording');document.getElementById('voiceBanner').style.display='none';if(event.error==='not-allowed')alert('Microphone access denied. Please allow it in browser settings.');};}
+function toggleVoice(){if(!SR)return;if(isRecording){recognition.stop();isRecording=false;}else{const lm={en:'en-US',fr:'fr-FR',pidgin:'en-NG'};recognition.lang=lm[currentLang]||'en-US';try{recognition.start();isRecording=true;}catch(e){}}}
+detectLanguage();
+renderWelcome();
+</script>
+</body>
+</html>
