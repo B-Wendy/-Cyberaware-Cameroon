@@ -1,69 +1,74 @@
 """
-app.py
-FastAPI backend — serves the chat web interface at GET /
-and the RAG chatbot API at POST /chat
-
-Run:
-    uvicorn app:app --reload
-Then open http://127.0.0.1:8000 in your browser.
+CyberAware Cameroon — FastAPI Backend
+Run: uvicorn app:app --reload
 """
 
+import os
+import time
 from pathlib import Path
-from typing import List, Optional
-
-from fastapi import FastAPI, HTTPException
-from fastapi.middleware.cors import CORSMiddleware
-from fastapi.responses import FileResponse
+from collections import defaultdict
+from fastapi import FastAPI, Request
+from fastapi.responses import HTMLResponse
 from pydantic import BaseModel
+from dotenv import load_dotenv
+
+load_dotenv()
 
 from rag import answer_question
 
-app = FastAPI(title="CyberAware Cameroon", version="1.0.0")
+app = FastAPI(title="CyberAware Cameroon API")
 
-app.add_middleware(
-    CORSMiddleware,
-    allow_origins=["*"],
-    allow_methods=["*"],
-    allow_headers=["*"],
-)
+# ── Subscription codes — server-side ONLY, never sent to browser ──
+VALID_CODES = {
+    "CYBER-2025", "CYBER-001", "CYBER-002", "CYBER-003",
+    "CYBER-004", "CYBER-005", "CYBER-006", "CYBER-007",
+    "CYBER-008", "CYBER-009", "CYBER-010",
+}
 
-BASE_DIR = Path(__file__).parent
-
-
-@app.get("/")
-def index():
-    return FileResponse(BASE_DIR / "templates" / "index.html")
-
-
-@app.get("/health")
-def health():
-    return {"status": "ok"}
+# ── Rate limiting: 20 requests per IP per minute ──
+_call_log: dict = defaultdict(list)
 
 
 class ChatRequest(BaseModel):
     message: str
     language: str = "en"
-    history: Optional[List[dict]] = None
 
 
-class SourceMeta(BaseModel):
-    source_file: Optional[str] = None
-    topic: Optional[str] = None
-    language: Optional[str] = None
-    source_url: Optional[str] = None
+class CodeRequest(BaseModel):
+    code: str
 
 
-class ChatResponse(BaseModel):
-    answer: str
-    sources: List[SourceMeta]
+@app.get("/", response_class=HTMLResponse)
+async def serve_ui():
+    html_path = Path(__file__).parent / "templates" / "index.html"
+    return HTMLResponse(content=html_path.read_text(encoding="utf-8"))
 
 
-@app.post("/chat", response_model=ChatResponse)
-def chat(request: ChatRequest):
-    if not request.message.strip():
-        raise HTTPException(status_code=400, detail="message must not be empty")
-    try:
-        result = answer_question(request.message, language=request.language)
-    except Exception as e:
-        raise HTTPException(status_code=500, detail=f"Chatbot error: {e}")
-    return ChatResponse(answer=result["answer"], sources=result["sources"])
+@app.post("/chat")
+async def chat(req: ChatRequest, request: Request):
+    ip = request.client.host
+    now = time.time()
+    _call_log[ip] = [t for t in _call_log[ip] if now - t < 60]
+    if len(_call_log[ip]) > 20:
+        msgs = {
+            "en": "Too many requests. Please wait a minute.",
+            "fr": "Trop de requetes. Veuillez attendre une minute.",
+            "pidgin": "You don ask too many. Wait small before you ask again.",
+        }
+        return {"answer": msgs.get(req.language, msgs["en"]), "sources": []}
+    _call_log[ip].append(now)
+    result = answer_question(req.message, req.language)
+    return result
+
+
+@app.post("/validate-code")
+async def validate_code(req: CodeRequest):
+    code = req.code.strip().upper()
+    if code in VALID_CODES:
+        return {"valid": True}
+    return {"valid": False}
+
+
+@app.get("/health")
+async def health():
+    return {"status": "ok", "service": "CyberAware Cameroon"}

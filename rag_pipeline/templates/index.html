@@ -2,163 +2,863 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>CyberAware Cameroon – Cybersecurity Chatbot</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+<title>CyberAware Cameroon</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html, body { height: 100%; overflow: hidden; }
-:root {
-  --blue-900:#1E3A8A; --blue-700:#1D4ED8; --blue-600:#2563EB;
-  --blue-100:#DBEAFE; --blue-50:#EFF6FF; --white:#FFFFFF;
-  --bg:#F1F5F9; --gray-100:#F3F4F6; --gray-200:#E5E7EB;
-  --gray-400:#9CA3AF; --gray-500:#6B7280; --gray-900:#111827;
-  --red-500:#EF4444; --green-400:#34D399;
-  --font:'Inter',system-ui,sans-serif; --radius:16px;
-  --shadow:0 1px 3px rgba(0,0,0,.08),0 1px 2px rgba(0,0,0,.06);
-  --shadow-md:0 4px 6px -1px rgba(0,0,0,.10),0 2px 4px -1px rgba(0,0,0,.06);
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%;font-family:'Inter',sans-serif;overflow:hidden}
+:root{--blue:#2563EB;--bd:#1D4ED8;--bg:#F1F5F9;--g1:#F3F4F6;--g2:#E5E7EB;--g4:#9CA3AF;--g5:#6B7280;--g9:#111827;--green:#10B981;--red:#EF4444;--amb:#F59E0B;--pur:#7C3AED}
+body{display:flex;flex-direction:column;background:var(--bg)}
+header{flex-shrink:0;height:54px;background:var(--bd);color:#fff;display:flex;align-items:center;justify-content:space-between;padding:0 14px;z-index:30}
+.hl{display:flex;align-items:center;gap:8px}
+.logo{width:34px;height:34px;background:rgba(255,255,255,.15);border-radius:8px;display:grid;place-items:center;font-size:16px}
+.ht{font-size:14px;font-weight:700}.hs{font-size:10px;opacity:.7}
+select#lang{background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.3);color:#fff;border-radius:7px;padding:5px 8px;font-size:11px;font-family:'Inter',sans-serif;cursor:pointer;outline:none}
+select#lang option{background:#1E3A8A}
+.tabbar{flex-shrink:0;display:flex;background:#fff;border-bottom:1px solid var(--g2)}
+.tb{flex:1;background:none;border:none;padding:11px 18px;font-size:13px;font-weight:600;font-family:'Inter',sans-serif;cursor:pointer;color:var(--g5);border-bottom:3px solid transparent;transition:all .2s;display:flex;align-items:center;justify-content:center;gap:5px}
+.tb.on{color:var(--blue);border-bottom-color:var(--blue)}
+.pane{flex:1;overflow:hidden;display:none}
+.pane.on{display:flex;flex-direction:column}
+#ca{flex:1;overflow-y:auto;padding:14px 10px;display:flex;flex-direction:column;gap:12px}
+.msg{display:flex;gap:8px;max-width:720px;width:100%;margin:0 auto}
+.msg.user{flex-direction:row-reverse}
+.av{width:30px;height:30px;border-radius:50%;flex-shrink:0;display:grid;place-items:center;font-size:13px;background:#DBEAFE;margin-top:2px}
+.msg.user .av{background:var(--blue);color:#fff}
+.bw{display:flex;flex-direction:column;gap:3px;max-width:calc(100% - 38px)}
+.bbl{padding:10px 13px;border-radius:12px;font-size:13px;line-height:1.6;word-break:break-word}
+.msg.bot .bbl{background:#fff;border-top-left-radius:3px;box-shadow:0 1px 3px rgba(0,0,0,.08)}
+.msg.user .bbl{background:var(--blue);color:#fff;border-top-right-radius:3px;align-self:flex-end}
+.bbl p{margin:2px 0}.bbl ul,.bbl ol{margin:6px 0 6px 16px}.bbl li{margin:2px 0}.bbl strong{font-weight:600}
+.ts{font-size:10px;color:var(--g4);padding:0 3px}.msg.user .ts{text-align:right}
+.srcs{display:flex;flex-wrap:wrap;gap:4px;padding:0 2px}
+.sp{font-size:10px;background:#EFF6FF;color:var(--blue);border:1px solid #DBEAFE;border-radius:20px;padding:2px 8px;font-weight:500;text-transform:capitalize}
+.typing{display:flex;align-items:center;gap:4px;padding:10px 14px;background:#fff;border-radius:12px;box-shadow:0 1px 3px rgba(0,0,0,.08);width:fit-content}
+.td{width:6px;height:6px;border-radius:50%;background:var(--g4);animation:bnc 1.4s ease-in-out infinite}
+.td:nth-child(2){animation-delay:.2s}.td:nth-child(3){animation-delay:.4s}
+@keyframes bnc{0%,60%,100%{transform:translateY(0)}30%{transform:translateY(-6px)}}
+.wcard{background:#fff;border-radius:14px;border:1px solid #DBEAFE;padding:22px;max-width:460px;margin:auto;text-align:center;box-shadow:0 1px 3px rgba(0,0,0,.08)}
+.wcard .wi{font-size:36px;margin-bottom:10px}
+.wcard h2{font-size:16px;font-weight:700;margin-bottom:6px;color:var(--bd)}
+.wcard p{font-size:12px;color:var(--g5);line-height:1.6;margin-bottom:14px}
+.suggs{display:flex;flex-direction:column;gap:6px}
+.sg{background:#EFF6FF;border:1px solid #DBEAFE;border-radius:8px;padding:9px 12px;font-size:12px;color:var(--blue);font-family:'Inter',sans-serif;cursor:pointer;text-align:left;font-weight:500}
+.sg:hover{background:#DBEAFE}
+#cf{flex-shrink:0;background:#fff;border-top:1px solid var(--g2);padding:10px 12px 12px}
+.irow{display:flex;align-items:flex-end;gap:7px;max-width:720px;margin:0 auto}
+#mi{flex:1;border:1.5px solid var(--g2);border-radius:10px;padding:8px 12px;font-size:13px;font-family:'Inter',sans-serif;resize:none;min-height:40px;max-height:100px;line-height:1.5;outline:none;background:var(--g1)}
+#mi:focus{border-color:var(--blue);background:#fff}
+.ibtn{width:40px;height:40px;border-radius:50%;border:none;cursor:pointer;display:grid;place-items:center;font-size:14px}
+#mb{background:var(--g1);color:var(--g5);border:1.5px solid var(--g2)}
+#mb.rec{background:var(--red);color:#fff;border-color:var(--red)}
+#sb{background:var(--blue);color:#fff}
+#sb:disabled{background:var(--g2);color:var(--g4);cursor:not-allowed}
+.fn{text-align:center;font-size:10px;color:var(--g4);margin-top:5px}
+#nm{display:none;font-size:10px;color:var(--g4);text-align:center;margin-top:4px}
+#vb{display:none;text-align:center;font-size:11px;color:var(--red);font-weight:600;margin-bottom:5px}
+#lp{flex-direction:row}
+.lsb{width:230px;flex-shrink:0;background:#fff;border-right:1px solid var(--g2);display:flex;flex-direction:column;overflow:hidden}
+.lsh{padding:12px 14px;border-bottom:1px solid var(--g2);flex-shrink:0}
+.lsh h3{font-size:12px;font-weight:700;color:var(--g9)}.lsh p{font-size:10px;color:var(--g5);margin-top:2px}
+.pb{height:4px;background:var(--g2);border-radius:4px;margin-top:6px;overflow:hidden}
+.pf{height:100%;background:var(--blue);border-radius:4px;transition:width .4s}
+.pl{font-size:10px;color:var(--g5);display:flex;justify-content:space-between;margin-top:3px}
+.ll{overflow-y:auto;flex:1}
+.li{display:flex;align-items:center;gap:9px;padding:10px 12px;cursor:pointer;border-bottom:1px solid var(--g1);transition:background .12s}
+.li:hover,.li.on{background:#EFF6FF}
+.li.on{border-left:3px solid var(--blue)}
+.lic{font-size:18px;width:32px;height:32px;border-radius:7px;display:grid;place-items:center;background:var(--g1);flex-shrink:0}
+.li.on .lic{background:#DBEAFE}
+.lin{flex:1;min-width:0}
+.lnm{font-size:11px;font-weight:600;color:var(--g9);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.bdg{font-size:9px;padding:2px 6px;border-radius:20px;font-weight:600;display:inline-block;margin-top:2px}
+.bf{background:#D1FAE5;color:#065F46}.bp{background:#F5F3FF;color:var(--pur)}.bd{background:#DBEAFE;color:var(--bd)}
+.lk{font-size:11px;color:var(--g4);flex-shrink:0}
+.lm{flex:1;overflow-y:auto;padding:16px;background:var(--bg);display:flex;flex-direction:column;gap:14px}
+.lwel{background:#fff;border-radius:14px;padding:24px;text-align:center;box-shadow:0 1px 3px rgba(0,0,0,.08);border:1px solid #DBEAFE}
+.lwel .bi{font-size:48px;margin-bottom:12px}
+.lwel h2{font-size:18px;font-weight:700;color:var(--bd);margin-bottom:7px}
+.lwel p{color:var(--g5);font-size:13px;line-height:1.6;margin-bottom:16px}
+.stb{background:var(--blue);color:#fff;border:none;border-radius:8px;padding:10px 22px;font-size:13px;font-weight:600;font-family:'Inter',sans-serif;cursor:pointer}
+.sc-card{background:#fff;border-radius:14px;padding:16px;box-shadow:0 1px 3px rgba(0,0,0,.08);border-left:4px solid var(--red)}
+.sc-title{font-size:12px;font-weight:700;color:var(--red);margin-bottom:10px}
+.phone-wrap{background:#1a1a2e;border-radius:16px;padding:14px;max-width:280px;margin:0 auto 12px}
+.phone-hdr{display:flex;align-items:center;gap:8px;margin-bottom:10px}
+.phone-av{width:30px;height:30px;border-radius:50%;background:#444;display:grid;place-items:center;font-size:13px}
+.phone-nm{color:#fff;font-size:11px;font-weight:600}.phone-sub{color:#aaa;font-size:9px}
+.sms-bbl{background:#2a2a4a;border-radius:9px;padding:10px 12px;color:#e0e0e0;font-size:11px;line-height:1.6}
+.rf{color:#ff6b6b;font-weight:700;text-decoration:underline}
+.wa-wrap{background:#0b141a;border-radius:14px;padding:12px;max-width:280px;margin:0 auto 12px}
+.wa-hdr{display:flex;align-items:center;gap:8px;border-bottom:1px solid #1f2c34;padding-bottom:8px;margin-bottom:10px}
+.wa-nm{color:#e9edef;font-size:11px;font-weight:600}.wa-st{color:#8696a0;font-size:9px}
+.wa-bbl{background:#202c33;border-radius:8px;padding:8px 10px;color:#e9edef;font-size:11px;line-height:1.6;margin-left:auto;max-width:88%}
+.rs-wrap{background:#1a1a1a;border:2px solid var(--red);border-radius:10px;padding:14px;text-align:center;margin-bottom:12px}
+.rs-title{color:var(--red);font-size:13px;font-weight:700;margin-bottom:6px}
+.rs-msg{color:#ccc;font-size:11px;line-height:1.6}
+.pre-wrap{background:#1a1a2e;border-radius:10px;padding:12px;margin-bottom:12px;font-family:monospace;font-size:11px;line-height:1.7;color:#e0e0e0;white-space:pre-wrap}
+.sc-q{font-size:12px;font-weight:600;color:var(--g9);margin-bottom:10px}
+.sc-opts{display:flex;gap:8px;flex-wrap:wrap}
+.sc-opt{flex:1;min-width:110px;padding:9px 12px;border:1.5px solid var(--g2);border-radius:8px;font-size:11px;font-weight:600;font-family:'Inter',sans-serif;cursor:pointer;transition:all .18s;background:#fff;color:var(--g9)}
+.sc-opt.sc-ok{border-color:var(--green);background:#D1FAE5;color:#065F46}
+.sc-opt.sc-bad{border-color:var(--red);background:#FEE2E2;color:#991B1B}
+.sc-opt:disabled{cursor:default}
+.sc-exp{margin-top:10px;padding:10px 12px;border-radius:8px;font-size:11px;line-height:1.55;display:none;border-left:3px solid var(--green);background:#F0FDF4;color:#166534}
+.sc-exp.bad{border-left-color:var(--red);background:#FEF2F2;color:#991B1B}
+.sc-flag{display:inline-block;background:#FEF9C3;color:#854D0E;border-radius:5px;padding:2px 7px;font-size:10px;font-weight:600;margin:2px}
+.vc{background:#fff;border-radius:14px;padding:16px;box-shadow:0 1px 3px rgba(0,0,0,.08)}
+.vc h3{font-size:13px;font-weight:700;margin-bottom:10px;color:var(--g9)}
+.vph{background:linear-gradient(135deg,#1E3A8A,#2563EB);border-radius:9px;height:180px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;cursor:pointer}
+.play{width:50px;height:50px;background:rgba(255,255,255,.88);border-radius:50%;display:grid;place-items:center;font-size:20px}
+.vl{color:rgba(255,255,255,.85);font-size:11px}.vn{font-size:11px;color:var(--g5);margin-top:7px}
+.qc{background:#fff;border-radius:14px;padding:16px;box-shadow:0 1px 3px rgba(0,0,0,.08)}
+.qh{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}
+.qh h3{font-size:13px;font-weight:700;color:var(--g9)}
+.qpg{font-size:10px;color:var(--g5);background:var(--g1);padding:3px 9px;border-radius:20px}
+.qtx{font-size:12px;font-weight:500;color:var(--g9);padding:10px 12px;background:#EFF6FF;border-radius:8px;border-left:3px solid var(--blue);margin-bottom:12px;line-height:1.55}
+.opts{display:flex;flex-direction:column;gap:7px}
+.opt{background:#fff;border:1.5px solid var(--g2);border-radius:8px;padding:10px 12px;font-size:12px;font-family:'Inter',sans-serif;cursor:pointer;text-align:left;transition:all .18s;display:flex;align-items:center;gap:8px;color:var(--g9);min-height:44px}
+.opt:hover:not(:disabled){border-color:var(--blue);background:#EFF6FF}
+.opt.ok{border-color:var(--green);background:#D1FAE5;color:#065F46}
+.opt.bad{border-color:var(--red);background:#FEE2E2;color:#991B1B}
+.opt:disabled{cursor:default}
+.ol{width:22px;height:22px;border-radius:50%;background:var(--g1);display:grid;place-items:center;font-size:10px;font-weight:700;flex-shrink:0;color:var(--g5)}
+.opt.ok .ol{background:var(--green);color:#fff}.opt.bad .ol{background:var(--red);color:#fff}
+.exp{margin-top:10px;padding:9px 11px;border-radius:8px;font-size:11px;line-height:1.55;display:none}
+.exp.ok{background:#F0FDF4;border-left:3px solid var(--green);color:#166534}
+.exp.bad{background:#FFF7ED;border-left-color:var(--amb);color:#92400E}
+.qnav{display:flex;justify-content:flex-end;margin-top:12px}
+.nxt{background:var(--blue);color:#fff;border:none;border-radius:7px;padding:7px 18px;font-size:12px;font-weight:600;font-family:'Inter',sans-serif;cursor:pointer;display:none}
+.sc2{background:#fff;border-radius:14px;padding:22px;text-align:center;box-shadow:0 1px 3px rgba(0,0,0,.08);display:none}
+.sem{font-size:44px;margin-bottom:8px}.sn{font-size:32px;font-weight:700;color:var(--blue)}
+.sc2 p{font-size:12px;color:var(--g5);margin:4px 0 16px}
+.sa{display:flex;gap:9px;justify-content:center;flex-wrap:wrap}
+.rb{background:var(--g1);color:var(--g9);border:none;border-radius:7px;padding:8px 18px;font-size:12px;font-weight:600;font-family:'Inter',sans-serif;cursor:pointer}
+.nb{background:var(--blue);color:#fff;border:none;border-radius:7px;padding:8px 18px;font-size:12px;font-weight:600;font-family:'Inter',sans-serif;cursor:pointer}
+.cb{background:var(--green);color:#fff;border:none;border-radius:7px;padding:8px 18px;font-size:12px;font-weight:600;font-family:'Inter',sans-serif;cursor:pointer}
+.cert{background:#fff;border-radius:14px;padding:22px;box-shadow:0 1px 3px rgba(0,0,0,.08);display:none;border:2px solid var(--bd)}
+.lw{background:#fff;border-radius:14px;padding:28px 18px;text-align:center;box-shadow:0 1px 3px rgba(0,0,0,.08);border:2px dashed var(--g2)}
+.lbig{font-size:44px;margin-bottom:10px}.lw h3{font-size:16px;font-weight:700;margin-bottom:6px}
+.lw>p{font-size:12px;color:var(--g5);line-height:1.6;margin-bottom:16px}
+.pbox{background:#EFF6FF;border:1px solid #DBEAFE;border-radius:10px;padding:14px;margin-bottom:16px;display:inline-block}
+.price{font-size:24px;font-weight:700;color:var(--bd)}
+.pbox ul{list-style:none;margin-top:8px;text-align:left}
+.pbox li{font-size:11px;color:var(--g9);margin:3px 0}
+.subbtn{background:var(--blue);color:#fff;border:none;border-radius:8px;padding:10px 24px;font-size:13px;font-weight:700;font-family:'Inter',sans-serif;cursor:pointer;display:block;margin:0 auto}
+.modal-bg{position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:100;display:none;place-items:center;padding:16px}
+.modal-bg.open{display:grid}
+.modal{background:#fff;border-radius:14px;padding:22px;max-width:360px;width:100%}
+.modal h3{font-size:16px;font-weight:700;margin-bottom:5px}
+.modal>p{font-size:12px;color:var(--g5);margin-bottom:14px;line-height:1.55}
+.mstep{display:flex;gap:9px;margin-bottom:10px;padding:10px 12px;background:var(--g1);border-radius:8px}
+.msn{width:20px;height:20px;border-radius:50%;background:var(--blue);color:#fff;display:grid;place-items:center;font-size:10px;font-weight:700;flex-shrink:0;margin-top:1px}
+.mstep p{font-size:11px;color:var(--g9);margin:0;line-height:1.5}
+.acinp{width:100%;border:1.5px solid var(--g2);border-radius:7px;padding:8px 10px;font-size:12px;font-family:'Inter',sans-serif;outline:none;margin-top:9px}
+.acinp:focus{border-color:var(--blue)}
+.macts{display:flex;gap:8px;margin-top:12px}
+.mcl{flex:1;background:var(--g1);color:var(--g9);border:none;border-radius:7px;padding:9px;font-size:12px;font-weight:600;font-family:'Inter',sans-serif;cursor:pointer}
+.mac{flex:1;background:var(--green);color:#fff;border:none;border-radius:7px;padding:9px;font-size:12px;font-weight:600;font-family:'Inter',sans-serif;cursor:pointer}
+.pbn{background:linear-gradient(135deg,var(--bd),var(--pur));color:#fff;border-radius:12px;padding:12px 14px;display:flex;align-items:center;gap:10px}
+.pbn h4{font-size:12px;font-weight:700}.pbn p{font-size:10px;opacity:.85;margin-top:1px}
+@media(max-width:700px){
+.tabbar{order:999;position:fixed;bottom:0;left:0;right:0;z-index:20;border-top:1px solid var(--g2);border-bottom:none;box-shadow:0 -2px 8px rgba(0,0,0,.08)}
+.tb{flex-direction:column;gap:2px;padding:6px 4px;font-size:10px;border-bottom:none;border-top:2px solid transparent}
+.tb.on{border-top-color:var(--blue);border-bottom:none}
+.pane.on{padding-bottom:56px}
+#lp{flex-direction:column}
+.lsb{width:100%;max-height:130px;flex-direction:row;border-right:none;border-bottom:1px solid var(--g2)}
+.lsh{display:none}
+.ll{display:flex;flex-direction:row;overflow-x:auto;overflow-y:hidden;padding:6px;gap:6px}
+.li{flex-direction:column;align-items:center;min-width:70px;max-width:70px;padding:7px 5px;border-bottom:none;border-left:none!important;border-radius:8px;text-align:center;gap:3px}
+.li.on{border-left:none!important;border-bottom:2px solid var(--blue)!important}
+.lic{width:26px;height:26px;font-size:13px}
+.lnm{font-size:9px;white-space:normal;line-height:1.2}
+.bdg{font-size:8px;padding:1px 4px}
+.lm{padding:10px;padding-bottom:66px}
+.vph{height:150px}.hs{display:none}
+.sc-opts{flex-direction:column}
+.phone-wrap,.wa-wrap{max-width:100%}
 }
-body { display:flex; flex-direction:column; font-family:var(--font); background:var(--bg); color:var(--gray-900); }
-header { flex-shrink:0; background:var(--blue-700); color:var(--white); padding:0 20px; height:64px; display:flex; align-items:center; justify-content:space-between; box-shadow:var(--shadow-md); z-index:10; }
-.header-left { display:flex; align-items:center; gap:12px; }
-.logo-wrap { width:40px; height:40px; background:rgba(255,255,255,.15); border-radius:10px; display:grid; place-items:center; font-size:20px; flex-shrink:0; }
-.header-title h1 { font-size:16px; font-weight:700; letter-spacing:-0.3px; line-height:1.2; }
-.header-title p { font-size:11px; opacity:0.75; }
-.header-right { display:flex; align-items:center; gap:10px; }
-.status { display:flex; align-items:center; gap:6px; font-size:12px; opacity:0.85; }
-.status-dot { width:7px; height:7px; background:var(--green-400); border-radius:50%; animation:blink 2s ease-in-out infinite; }
-@keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.35} }
-#langSelect { background:rgba(255,255,255,.15); border:1px solid rgba(255,255,255,.25); color:var(--white); border-radius:8px; padding:6px 10px; font-size:13px; font-family:var(--font); cursor:pointer; outline:none; -webkit-appearance:none; appearance:none; }
-#langSelect option { background:var(--blue-900); color:var(--white); }
-.clear-btn { background:rgba(255,255,255,.15); border:1px solid rgba(255,255,255,.25); color:var(--white); border-radius:8px; padding:6px 12px; font-size:12px; font-family:var(--font); cursor:pointer; transition:background .2s; }
-.clear-btn:hover { background:rgba(255,255,255,.25); }
-main { flex:1; overflow-y:auto; padding:24px 16px 16px; display:flex; flex-direction:column; gap:16px; scroll-behavior:smooth; }
-main::-webkit-scrollbar { width:5px; }
-main::-webkit-scrollbar-thumb { background:var(--gray-200); border-radius:10px; }
-.msg-row { display:flex; gap:10px; max-width:780px; width:100%; margin:0 auto; }
-.msg-row.user { flex-direction:row-reverse; }
-.avatar { width:34px; height:34px; border-radius:50%; flex-shrink:0; display:grid; place-items:center; font-size:16px; background:var(--blue-100); margin-top:2px; }
-.msg-row.user .avatar { background:var(--blue-600); color:var(--white); }
-.bubble-wrap { display:flex; flex-direction:column; gap:4px; max-width:calc(100% - 44px); }
-.bubble { padding:12px 16px; border-radius:var(--radius); line-height:1.65; font-size:14px; box-shadow:var(--shadow); word-break:break-word; }
-.msg-row.bot .bubble { background:var(--white); border-top-left-radius:4px; }
-.msg-row.user .bubble { background:var(--blue-600); color:var(--white); border-top-right-radius:4px; align-self:flex-end; }
-.bubble ul,.bubble ol { margin:8px 0 8px 20px; }
-.bubble li { margin:4px 0; }
-.bubble p { margin:4px 0; }
-.bubble strong { font-weight:600; }
-.timestamp { font-size:11px; color:var(--gray-400); padding:0 4px; }
-.msg-row.user .timestamp { text-align:right; }
-.sources-wrap { display:flex; flex-wrap:wrap; gap:6px; padding:0 4px; }
-.source-pill { font-size:11px; background:var(--blue-50); color:var(--blue-700); border:1px solid var(--blue-100); border-radius:20px; padding:3px 10px; font-weight:500; text-transform:capitalize; }
-.typing-bubble { display:flex; align-items:center; gap:5px; padding:14px 18px; background:var(--white); border-radius:var(--radius); border-top-left-radius:4px; box-shadow:var(--shadow); width:fit-content; }
-.typing-dot { width:7px; height:7px; border-radius:50%; background:var(--gray-400); animation:bounce 1.4s ease-in-out infinite; }
-.typing-dot:nth-child(2){animation-delay:.2s} .typing-dot:nth-child(3){animation-delay:.4s}
-@keyframes bounce { 0%,60%,100%{transform:translateY(0)} 30%{transform:translateY(-8px)} }
-.welcome-card { background:var(--white); border-radius:var(--radius); border:1px solid var(--blue-100); padding:24px 28px; max-width:520px; margin:auto; text-align:center; box-shadow:var(--shadow); }
-.welcome-card .icon { font-size:44px; margin-bottom:14px; }
-.welcome-card h2 { font-size:18px; font-weight:700; margin-bottom:8px; color:var(--blue-700); }
-.welcome-card p { font-size:13px; color:var(--gray-500); line-height:1.65; margin-bottom:20px; }
-.suggestions { display:flex; flex-direction:column; gap:8px; }
-.suggestion-btn { background:var(--blue-50); border:1px solid var(--blue-100); border-radius:10px; padding:11px 14px; font-size:13px; color:var(--blue-700); font-family:var(--font); cursor:pointer; text-align:left; transition:background .15s,border-color .15s; font-weight:500; }
-.suggestion-btn:hover { background:var(--blue-100); border-color:var(--blue-600); }
-footer { flex-shrink:0; background:var(--white); border-top:1px solid var(--gray-200); padding:12px 16px 14px; box-shadow:0 -1px 4px rgba(0,0,0,.05); }
-#voiceBanner { display:none; text-align:center; font-size:12px; color:var(--red-500); font-weight:600; margin-bottom:8px; max-width:780px; margin-left:auto; margin-right:auto; animation:pulse-text 1.5s ease-in-out infinite; }
-@keyframes pulse-text { 0%,100%{opacity:1} 50%{opacity:0.5} }
-.input-row { display:flex; align-items:flex-end; gap:8px; max-width:780px; margin:0 auto; }
-#messageInput { flex:1; border:1.5px solid var(--gray-200); border-radius:12px; padding:10px 14px; font-size:14px; font-family:var(--font); resize:none; min-height:44px; max-height:120px; line-height:1.5; outline:none; transition:border-color .2s; color:var(--gray-900); background:var(--gray-100); overflow-y:auto; }
-#messageInput:focus { border-color:var(--blue-600); background:var(--white); }
-#messageInput::placeholder { color:var(--gray-400); }
-.icon-btn { width:44px; height:44px; border-radius:50%; border:none; cursor:pointer; display:grid; place-items:center; flex-shrink:0; position:relative; transition:transform .15s,background .15s; }
-.icon-btn:active { transform:scale(.93); }
-#micBtn { background:var(--gray-100); color:var(--gray-500); border:1.5px solid var(--gray-200); }
-#micBtn:hover { background:var(--gray-200); }
-#micBtn.recording { background:var(--red-500)!important; color:var(--white)!important; border-color:var(--red-500)!important; }
-#micBtn.recording::before,#micBtn.recording::after { content:''; position:absolute; inset:-4px; border-radius:50%; border:2px solid var(--red-500); animation:mic-ring 1.6s ease-out infinite; pointer-events:none; }
-#micBtn.recording::after { animation-delay:.8s; }
-@keyframes mic-ring { 0%{opacity:.8;transform:scale(1)} 100%{opacity:0;transform:scale(2)} }
-#sendBtn { background:var(--blue-600); color:var(--white); }
-#sendBtn:hover:not(:disabled) { background:var(--blue-700); }
-#sendBtn:disabled { background:var(--gray-200); color:var(--gray-400); cursor:not-allowed; }
-.footer-note { text-align:center; font-size:11px; color:var(--gray-400); margin-top:8px; max-width:780px; margin-left:auto; margin-right:auto; line-height:1.5; }
-#noMicNotice { display:none; font-size:11px; color:var(--gray-400); text-align:center; margin-top:6px; }
-@media(max-width:600px) { .header-title p,.status span{display:none} main{padding:16px 10px 10px} .welcome-card{padding:20px 18px} }
+@media print{
+header,.tabbar,.ibtn,#cf,.lsb,.sc2,.qc,.vc,.sc-card{display:none!important}
+.pane#lp{display:block!important;padding:0}.lm{padding:0}
+.cert{display:block!important;border:3px solid var(--bd);page-break-inside:avoid}
+}
 </style>
 </head>
 <body>
+<div class="modal-bg" id="modal">
+<div class="modal">
+<h3>🔓 Unlock All Lessons</h3>
+<p>Subscribe to access all 10 lessons with live demos, quizzes, videos, and certificates.</p>
+<div class="mstep"><div class="msn">1</div><p>Send <strong>2,500 FCFA</strong> via MTN MoMo or Orange Money to <strong>+237 6XX XXX XXX</strong> &mdash; Ref: <strong>CYBER-LEARN</strong></p></div>
+<div class="mstep"><div class="msn">2</div><p>You will receive an <strong>access code</strong> by SMS within 5 minutes.</p></div>
+<div class="mstep"><div class="msn">3</div><p>Enter your code below to unlock all 10 lessons.</p></div>
+<input class="acinp" id="acode" placeholder="Enter access code e.g. CYBER-001">
+<div class="macts">
+<button class="mcl" onclick="closeModal()">Cancel</button>
+<button class="mac" id="actbtn" onclick="activate()">Activate ✓</button>
+</div>
+</div>
+</div>
 <header>
-  <div class="header-left">
-    <div class="logo-wrap">🛡️</div>
-    <div class="header-title">
-      <h1>CyberAware Cameroon</h1>
-      <p>Grounded in ANTIC / CIRT-Cameroun guidance</p>
-    </div>
-  </div>
-  <div class="header-right">
-    <div class="status"><div class="status-dot"></div><span>Online</span></div>
-    <select id="langSelect" title="Select your language">
-      <option value="en">🇬🇧 English</option>
-      <option value="fr">🇫🇷 Français</option>
-      <option value="pidgin">🇨🇲 Pidgin</option>
-    </select>
-    <button class="clear-btn" onclick="clearChat()">🗑 Clear</button>
-  </div>
+<div class="hl">
+<div class="logo">🛡️</div>
+<div><div class="ht">CyberAware Cameroon</div><div class="hs">ANTIC / CIRT-Cameroun</div></div>
+</div>
+<select id="lang" onchange="setLang(this.value)">
+<option value="en">🇬🇧 English</option>
+<option value="fr">🇫🇷 Francais</option>
+<option value="pidgin">🇨🇲 Pidgin</option>
+</select>
 </header>
-
-<main id="chatContainer"></main>
-
-<footer>
-  <div id="voiceBanner">🎙️ Listening… speak now</div>
-  <div class="input-row">
-    <textarea id="messageInput" rows="1" placeholder="Type your cybersecurity question…"></textarea>
-    <button class="icon-btn" id="micBtn" title="Voice input" onclick="toggleVoice()">
-      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/>
-        <path d="M19 10v2a7 7 0 0 1-14 0v-2"/>
-        <line x1="12" y1="19" x2="12" y2="23"/>
-        <line x1="8" y1="23" x2="16" y2="23"/>
-      </svg>
-    </button>
-    <button class="icon-btn" id="sendBtn" title="Send" onclick="sendMessage()">
-      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <line x1="22" y1="2" x2="11" y2="13"/>
-        <polygon points="22 2 15 22 11 13 2 9 22 2"/>
-      </svg>
-    </button>
-  </div>
-  <p id="noMicNotice">⚠️ Voice input requires Chrome or Edge browser.</p>
-  <p class="footer-note">Answers grounded in official ANTIC/CIRT-Cameroun guidance. &nbsp;|&nbsp; Helpline: <strong>8202</strong> (free, 24/7) &nbsp;·&nbsp; <strong>alerts@cirt.antic.cm</strong></p>
+<div class="tabbar">
+<button class="tb on" id="tc" onclick="goTab('chat')">🤖 <span id="tlc">Chat</span></button>
+<button class="tb" id="tl" onclick="goTab('les')">📚 <span id="tll">Lessons</span></button>
+</div>
+<div class="pane on" id="chatPane">
+<main id="ca"></main>
+<footer id="cf">
+<div id="vb">🎙️ Listening... speak now</div>
+<div class="irow">
+<textarea id="mi" rows="1" placeholder="Type your cybersecurity question..."></textarea>
+<button class="ibtn" id="mb" onclick="toggleMic()">🎙️</button>
+<button class="ibtn" id="sb" onclick="sendMsg()">➤</button>
+</div>
+<p id="nm">Voice input needs Chrome or Edge</p>
+<p class="fn">CIRT-Cameroun Helpline: <strong>8202</strong> (free, 24/7) &bull; alerts@cirt.antic.cm</p>
 </footer>
-
+</div>
+<div class="pane" id="lp">
+<div class="lsb">
+<div class="lsh"><h3 id="sbt">📚 Cyber Training</h3><p>10 lessons</p><div class="pb"><div class="pf" id="prf" style="width:0%"></div></div><div class="pl"><span id="spl">Progress</span><span id="spn">0/10</span></div></div>
+<div class="ll" id="llist"></div>
+</div>
+<div class="lm" id="lmain">
+<div class="lwel"><div class="bi">🛡️</div><h2 id="lwt">Welcome to Cyber Training</h2><p id="lwb">Choose a lesson. Lessons 1 and 2 are FREE. Each lesson has a live interactive scenario, video placeholder, and 5-question quiz. Subscribe to unlock all 10 and earn certificates.</p><button class="stb" onclick="goLesson(0)">🚀 Start Lesson 1</button></div>
+</div>
+</div>
 <script>
-let currentLang='en',isRecording=false,recognition=null;
-function detectLanguage(){const bl=(navigator.language||'en').toLowerCase();currentLang=bl.startsWith('fr')?'fr':'en';document.getElementById('langSelect').value=currentLang;}
-document.getElementById('langSelect').addEventListener('change',function(){currentLang=this.value;const c=document.getElementById('chatContainer');if(c.querySelector('.welcome-card'))renderWelcome();});
-const WM={
-  en:{title:'Welcome to CyberAware Cameroon',sub:'Ask me anything about cybersecurity in English, French, or Cameroonian Pidgin. I draw only from official ANTIC/CIRT-Cameroun guidance.',tips:['🎣 How do I recognise a phishing SMS?','📱 How do I secure my Mobile Money account?','🔐 What makes a strong password?','🚨 My Facebook was hacked — what do I do?','📞 How do I report a cybercrime to ANTIC?']},
-  fr:{title:'Bienvenue sur CyberAware Cameroun',sub:'Posez vos questions de cybersécurité en français, anglais ou pidgin. Je m\'appuie uniquement sur les recommandations officielles de l\'ANTIC/CIRT-Cameroun.',tips:['🎣 Comment reconnaître un SMS de phishing ?','📱 Comment sécuriser mon compte Mobile Money ?','🔐 Qu\'est-ce qu\'un mot de passe robuste ?','🚨 Mon Facebook a été piraté — que faire ?','📞 Comment signaler une cybercriminalité ?']},
-  pidgin:{title:'Welcome CyberAware Cameroon',sub:'Ask me your cybersecurity questions for English, Français na Pidgin. I dey use only ANTIC/CIRT-Cameroun information.',tips:['🎣 How I go know say one SMS na scam?','📱 How I go protect my Mobile Money?','🔐 Wetin make password strong?','🚨 Dem hack my Facebook — wetin I go do?','📞 How I go report cybercrime to ANTIC?']}
+var lang="en",curL=0,curQ=0,score=0,answered=false;
+var premium=localStorage.getItem("cap")==="1";
+var done=JSON.parse(localStorage.getItem("cad")||"[]");
+
+var LS=[
+{id:0,free:true,icon:"🎣",videoId:"",
+ name:{en:"Phishing",fr:"Hameconnage",pidgin:"Phishing"},
+ sc:{type:"sms",sender:"MTN CM Official",
+  msg:{en:"Dear Customer, Your MTN account has been SUSPENDED due to suspicious activity. Click http://mtn-verify-cm.xyz/unlock to restore access within 24hrs or your account will be permanently closed. MTN Security Team",
+       fr:"Cher Client, Votre compte MTN a ete SUSPENDU. Cliquez http://mtn-verify-cm.xyz/unlock pour restaurer acces dans 24h ou votre compte sera ferme. Equipe MTN",
+       pidgin:"Dear Customer, Your MTN account don get SUSPENDED. Click http://mtn-verify-cm.xyz/unlock to restore am within 24hrs or dem go close your account. MTN Security"},
+  flags:["mtn-verify-cm.xyz","SUSPENDED","24hrs","permanently closed"],
+  q:{en:"Is this SMS genuine from MTN or a SCAM?",fr:"Ce SMS est-il reel de MTN ou une ARNAQUE?",pidgin:"This SMS na real MTN message or na SCAM?"},
+  opts:{en:["This is REAL from MTN","This is a SCAM"],fr:["C est REEL de MTN","C est une ARNAQUE"],pidgin:["This na real MTN","This na SCAM"]},cor:1,
+  exp:{en:"SCAM! Red flags: 1) MTN real domain is mtn.cm NOT mtn-verify-cm.xyz 2) MTN never sends suspension threats by SMS 3) Urgency (24hrs) is a manipulation tactic. Call MTN 1200 to verify anything suspicious.",
+       fr:"ARNAQUE! Signaux: 1) Le vrai domaine MTN est mtn.cm PAS mtn-verify-cm.xyz 2) MTN n envoie jamais de menaces par SMS 3) L urgence est une tactique de manipulation.",
+       pidgin:"SCAM! Red flags: 1) MTN real domain na mtn.cm NOT mtn-verify-cm.xyz 2) MTN no dey send suspension threat for SMS 3) Urgency na manipulation trick. Call MTN 1200 verify anything suspicious."}},
+ quiz:[
+  {q:{en:"You get an SMS: Your MTN account will be blocked. Click mtn-secure.xyz to verify. What do you do?",fr:"Votre compte MTN sera bloque. Cliquez mtn-secure.xyz. Que faites-vous?",pidgin:"SMS say MTN go block your account. Click mtn-secure.xyz. Wetin you go do?"},
+   opts:{en:["Click the link immediately","Call MTN 1200 to verify","Send your PIN to unblock","Forward to friends"],fr:["Cliquer le lien","Appeler le 1200","Envoyer votre PIN","Transferer"],pidgin:["Click the link quick","Call MTN 1200","Send your PIN","Carry give friends"]},cor:1,
+   exp:{en:"CORRECT! Always call MTN 1200 or Orange 100 to verify. Never click links in suspicious SMS.",fr:"Verifiez en appelant le 1200 ou 100. Ne cliquez jamais sur des liens suspects.",pidgin:"Always call MTN 1200 or Orange 100 first. No click link for suspicious SMS."}},
+  {q:{en:"Which website link is FAKE?",fr:"Quel lien est FAUX?",pidgin:"Which link na fake?"},
+   opts:{en:["https://mtn.cm/account","https://mtn-secure-verify.xyz","https://orange.cm/login","https://cirt.cm"],fr:["https://mtn.cm/account","https://mtn-secure-verify.xyz","https://orange.cm/login","https://cirt.cm"],pidgin:["https://mtn.cm/account","https://mtn-secure-verify.xyz","https://orange.cm/login","https://cirt.cm"]},cor:1,
+   exp:{en:"CORRECT! mtn-secure-verify.xyz is NOT the real MTN domain. The real one is mtn.cm. Scammers copy names to fool you.",fr:"mtn-secure-verify.xyz n est PAS le domaine officiel MTN. Le vrai est mtn.cm.",pidgin:"mtn-secure-verify.xyz na fake domain. The real MTN website na mtn.cm."}},
+  {q:{en:"A QR code in a shop says Scan to win 50000 FCFA! What do you do?",fr:"Un QR code dit Scannez pour gagner 50000 FCFA! Que faites-vous?",pidgin:"QR code say Scan win 50000 FCFA! Wetin you go do?"},
+   opts:{en:["Scan immediately","Ignore it, unsolicited prizes are scams","Scan if a friend won","Share on WhatsApp"],fr:["Scanner","Ignorer, c est une arnaque","Scanner si un ami a gagne","Partager"],pidgin:["Scan am quick","Leave am, na scam","Scan if your friend win","Share WhatsApp"]},cor:1,
+   exp:{en:"CORRECT! Unsolicited prize QR codes are almost always scams. Scanning could install malware on your phone.",fr:"Les QR codes de prix non sollicites sont des arnaques. Scanner pourrait installer un malware.",pidgin:"Free prize QR code na scam. Bad QR code fit install malware for your phone."}},
+  {q:{en:"What is a sign that an email link is dangerous?",fr:"Quel est un signe qu un lien dans un email est dangereux?",pidgin:"Wetin be sign say email link na dangerous?"},
+   opts:{en:["The email has your correct name","The link domain is different from the official company website","The email was sent in the morning","The email has a company logo"],fr:["L email a votre nom","Le domaine du lien est different du site officiel","L email a ete envoye le matin","L email a un logo"],pidgin:["Email get your correct name","The link domain different from official company website","Email dey send for morning","Email get company logo"]},cor:1,
+   exp:{en:"CORRECT! Always check the domain in a link. If it differs from the official website even by one letter it is fake. Logos and names can be copied by anyone.",fr:"Verifiez toujours le domaine d un lien. S il differe du site officiel c est faux. Les logos peuvent etre copies.",pidgin:"Always check the domain for link. If e different from official website even by one letter e na fake. Logo na name fit be copy."}},
+  {q:{en:"If you accidentally clicked a suspicious link, what should you do FIRST?",fr:"Si vous avez clique accidentellement sur un lien suspect, que faire EN PREMIER?",pidgin:"If you don click suspicious link by mistake, wetin you go do FIRST?"},
+   opts:{en:["Do nothing, it was probably harmless","Immediately close the browser, disconnect WiFi, run an antivirus scan, and report to CIRT 8202","Call your friends to warn them","Delete the SMS and forget about it"],fr:["Ne rien faire","Fermer le navigateur, deconnecter le WiFi, lancer un antivirus et signaler au CIRT 8202","Appeler vos amis","Supprimer le SMS"],pidgin:["Do nothing e probably no harm","Close browser immediately, disconnect WiFi, run antivirus scan, and report to CIRT 8202","Call your friends warn dem","Delete the SMS forget am"]},cor:1,
+   exp:{en:"CORRECT! Act fast. Close the browser, disconnect internet, run a full antivirus scan, and report to CIRT-Cameroun at 8202 or alerts@cirt.antic.cm.",fr:"Agissez vite. Fermez le navigateur, deconnectez internet, lancez un antivirus et signalez au CIRT 8202.",pidgin:"Move fast. Close browser, disconnect internet, run antivirus scan, and report to CIRT 8202."}}
+]},
+{id:1,free:true,icon:"🧠",videoId:"",
+ name:{en:"Social Engineering",fr:"Ingenierie Sociale",pidgin:"Mind Manipulation"},
+ sc:{type:"call",sender:"Unknown +237 6XX XXX XXX",
+  msg:{en:"CALLER (crying): Hello? Is this the parent of (your child name)? I am calling from General Hospital Yaounde. Your child was brought in 20 minutes ago after an accident at school. The doctors need 75,000 FCFA URGENTLY for emergency surgery RIGHT NOW or they cannot proceed. Please send the money immediately! There is NO TIME!",
+       fr:"APPELANT (pleurant): Allo? Je suis de l Hopital General de Yaounde. Votre enfant a ete amene il y a 20 minutes suite a un accident. Les medecins ont besoin de 75000 FCFA IMMEDIATEMENT pour l operation d urgence. Envoyez l argent maintenant! Il n y a PAS DE TEMPS!",
+       pidgin:"CALLER (dey cry): Hello? Na you be (your pikin name) parent? I dey call from General Hospital Yaounde. Your pikin dem don bring am here 20 minutes ago after accident for school. Doctor need 75000 FCFA IMMEDIATELY for emergency surgery RIGHT NOW or dem no fit do am. Send money quick! NO TIME!"},
+  flags:["20 minutes ago","URGENTLY","RIGHT NOW","immediately","NO TIME","crying"],
+  q:{en:"This call creates extreme urgency and fear. What should you do FIRST?",fr:"Cet appel cree une urgence extreme. Que devez-vous faire EN PREMIER?",pidgin:"This call dey create extreme urgency na fear. Wetin you go do FIRST?"},
+  opts:{en:["Send money immediately, the child could die","Stay calm, hang up, call your child directly on their own number","Ask the caller for the hospital account number","Ask a neighbour to send the money for you"],fr:["Envoyer l argent immediatement","Rester calme, raccrocher, appeler votre enfant directement","Demander le numero de compte","Demander a un voisin"],pidgin:["Send money quick quick, pikin fit die","Stay calm, cut call, call your pikin direct for their own number","Ask caller for hospital account number","Ask neighbour send the money"]},cor:1,
+  exp:{en:"CORRECT! This is SOCIAL ENGINEERING using FEAR and URGENCY. ALWAYS hang up and call your child directly first. Real hospitals have official payment processes and give you time. No legitimate emergency requires random Mobile Money transfers to strangers.",
+       fr:"C est de l INGENIERIE SOCIALE utilisant la PEUR et l URGENCE. Raccrochez toujours et appelez votre enfant directement. Les vrais hopitaux ont des processus officiels.",
+       pidgin:"Na SOCIAL ENGINEERING dis one. ALWAYS cut call and call your pikin direct. Real hospital get official payment process and dem go give you time. No real emergency require random Mobile Money transfer to stranger."}},
+ quiz:[
+  {q:{en:"Someone calls crying: Your child is in hospital and needs money NOW! Your FIRST step?",fr:"Quelqu un appelle: Votre enfant est a l hopital, il a besoin d argent MAINTENANT! Votre PREMIERE reaction?",pidgin:"Person dey cry say your pikin dey hospital, e need money NOW! Wetin you go do FIRST?"},
+   opts:{en:["Send money immediately","Stay calm, hang up, call your child directly","Ask the caller for bank details","Ask a neighbour to send money"],fr:["Envoyer de l argent","Rester calme, raccrocher, appeler votre enfant","Demander les coordonnees bancaires","Demander a un voisin"],pidgin:["Send money quick","Calm down, cut call, call your pikin direct","Ask caller for account number","Ask neighbour send money"]},cor:1,
+   exp:{en:"CORRECT! STAY CALM. Social engineers create urgency to stop clear thinking. Always call the person directly first.",fr:"RESTEZ CALME. Les attaquants creent l urgence. Verifiez toujours en appelant directement.",pidgin:"CALM DOWN! Bad people create urgency so you no go think. Always call your pikin direct first."}},
+  {q:{en:"An email says: Your account will be DELETED in 2 hours if you do not update NOW! This is:",fr:"Un email dit: Votre compte sera SUPPRIME dans 2 heures! C est:",pidgin:"Email say: Dem go DELETE your account in 2 hours! Wetin be dis?"},
+   opts:{en:["A real security warning","A social engineering attack using urgency and fear","Normal account maintenance","A message from CIRT-Cameroun"],fr:["Un vrai avertissement","Une attaque utilisant l urgence et la peur","Maintenance normale","Un message du CIRT"],pidgin:["Real security warning","Social engineering attack using urgency na fear","Normal account update","Message from CIRT"]},cor:1,
+   exp:{en:"CORRECT! Artificial urgency combined with fear is a classic social engineering trigger. Real companies never threaten immediate deletion.",fr:"L urgence artificielle avec la peur est un declencheur classique. Les vraies entreprises ne menacent jamais.",pidgin:"Urgency plus fear na classic social engineering trick. Real companies no dey threaten you like dat."}},
+  {q:{en:"Which of these is a social engineering technique?",fr:"Laquelle est une technique d ingenierie sociale?",pidgin:"Which one na social engineering trick?"},
+   opts:{en:["Sending a virus by email","Pretending to be your bank manager to get your account number","Breaking into a building","Stealing your phone"],fr:["Envoyer un virus","Se faire passer pour votre directeur de banque","Penetrer dans un batiment","Voler votre telephone"],pidgin:["Send virus for email","Pretend to be your bank manager to get account number","Break into building","Steal your phone"]},cor:1,
+   exp:{en:"CORRECT! Social engineering is psychological manipulation. Impersonation and pressure steal your information without any technical tools.",fr:"L ingenierie sociale est une manipulation psychologique basee sur l usurpation d identite et la pression.",pidgin:"Social engineering na mind trick. Dem use fake identity na pressure to collect your information."}},
+  {q:{en:"A stranger WhatsApps you: I am your old classmate stranded in Douala, need 50000 FCFA urgently. You:",fr:"Un inconnu vous WhatsApp: Je suis votre ancien camarade bloque a Douala, besoin de 50000 FCFA. Vous:",pidgin:"Stranger WhatsApp you: I be your old classmate stuck for Douala, need 50000 FCFA urgently. You:"},
+   opts:{en:["Send money, they might really be a classmate","Call them on voice to verify their identity BEFORE sending anything","Ask them to send a photo first","Send 10000 FCFA to help a little"],fr:["Envoyer l argent","Les appeler pour verifier leur identite AVANT d envoyer","Leur demander une photo","Envoyer 10000 FCFA"],pidgin:["Send money, dem fit really be your classmate","Call dem for voice to verify their identity BEFORE you send anything","Ask dem send photo first","Send 10000 FCFA to help small"]},cor:1,
+   exp:{en:"CORRECT! ALWAYS verify by calling before sending any money. Anyone can claim to know you on WhatsApp. A voice call quickly reveals if they are genuine.",fr:"Verifiez TOUJOURS en appelant avant d envoyer de l argent. N importe qui peut pretendre vous connaitre.",pidgin:"ALWAYS call to verify before you send money. Anybody fit claim say dem know you for WhatsApp. Voice call go quickly show if dem na real."}},
+  {q:{en:"Which psychological triggers do social engineers most commonly exploit?",fr:"Quels declencheurs psychologiques les ingenieurs sociaux exploitent-ils le plus?",pidgin:"Which psychological triggers social engineers dey exploit most?"},
+   opts:{en:["Happiness and celebration","Fear, urgency, and authority","Boredom and curiosity","Pride and competition"],fr:["Bonheur et celebration","Peur, urgence et autorite","Ennui et curiosite","Fierte et competition"],pidgin:["Happiness na celebration","Fear, urgency, na authority","Boredom na curiosity","Pride na competition"]},cor:1,
+   exp:{en:"CORRECT! Fear, urgency, and authority are the three most powerful social engineering triggers. When someone makes you feel afraid or pressed for time, PAUSE and verify before acting.",fr:"La peur, l urgence et l autorite sont les trois principaux declencheurs. Quand quelqu un vous fait peur ou vous presse, FAITES UNE PAUSE et verifiez.",pidgin:"Fear, urgency, na authority na the three most powerful social engineering triggers. When person make you fear or dey rush you, PAUSE and verify before you act."}}
+]},
+{id:2,free:false,icon:"🎭",videoId:"",
+ name:{en:"Spoofing",fr:"Usurpation",pidgin:"Fake Identity"},
+ sc:{type:"whatsapp",sender:"Orange Money Official",
+  msg:{en:"Hello valued customer. We have detected unusual activity on your Orange Money account. To avoid suspension, please reply with your 5-digit PIN and the last 4 digits of your phone number to our security team immediately. This is URGENT. Orange Money Security",
+       fr:"Cher client, Nous avons detecte une activite inhabituelle sur votre compte Orange Money. Pour eviter la suspension, veuillez repondre avec votre PIN et les 4 derniers chiffres de votre numero. URGENT. Securite Orange Money",
+       pidgin:"Hello valued customer. We don detect unusual activity for your Orange Money account. To avoid suspension, please reply with your 5-digit PIN and last 4 digits of your phone number immediately. This na URGENT. Orange Money Security"},
+  flags:["unusual activity","suspension","reply with your PIN","5-digit PIN","last 4 digits","URGENT"],
+  q:{en:"This WhatsApp claims to be Orange Money security. What is it REALLY?",fr:"Ce WhatsApp pretend etre la securite Orange Money. Qu est-ce que c est VRAIMENT?",pidgin:"This WhatsApp claim say na Orange Money security. Wetin e REALLY be?"},
+  opts:{en:["A genuine security check from Orange Money","Spoofing - a fake message designed to steal your PIN"],fr:["Un veritable controle de securite","Usurpation - un faux message pour voler votre PIN"],pidgin:["Real security check from Orange Money","Spoofing - fake message wey want steal your PIN"]},cor:1,
+  exp:{en:"CORRECT! This is SPOOFING! No legitimate organisation will EVER ask for your PIN by WhatsApp. Orange Money will NEVER ask you to send your PIN in a message. Report immediately to CIRT at 8202.",
+       fr:"C est de l USURPATION! Aucune organisation legitime ne demandera jamais votre PIN par WhatsApp. Signalez au CIRT 8202.",
+       pidgin:"Na SPOOFING! No real organisation go ever ask your PIN for WhatsApp message. Report am to CIRT 8202 immediately."}},
+ quiz:[
+  {q:{en:"Orange Money Official on WhatsApp asks for your PIN. What do you do?",fr:"Orange Money Officiel sur WhatsApp demande votre PIN. Que faites-vous?",pidgin:"Orange Money Official WhatsApp ask for your PIN. Wetin you go do?"},
+   opts:{en:["Give your PIN, it looks official","Never share your PIN, report to CIRT 8202","Send just the first 2 digits","Block them after sending"],fr:["Donner votre PIN","Ne jamais partager, signaler au CIRT 8202","Envoyer les 2 premiers chiffres","Bloquer apres"],pidgin:["Give dem PIN, e look official","Never share PIN, call CIRT 8202","Send first 2 number only","Block dem after you send"]},cor:1,
+   exp:{en:"CORRECT! No real organisation will EVER ask for your PIN by message. Call 8202 to report.",fr:"Aucune organisation legitime ne demandera jamais votre PIN. Appelez le 8202.",pidgin:"No real organisation go ever ask your PIN. Call 8202 to report am."}},
+  {q:{en:"Caller ID shows ANTICAM-Official. They ask you to install software for security. This is:",fr:"Identifiant appelant ANTICAM-Officiel. On vous demande d installer un logiciel. C est:",pidgin:"Caller ID show ANTICAM-Official. Dem ask you install software. Wetin be dis?"},
+   opts:{en:["A legitimate security check","Caller ID spoofing, IDs can be faked","A routine software update","An ANTIC awareness campaign"],fr:["Un controle legitime","Usurpation, les IDs peuvent etre falsifies","Une mise a jour","Campagne de l ANTIC"],pidgin:["Real security check","Caller ID spoofing, dem fit fake caller ID","Normal software update","ANTIC awareness campaign"]},cor:1,
+   exp:{en:"CORRECT! Caller IDs can be easily faked. ANTIC will never call you to install software. Hang up and call CIRT at 8202.",fr:"Les IDs appelant peuvent etre falsifies. L ANTIC ne vous appellera jamais pour installer un logiciel.",pidgin:"Caller ID fit be fake. ANTIC no go call you to install software. Cut call and call 8202."}},
+  {q:{en:"An email from support@banque-secure-cm.net claims to be Afriland Bank. This email is:",fr:"Un email de support@banque-secure-cm.net pretend etre Afriland Bank. C est:",pidgin:"Email from support@banque-secure-cm.net claim say na Afriland Bank. This email na:"},
+   opts:{en:["Legitimate, it mentions your bank","Spoofing, that is not Afriland official domain","Spam but harmless","From a bank partner"],fr:["Legitime","Usurpation, ce n est pas le domaine officiel","Spam inoffensif","D un partenaire"],pidgin:["Real, e mention your bank","Spoofing, e no be Afriland real domain","Spam but no harm","From bank partner"]},cor:1,
+   exp:{en:"CORRECT! Afriland real email domain is not banque-secure-cm.net. Always check the EXACT domain before trusting any email.",fr:"Le vrai domaine d Afriland n est pas banque-secure-cm.net. Verifiez toujours le domaine EXACT.",pidgin:"Afriland real domain no be banque-secure-cm.net. Always check exact domain. If you no sure, call your bank."}},
+  {q:{en:"You receive an SMS appearing to come from 8202 (CIRT-Cameroun) asking for personal details. This is:",fr:"Vous recevez un SMS semblant provenir du 8202 (CIRT) demandant vos donnees. C est:",pidgin:"You receive SMS wey appear come from 8202 (CIRT) asking you send personal details. This na:"},
+   opts:{en:["A real message from CIRT-Cameroun","SMS spoofing, sender numbers can be faked","A routine security check","A verification you must comply with"],fr:["Un vrai message du CIRT","Usurpation SMS, le numero peut etre falsifie","Un controle de routine","Une verification a laquelle repondre"],pidgin:["Real message from CIRT","SMS spoofing, sender number fit be fake","Routine security check","Verification wey you must comply with"]},cor:1,
+   exp:{en:"CORRECT! SMS sender numbers can be spoofed. CIRT-Cameroun will NEVER ask for personal details by SMS. Always call 8202 directly to verify any communication claiming to be from CIRT.",fr:"Les numeros d expediteur SMS peuvent etre usurpes. Le CIRT ne demandera JAMAIS de donnees personnelles par SMS.",pidgin:"SMS sender number fit be faked. CIRT-Cameroun go NEVER ask for personal details by SMS. Always call 8202 direct to verify."}},
+  {q:{en:"The best way to verify if a call is really from your bank is:",fr:"La meilleure facon de verifier si un appel est vraiment de votre banque:",pidgin:"The best way to verify if call na really from your bank na:"},
+   opts:{en:["Trust the caller if they know your account name","Hang up and call your bank using the official number from their website or your card","Ask the caller to prove they are from the bank","Give only your account number to verify"],fr:["Faire confiance si ils connaissent votre nom","Raccrocher et rappeler votre banque sur le numero officiel","Demander au caller de prouver","Donner juste votre numero de compte"],pidgin:["Trust caller if dem know your account name","Hang up and call your bank using official number from their website or your card","Ask caller to prove dem be from the bank","Give dem just your account number to verify"]},cor:1,
+   exp:{en:"CORRECT! ALWAYS hang up and call the bank using the number on their official website or on the back of your bank card. Never use a number the caller gives you.",fr:"Raccrochez TOUJOURS et rappelez la banque sur le numero de son site officiel ou au dos de votre carte. N utilisez jamais un numero que l appelant vous donne.",pidgin:"ALWAYS hang up and call bank using number from official website or back of your bank card. Never use number wey the caller give you, e fit be fake."}}
+]},
+{id:3,free:false,icon:"📱",videoId:"",
+ name:{en:"Mobile Money Fraud",fr:"Fraude Mobile Money",pidgin:"Mobile Money Scam"},
+ sc:{type:"sms",sender:"+237 691 XX XX XX",
+  msg:{en:"Hello! I accidentally transferred 25,000 FCFA to your number by mistake. I am so sorry! Please can you send it back to me on 691XXXXXX? I really need it urgently for my child medicine. God bless you.",
+       fr:"Bonjour! J ai accidentellement transfere 25000 FCFA sur votre numero par erreur. Pouvez-vous me le renvoyer au 691XXXXXX? J en ai vraiment besoin pour les medicaments de mon enfant. Dieu vous benisse.",
+       pidgin:"Hello! I don mistakenly transfer 25000 FCFA go your number by mistake. I sorry too much! Please fit you send am back to me for 691XXXXXX? I really need am urgently for my pikin medicine. God bless you."},
+  flags:["accidentally","by mistake","urgently","child medicine","God bless"],
+  q:{en:"Someone claims they sent you 25,000 FCFA by mistake and begs you to refund. What do you do?",fr:"Quelqu un pretend avoir envoye 25000 FCFA par erreur et vous supplie de rembourser. Que faites-vous?",pidgin:"Person claim say dem send you 25000 FCFA by mistake and dey beg you to refund. Wetin you go do?"},
+  opts:{en:["Refund immediately, they seem desperate","Call your mobile operator first to verify if you actually received any transfer","Send half now and half after confirmation","Ignore the message completely"],fr:["Rembourser immediatement","Appeler votre operateur pour verifier si vous avez recu un transfert","Envoyer la moitie","Ignorer"],pidgin:["Refund immediately, dem seem desperate","Call your mobile operator first to verify if you really receive any transfer","Send half now and half after","Ignore the message completely"]},cor:1,
+  exp:{en:"CORRECT! This is the MISTAKEN TRANSFER SCAM. What happens: 1) Scammer sends you money 2) You refund it 3) Scammer reverses original transfer 4) You lose YOUR money. ALWAYS call MTN 1200 or Orange 100 first to verify before refunding anything.",
+       fr:"C est l ARNAQUE DU TRANSFERT ERRONE. Ce qui se passe: 1) L arnaqueur vous envoie de l argent 2) Vous remboursez 3) Il annule le transfert original 4) Vous perdez votre propre argent. Appelez TOUJOURS le 1200 ou 100 d abord.",
+       pidgin:"Na MISTAKEN TRANSFER SCAM dis one. Wetin dey happen: 1) Scammer send you money 2) You refund am 3) Scammer reverse original transfer 4) You lose YOUR money. ALWAYS call MTN 1200 or Orange 100 first to verify before you refund anything."}},
+ quiz:[
+  {q:{en:"Someone sends 5000 FCFA by mistake and asks you to refund immediately. What do you do?",fr:"Quelqu un envoie 5000 FCFA par erreur et demande un remboursement immediat. Que faites-vous?",pidgin:"Person send you 5000 FCFA by mistake and immediately ask you to refund. Wetin you go do?"},
+   opts:{en:["Refund immediately, it was a mistake","Contact your operator first to verify before refunding","Keep the money","Refund half now half later"],fr:["Rembourser immediatement","Contacter votre operateur pour verifier","Garder l argent","Rembourser la moitie"],pidgin:["Refund quick e be mistake","Contact your operator first to verify","Keep the money","Refund half now half later"]},cor:1,
+   exp:{en:"CORRECT! This is the classic Mistaken Transfer Scam. The original transaction is reversed later. ALWAYS verify with your operator first.",fr:"C est l arnaque du transfert errone. La transaction est annulee. Verifiez TOUJOURS avec votre operateur.",pidgin:"Na Wrong Transfer Scam dis one. Dem go reverse the original transfer. ALWAYS verify with your operator first."}},
+  {q:{en:"An MTN agent calls and asks you to dial a USSD code to secure your account. This is:",fr:"Un agent MTN vous demande de composer un code USSD pour securiser votre compte. C est:",pidgin:"MTN agent call you ask you dial USSD code to secure your account. Na wetin be dis?"},
+   opts:{en:["A legitimate security update from MTN","USSD fraud, they are stealing your account access","A routine account upgrade","A free security service from MTN"],fr:["Une mise a jour legitime","Fraude USSD, ils volent votre acces","Une mise a niveau","Service gratuit MTN"],pidgin:["Real security update from MTN","USSD fraud dem wan steal your access","Normal account upgrade","Free MTN security service"]},cor:1,
+   exp:{en:"CORRECT! Real MTN and Orange agents NEVER ask you to dial codes over the phone. Hang up and call MTN 1200 or Orange 100.",fr:"Les vrais agents ne vous demandent JAMAIS de composer des codes. Raccrochez et appelez le 1200 ou 100.",pidgin:"Real agent no go ever ask you dial code for phone. Cut call and call MTN 1200 or Orange 100."}},
+  {q:{en:"What is the SAFEST habit for your Mobile Money PIN?",fr:"Quelle est l habitude la plus sure pour votre PIN Mobile Money?",pidgin:"Wetin be the SAFEST habit for your Mobile Money PIN?"},
+   opts:{en:["Use your birth year as PIN","Share your PIN with your spouse for emergencies","NEVER share your PIN with ANYONE, change it regularly","Write your PIN somewhere safe at home"],fr:["Utiliser votre annee de naissance","Partager avec votre conjoint","Ne JAMAIS partager votre PIN","L ecrire quelque part"],pidgin:["Use your birth year","Share with your partner for emergency","NEVER share PIN with ANYBODY","Write am somewhere safe"]},cor:2,
+   exp:{en:"CORRECT! NEVER share your Mobile Money PIN with anyone including family or agents. Change it regularly and immediately if compromised.",fr:"Ne JAMAIS partager votre PIN avec personne. Changez-le regulierement.",pidgin:"NEVER share your PIN with anybody even family. Change am regular. If dem get am change am fast fast."}},
+  {q:{en:"You receive an SMS saying you won 500,000 FCFA from MTN and must pay 5,000 FCFA to claim it. This is:",fr:"Vous recevez un SMS disant que vous avez gagne 500000 FCFA de MTN et devez payer 5000 FCFA de frais. C est:",pidgin:"You receive SMS say you win 500000 FCFA from MTN and you must pay 5000 FCFA processing fee. This na:"},
+   opts:{en:["A real MTN prize you should claim","A classic advance fee scam, MTN never requests fees to release prizes","A promotion you won by chance","A message you should forward to claim the prize"],fr:["Un vrai prix MTN","Une arnaque classique, MTN ne demande jamais de frais","Une promotion gagnee","Un message a transferer"],pidgin:["Real MTN prize wey you suppose claim","Classic advance fee scam MTN no dey request fee to release prize","Promotion wey you win by chance","Message wey you suppose forward to claim prize"]},cor:1,
+   exp:{en:"CORRECT! This is an ADVANCE FEE SCAM. You pay the fee and never receive the prize. MTN and Orange never require fees to receive prizes.",fr:"C est une ARNAQUE A L AVANCE. Vous payez les frais et ne recevez jamais le prix. MTN et Orange ne demandent jamais de frais.",pidgin:"Na ADVANCE FEE SCAM dis one. You go pay the fee and never receive the prize. MTN na Orange no dey ever request fee to receive prize."}},
+  {q:{en:"The correct way to report Mobile Money fraud in Cameroon is:",fr:"La bonne facon de signaler une fraude Mobile Money au Cameroun:",pidgin:"The correct way to report Mobile Money fraud for Cameroon na:"},
+   opts:{en:["Post about it on Facebook only","Call CIRT-Cameroun at 8202 (free 24/7) and/or email alerts@cirt.antic.cm and preserve all evidence","Call MTN customer service only","Wait to see if the money comes back on its own"],fr:["Publier sur Facebook","Appeler le CIRT au 8202 et/ou envoyer un email a alerts@cirt.antic.cm","Appeler uniquement le service client MTN","Attendre"],pidgin:["Post am for Facebook only","Call CIRT-Cameroun for 8202 (free 24/7) and/or email alerts@cirt.antic.cm and keep all evidence","Call MTN customer service only","Wait see if money go come back by itself"]},cor:1,
+   exp:{en:"CORRECT! Report to CIRT-Cameroun immediately at 8202 (free 24/7) or alerts@cirt.antic.cm. Preserve all screenshots, messages, and transaction records as evidence.",fr:"Signalez au CIRT-Cameroun immediatement au 8202 ou alerts@cirt.antic.cm. Conservez toutes les captures d ecran comme preuves.",pidgin:"Report to CIRT-Cameroun immediately for 8202 (free 24/7) or alerts@cirt.antic.cm. Keep all screenshots messages and transaction record as evidence."}}
+]},
+{id:4,free:false,icon:"💀",videoId:"",
+ name:{en:"Ransomware",fr:"Rancongiciel",pidgin:"Data Hostage"},
+ sc:{type:"ransom",sender:"",
+  msg:{en:"YOUR FILES HAVE BEEN ENCRYPTED\n\nAll your documents, photos, videos and databases have been encrypted using AES-256 military-grade encryption.\n\nYou have 72 HOURS to pay 500,000 FCFA in Bitcoin to:\nBTC: 1A2b3C4d5E6f7G8h9I0j\n\nAfter 72 hours the price DOUBLES.\nAfter 7 days your files are DELETED PERMANENTLY.\n\nTimer: 71:43:22",
+       fr:"VOS FICHIERS ONT ETE CHIFFRES\n\nTous vos fichiers ont ete chiffres avec AES-256.\n\nVous avez 72 HEURES pour payer 500000 FCFA en Bitcoin:\nBTC: 1A2b3C4d5E6f7G8h9I0j\n\nApres 72 heures le prix DOUBLE.\nApres 7 jours vos fichiers sont SUPPRIMES DEFINITIVEMENT.\n\nMinuterie: 71:43:22",
+       pidgin:"YOUR FILES DON GET ENCRYPTED\n\nAll your document photo video na database don get encrypted with AES-256.\n\nYou get 72 HOURS to pay 500000 FCFA Bitcoin:\nBTC: 1A2b3C4d5E6f7G8h9I0j\n\nAfter 72 hours price go DOUBLE.\nAfter 7 days your files go DELETE PERMANENTLY.\n\nTimer: 71:43:22"},
+  flags:["72 HOURS","500,000 FCFA","Bitcoin","DOUBLES","DELETED PERMANENTLY","71:43:22"],
+  q:{en:"This ransomware screen just appeared on your computer. What should you do?",fr:"Cet ecran de rancongiciel vient d apparaitre. Que devez-vous faire?",pidgin:"This ransomware screen just appear for your computer. Wetin you go do?"},
+  opts:{en:["Pay the ransom immediately to get your files back","Do NOT pay. Disconnect internet, report to CIRT 8202, restore files from your backup","Pay half the ransom to negotiate","Wait to see if the timer runs out"],fr:["Payer la rancon immediatement","NE PAS payer. Deconnecter internet signaler au CIRT 8202 restaurer depuis la sauvegarde","Payer la moitie","Attendre"],pidgin:["Pay the ransom immediately","NO PAY. Disconnect internet report to CIRT 8202 restore files from your backup","Pay half to negotiate","Wait see if the timer run out"]},cor:1,
+  exp:{en:"CORRECT! DO NOT PAY! Payment funds criminals, does NOT guarantee recovery, and marks you as willing to pay again. The ONLY solution is: 1) Disconnect internet 2) Report to CIRT 8202 3) Restore from your offline backup. This is why the 3-2-1 backup rule is critical.",
+       fr:"NE PAYEZ PAS! Le paiement finance les criminels, NE garantit PAS la recuperation. La SEULE solution: 1) Deconnecter internet 2) Signaler au CIRT 8202 3) Restaurer depuis votre sauvegarde hors ligne.",
+       pidgin:"NO PAY! Payment dey fund criminals and NO guarantee you go recover files. The ONLY solution na: 1) Disconnect internet 2) Report to CIRT 8202 3) Restore from your offline backup."}},
+ quiz:[
+  {q:{en:"Your computer shows: All files encrypted. Pay 500000 FCFA Bitcoin. Best prior protection was:",fr:"Vos fichiers sont chiffres. Payez 500000 FCFA Bitcoin. La meilleure protection prealable etait:",pidgin:"Your computer show files encrypted. Pay 500000 FCFA Bitcoin. Wetin be the BEST protection before?"},
+   opts:{en:["Having a strong password","Regular offline backups following the 3-2-1 rule","Using incognito mode","Installing any free antivirus"],fr:["Un mot de passe fort","Sauvegardes hors ligne selon la regle 3-2-1","Navigation privee","Installer un antivirus gratuit"],pidgin:["Get strong password","Regular offline backup using 3-2-1 rule","Use incognito mode","Install any free antivirus"]},cor:1,
+   exp:{en:"CORRECT! The 3-2-1 rule: 3 copies on 2 different media with 1 stored OFFLINE. This makes ransomware powerless. Just restore from backup.",fr:"Regle 3-2-1: 3 copies 2 supports differents 1 copie HORS LIGNE. Cela rend le rancongiciel inefficace.",pidgin:"3-2-1 rule: 3 copy 2 different place 1 copy OFFLINE. If ransomware hit you just restore from backup."}},
+  {q:{en:"Should you PAY the ransom if your files are encrypted?",fr:"Devriez-vous PAYER la rancon?",pidgin:"You go PAY the ransom if dem encrypt your files?"},
+   opts:{en:["Yes, you will get your files back","NO. It funds criminals, no recovery guarantee, and marks you as a target again","Pay only half to negotiate","Yes but via Mobile Money only"],fr:["Oui vous recupererez vos fichiers","NON. Cela finance les criminels et ne garantit pas la recuperation","Payer la moitie","Oui via Mobile Money"],pidgin:["Yes dem go give you back your files","NO. Payment dey fund criminals and no guarantee you go recover","Pay half only","Yes use Mobile Money"]},cor:1,
+   exp:{en:"CORRECT! DO NOT PAY. Payment funds criminals, does not guarantee recovery, and signals you will pay again. Report to CIRT 8202.",fr:"NE PAYEZ PAS. Cela finance les criminels et ne garantit pas la recuperation. Signalez au CIRT 8202.",pidgin:"NO PAY! Payment dey fund criminals and dem go target you again. Call CIRT 8202 to report."}},
+  {q:{en:"Which action PREVENTS ransomware infection?",fr:"Quelle action PREVIENT une infection?",pidgin:"Wetin fit PREVENT ransomware infection?"},
+   opts:{en:["Opening all email attachments to check them","Never clicking suspicious links or opening unexpected attachments","Sharing your computer password","Using free WiFi to download faster"],fr:["Ouvrir toutes les pieces jointes","Ne jamais cliquer sur des liens suspects","Partager votre mot de passe","Utiliser le WiFi gratuit"],pidgin:["Open all email attachment to check dem","Never click suspicious link or open unexpected attachment","Share your computer password","Use free WiFi to download fast"]},cor:1,
+   exp:{en:"CORRECT! Ransomware spreads through malicious email attachments. Never open unexpected attachments. Scan USB drives before use.",fr:"Les rancongiciels se propagent par les pieces jointes. Ne jamais ouvrir les pieces jointes inattendues.",pidgin:"Ransomware dey spread through bad attachment. No open unexpected attachment. Scan USB before use."}},
+  {q:{en:"What does the 3-2-1 backup rule mean?",fr:"Que signifie la regle de sauvegarde 3-2-1?",pidgin:"Wetin the 3-2-1 backup rule mean?"},
+   opts:{en:["Back up 3 files 2 times a week","3 copies of your data on 2 different types of media with 1 copy stored offline","3 passwords 2 email accounts 1 phone number","3 antivirus programs 2 firewalls 1 VPN"],fr:["Sauvegarder 3 fichiers 2 fois par semaine","3 copies sur 2 types de supports differents avec 1 copie hors ligne","3 mots de passe 2 comptes email 1 telephone","3 antivirus 2 pare-feux 1 VPN"],pidgin:["Backup 3 files 2 times per week","3 copy of your data for 2 different types of media with 1 copy offline","3 password 2 email account 1 phone number","3 antivirus 2 firewall 1 VPN"]},cor:1,
+   exp:{en:"CORRECT! 3-2-1 means: 3 copies of your data, stored on 2 different types of media, with 1 copy completely OFFLINE. This ensures ransomware cannot reach all your copies.",fr:"3-2-1 signifie: 3 copies sur 2 types de supports differents avec 1 copie HORS LIGNE. Cela garantit que le rancongiciel ne peut pas atteindre toutes vos copies.",pidgin:"3-2-1 mean: 3 copy of your data for 2 different types of media with 1 copy completely OFFLINE. This ensure ransomware no fit reach all your copies."}},
+  {q:{en:"Free backup services accessible in Cameroon include:",fr:"Les services de sauvegarde gratuits accessibles au Cameroun comprennent:",pidgin:"Free backup services accessible for Cameroon include:"},
+   opts:{en:["Only paid services work for backups","Google Drive (15GB free) OneDrive (5GB free) and MEGA (20GB free)","You must buy a special backup device from a cybersecurity company","Backing up is only for big companies"],fr:["Seuls les services payants fonctionnent","Google Drive (15 Go gratuit) OneDrive (5 Go gratuit) et MEGA (20 Go gratuit)","Vous devez acheter un appareil special","La sauvegarde est uniquement pour les grandes entreprises"],pidgin:["Only paid services work for backup","Google Drive (15GB free) OneDrive (5GB free) and MEGA (20GB free)","You must buy special backup device","Backup na only for big companies"]},cor:1,
+   exp:{en:"CORRECT! Google Drive (15GB), OneDrive (5GB), and MEGA (20GB) are all free and accessible in Cameroon. Use them alongside an external hard drive stored offline for maximum protection.",fr:"Google Drive (15 Go) OneDrive (5 Go) et MEGA (20 Go) sont tous gratuits et accessibles au Cameroun. Utilisez-les avec un disque dur externe hors ligne.",pidgin:"Google Drive (15GB) OneDrive (5GB) and MEGA (20GB) all na free and accessible for Cameroon. Use dem alongside external hard drive stored offline for maximum protection."}}
+]},
+{id:5,free:false,icon:"💉",videoId:"",
+ name:{en:"SQL Injection",fr:"Injection SQL",pidgin:"Database Attack"},
+ sc:{type:"form",sender:"",
+  msg:{en:"A website login form has a Username field.\n\nA hacker types this into the Username field:\nadmin--\n\nThe database query becomes:\nSELECT * FROM users WHERE username=admin-- AND password=anything\n\nThe -- comments out the password check entirely.\nResult: The hacker logs in as ADMIN with NO password.",
+       fr:"Un formulaire de connexion a un champ Nom d utilisateur.\n\nUn hacker tape:\nadmin--\n\nLa requete devient:\nSELECT * FROM users WHERE username=admin-- AND password=anything\n\nLe -- commente la verification du mot de passe.\nResultat: Le hacker se connecte en tant qu ADMIN sans mot de passe.",
+       pidgin:"Website login form get Username field.\n\nHacker type this inside Username field:\nadmin--\n\nThe database query become:\nSELECT * FROM users WHERE username=admin-- AND password=anything\n\nThe -- dey comment out the password check.\nResult: The hacker login as ADMIN with NO password."},
+  flags:["admin--","--","comments out","NO password"],
+  q:{en:"This attack allows login WITHOUT any password. What type of attack is this?",fr:"Cette attaque permet de se connecter SANS mot de passe. Quel type d attaque est-ce?",pidgin:"This attack allow login WITHOUT any password. Wetin type of attack be dis?"},
+  opts:{en:["Phishing","SQL Injection","Ransomware","Spoofing"],fr:["Hameconnage","Injection SQL","Rancongiciel","Usurpation"],pidgin:["Phishing","SQL Injection","Ransomware","Spoofing"]},cor:1,
+  exp:{en:"CORRECT! This is SQL INJECTION. By inserting special characters the attacker breaks the SQL query structure and bypasses authentication entirely. Websites must use PARAMETERIZED QUERIES which treat user input as data, never as code.",
+       fr:"C est de l INJECTION SQL. En inserant des caracteres speciaux l attaquant contourne l authentification. Les sites doivent utiliser des REQUETES PARAMETREES.",
+       pidgin:"Na SQL INJECTION dis one. By inserting special characters the attacker dey break SQL query structure and bypass authentication entirely. Websites must use PARAMETERIZED QUERIES wey treat user input as data never as code."}},
+ quiz:[
+  {q:{en:"An attacker types special code into a login form to bypass the password check. This is called:",fr:"Un attaquant tape du code special pour contourner le mot de passe. Cette attaque s appelle:",pidgin:"Attacker type special code inside login form to bypass password check. Dis attack na:"},
+   opts:{en:["Phishing","SQL Injection","Ransomware","Spoofing"],fr:["Hameconnage","Injection SQL","Rancongiciel","Usurpation"],pidgin:["Phishing","SQL Injection","Ransomware","Spoofing"]},cor:1,
+   exp:{en:"CORRECT! SQL Injection inserts malicious code into database queries to bypass login or steal data. Websites must use parameterized queries to prevent this.",fr:"L injection SQL insere du code malveillant dans les requetes. Les sites doivent utiliser des requetes parametrees.",pidgin:"SQL Injection dey insert bad code inside database query. This fit bypass login without password."}},
+  {q:{en:"A website suddenly shows all users personal data to everyone. This could be caused by:",fr:"Un site web affiche soudainement les donnees personnelles de tous. Cela pourrait etre cause par:",pidgin:"Website suddenly show everybody personal data. Wetin fit cause dis?"},
+   opts:{en:["The website being very popular","A successful SQL injection that exposed the database","A website update glitch","Slow internet connection"],fr:["Le site est tres populaire","Une injection SQL reussie qui a expose la base de donnees","Un bug de mise a jour","Connexion lente"],pidgin:["Website too popular","SQL injection wey expose the database","Website update glitch","Slow internet connection"]},cor:1,
+   exp:{en:"CORRECT! Mass data exposure is often caused by SQL injection. Report to CIRT-Cameroun at 8202.",fr:"L exposition massive de donnees est souvent causee par une injection SQL. Signalez au CIRT 8202.",pidgin:"Mass data exposure na usually SQL injection result. Report to CIRT-Cameroun 8202."}},
+  {q:{en:"As a website user, what protects you MOST from SQL injection?",fr:"En tant qu utilisateur qu est-ce qui vous protege le PLUS?",pidgin:"As website user wetin protect you MOST from SQL injection?"},
+   opts:{en:["Using a strong personal password","Using reputable regularly updated websites and reporting suspicious behavior","Using incognito mode","Never typing your name in forms"],fr:["Un mot de passe fort","Utiliser des sites reputes et regulierement mis a jour","Navigation privee","Ne jamais taper votre nom"],pidgin:["Use strong password","Use reputable websites wey dem update am regular","Use incognito mode","Never type your name for form"]},cor:1,
+   exp:{en:"CORRECT! As a user you cannot control the site code. Use reputable updated websites and report anything suspicious to CIRT-Cameroun at 8202.",fr:"En tant qu utilisateur vous ne controlez pas le code du site. Utilisez des sites reputes et signalez au CIRT 8202.",pidgin:"As user you no fit control website code. Use reputable websites and report suspicious thing to CIRT 8202."}},
+  {q:{en:"The best protection for website developers against SQL injection is:",fr:"La meilleure protection pour les developpeurs contre les injections SQL:",pidgin:"The best protection for website developers against SQL injection na:"},
+   opts:{en:["Using a strong admin password","Using parameterized queries that treat all user input as data not code","Making the website private","Adding a CAPTCHA to the login form"],fr:["Un mot de passe admin fort","Utiliser des requetes parametrees qui traitent les entrees comme des donnees","Rendre le site prive","Ajouter un CAPTCHA"],pidgin:["Use strong admin password","Use parameterized queries wey treat all user input as data not code","Make the website private","Add CAPTCHA to login form"]},cor:1,
+   exp:{en:"CORRECT! Parameterized queries treat all user input as pure data, never as executable code. This prevents SQL injection completely. Every developer must implement this.",fr:"Les requetes parametrees traitent toutes les entrees utilisateur comme des donnees pures. Cela previent completement les injections SQL.",pidgin:"Parameterized queries dey treat all user input as pure data never as executable code. This dey prevent SQL injection completely. Every developer must implement this."}},
+  {q:{en:"After logging into a website, a user can see other users private messages. This most likely indicates:",fr:"Apres la connexion un utilisateur peut voir les messages prives des autres. Cela indique probablement:",pidgin:"After user login for website dem fit see other users private messages. This most likely indicate:"},
+   opts:{en:["The website is working correctly","A SQL injection or authorization vulnerability exposing other users data","A browser display glitch","The user has special administrator access"],fr:["Le site fonctionne correctement","Une vulnerabilite SQL exposant les donnees d autres utilisateurs","Un bug d affichage","L utilisateur a un acces admin"],pidgin:["The website dey work correctly","SQL injection or authorization vulnerability wey expose other users data","Browser display glitch","The user get special admin access"]},cor:1,
+   exp:{en:"CORRECT! If users can access other users data this is a serious SQL injection or authorization vulnerability. Report immediately to your developer and to CIRT-Cameroun at 8202.",fr:"Si des utilisateurs peuvent acceder aux donnees d autres utilisateurs c est une grave vulnerabilite SQL. Signalez immediatement a votre developpeur et au CIRT 8202.",pidgin:"If users fit access other users data this na serious SQL injection vulnerability. Report immediately to your developer and to CIRT-Cameroun at 8202."}}
+]},
+{id:6,free:false,icon:"🕸️",videoId:"",
+ name:{en:"XSS Cross-Site Scripting",fr:"Script Inter-Sites XSS",pidgin:"Website Injection"},
+ sc:{type:"popup",sender:"",
+  msg:{en:"You are logged into your bank website at afriland.cm\nThe URL bar shows: https://afriland.cm/dashboard\n\nSuddenly a popup box appears:\n\n+----------------------------------+\n| Session Security Alert           |\n| Your session has expired.        |\n| Please re-enter your password    |\n| to continue your banking session.|\n|                                  |\n| Password: [_________________]    |\n| [Confirm]  [Cancel]              |\n+----------------------------------+",
+       fr:"Vous etes connecte a votre banque sur afriland.cm\nL URL montre: https://afriland.cm/dashboard\n\nSoudain un popup apparait:\n\n+----------------------------------+\n| Alerte de Securite Session       |\n| Votre session a expire.          |\n| Veuillez ressaisir votre         |\n| mot de passe pour continuer.     |\n|                                  |\n| Mot de passe: [______________]   |\n| [Confirmer] [Annuler]            |\n+----------------------------------+",
+       pidgin:"You don login for your bank website for afriland.cm\nURL bar show: https://afriland.cm/dashboard\n\nSuddenly popup box appear:\n\n+----------------------------------+\n| Session Security Alert           |\n| Your session don expire.         |\n| Please enter your password again |\n| to continue your banking.        |\n|                                  |\n| Password: [_________________]    |\n| [Confirm]  [Cancel]              |\n+----------------------------------+"},
+  flags:["popup appeared","session has expired","re-enter your password","while URL looks correct"],
+  q:{en:"The URL looks correct but a popup asks for your password mid-session. What should you do?",fr:"L URL semble correcte mais un popup demande votre mot de passe. Que devez-vous faire?",pidgin:"The URL look correct but popup dey ask for your password in the middle of session. Wetin you go do?"},
+  opts:{en:["Enter your password, the URL looks genuine","Close the popup immediately, log out, and call your bank to report","Enter your password then change it immediately after","Refresh the page and try again"],fr:["Entrer votre mot de passe l URL semble genuine","Fermer le popup immediatement se deconnecter et appeler votre banque","Entrer le mot de passe puis le changer immediatement","Rafraichir la page"],pidgin:["Enter your password the URL look genuine","Close the popup immediately logout and call your bank to report","Enter your password then change am immediately after","Refresh the page and try again"]},cor:1,
+  exp:{en:"CORRECT! This is a CROSS-SITE SCRIPTING (XSS) attack. A malicious script was injected INTO the legitimate bank website and created a fake popup. The URL still looks correct because you ARE on the real website but malicious code was injected into it. Legitimate websites NEVER ask for your password through mid-session popups.",
+       fr:"C est une attaque XSS. Un script malveillant a ete injecte dans le site bancaire legitime pour creer un faux popup. L URL semble correcte parce que vous ETES sur le vrai site mais du code malveillant y a ete injecte.",
+       pidgin:"Na CROSS-SITE SCRIPTING (XSS) attack dis one. Malicious script don inject inside the legitimate bank website and create fake popup. The URL still look correct because you dey on the real website but bad code don inject inside am."}},
+ quiz:[
+  {q:{en:"You visit your bank website and a popup suddenly asks for your password. This is likely:",fr:"Vous visitez votre banque et un popup demande votre mot de passe. C est:",pidgin:"You visit your bank website and popup suddenly ask for your password. Na wetin be dis?"},
+   opts:{en:["A normal security session renewal","A Cross-Site Scripting attack injecting fake content","A browser update notification","A routine account check by your bank"],fr:["Un renouvellement de session normal","Une attaque XSS injectant du faux contenu","Une notification de mise a jour","Un controle de compte"],pidgin:["Normal session renewal","XSS attack wey inject fake content","Browser update notification","Routine account check from bank"]},cor:1,
+   exp:{en:"CORRECT! Legitimate websites NEVER ask for your password through mid-session popups. This is XSS. Close it and call your bank immediately.",fr:"Les sites legitimes ne demandent JAMAIS le mot de passe via des popups. C est du XSS. Fermez et appelez votre banque.",pidgin:"Real websites no go ever ask your password through popup. Na XSS attack. Close the popup and call your bank."}},
+  {q:{en:"Which browser habit best reduces XSS risk?",fr:"Quelle habitude reduit le mieux le risque XSS?",pidgin:"Which browser habit dey reduce XSS risk best?"},
+   opts:{en:["Using the same tab for everything","Keeping your browser updated and never ignoring security warnings","Using only public WiFi","Disabling your browser security warnings"],fr:["Utiliser le meme onglet","Maintenir votre navigateur a jour et ne jamais ignorer les avertissements","WiFi public uniquement","Desactiver les avertissements"],pidgin:["Use same tab for everything","Keep browser updated and never ignore security warning","Use public WiFi only","Disable browser security warning"]},cor:1,
+   exp:{en:"CORRECT! Updated browsers block known XSS patterns. NEVER ignore browser security warnings. They exist to protect you.",fr:"Les navigateurs mis a jour bloquent les patterns XSS connus. Ne jamais ignorer les avertissements.",pidgin:"Updated browser dey block XSS patterns. NEVER ignore browser security warning. E dey protect you."}},
+  {q:{en:"FREE DATA! Click here appears in a social media comment. Clicking it could:",fr:"DATA GRATUIT! Cliquez ici apparait dans un commentaire. Cliquer pourrait:",pidgin:"FREE DATA! Click here appear for social media comment. If you click am:"},
+   opts:{en:["Get you free data from your operator","Trigger malicious code or redirect to a phishing site","Take you to a legitimate promotions page","Download a useful app for free"],fr:["Vous donner du data gratuit","Declencher du code malveillant ou du phishing","Une page promotionnelle","Telecharger une application"],pidgin:["Give you free data","Trigger bad code or send you to phishing site","Take you to real promo page","Download useful app free"]},cor:1,
+   exp:{en:"CORRECT! Shortened URLs and free data offers in comments are classic vectors for malicious scripts and phishing. Never click unsolicited links on social media.",fr:"Les URL raccourcies et offres de data gratuit sont des vecteurs classiques. Ne cliquez jamais.",pidgin:"Free data offer for comment na classic phishing vector. No click unsolicited link for social media."}},
+  {q:{en:"How can website developers protect against XSS attacks?",fr:"Comment les developpeurs peuvent-ils se proteger contre les attaques XSS?",pidgin:"How website developers fit protect against XSS attacks?"},
+   opts:{en:["By using a very strong admin password","By sanitizing and escaping all user input before displaying it on the page","By making the website load faster","By adding more images to the website"],fr:["Un mot de passe admin fort","En assainissant et echappant toutes les entrees utilisateur avant de les afficher","En rendant le site plus rapide","En ajoutant plus d images"],pidgin:["By using very strong admin password","By sanitizing and escaping all user input before displaying am for the page","By making website load faster","By adding more images to website"]},cor:1,
+   exp:{en:"CORRECT! Developers must sanitize and escape all user input before displaying it on the page. This prevents injected scripts from executing.",fr:"Les developpeurs doivent assainir et echapper toutes les entrees utilisateur. Cela empeche l execution des scripts injectes.",pidgin:"Developers must sanitize and escape all user input before displaying am for the page. This prevent injected scripts from executing."}},
+  {q:{en:"What does a red padlock or NOT SECURE in the browser address bar mean?",fr:"Que signifie un cadenas rouge ou NOT SECURE dans la barre d adresse?",pidgin:"Wetin e mean when your browser show red padlock or say NOT SECURE for address bar?"},
+   opts:{en:["The website is simply not popular enough","The connection is not encrypted meaning data can be intercepted and you should not enter personal information","The website is under maintenance","Your internet connection is slow"],fr:["Le site n est pas assez populaire","La connexion n est pas chiffree vos donnees peuvent etre interceptees ne saisissez pas d informations personnelles","Le site est en maintenance","Votre connexion est lente"],pidgin:["The website no popular enough","The connection no get encryption meaning data fit be intercepted and you no suppose enter personal information","The website dey under maintenance","Your internet connection slow"]},cor:1,
+   exp:{en:"CORRECT! A red padlock or NOT SECURE means the site uses HTTP not HTTPS. Your data travels unencrypted and can be intercepted. Never enter passwords PINs or personal information on HTTP sites.",fr:"Un cadenas rouge signifie que le site utilise HTTP pas HTTPS. Vos donnees voyagent non chiffrees. Ne jamais entrer des informations personnelles sur des sites HTTP.",pidgin:"Red padlock or NOT SECURE mean the site use HTTP not HTTPS. Your data dey travel unencrypted and fit be intercepted. Never enter password PIN or personal information for HTTP sites."}}
+]},
+{id:7,free:false,icon:"🔓",videoId:"",
+ name:{en:"Account Hacking",fr:"Piratage de Compte",pidgin:"Account Hack"},
+ sc:{type:"whatsapp",sender:"MTN CM (SMS)",
+  msg:{en:"[SMS received at 11:47 PM]\nFrom: MTN CM\n247897 is your WhatsApp code. Do not share this code.\n\n[5 minutes later - WhatsApp message from Friend]\nFriend: Hi! I accidentally sent you a code to your number by mistake. Can you please forward it to me? I need it urgently to log in to my account. Just the 6 digits!",
+       fr:"[SMS recu a 23h47]\nDe: MTN CM\n247897 est votre code WhatsApp. Ne partagez pas ce code.\n\n[5 minutes plus tard - WhatsApp d un Ami]\nAmi: Bonjour! Je t ai envoye un code par erreur. Peux-tu me le transmettre? J en ai besoin d urgence pour me connecter. Juste les 6 chiffres!",
+       pidgin:"[SMS receive for 11:47 PM]\nFrom: MTN CM\n247897 na your WhatsApp code. No share this code.\n\n[5 minutes later - WhatsApp from Friend]\nFriend: Hi! I don send you code by mistake to your number. Please fit you forward am give me? I need am urgently to login my account. Just the 6 digits!"},
+  flags:["WhatsApp code","Do not share this code","forward it to me","urgently","just the 6 digits"],
+  q:{en:"You received a WhatsApp code by SMS and your friend asks you to forward it. What is REALLY happening?",fr:"Vous avez recu un code WhatsApp par SMS et votre ami vous demande de le transmettre. Que se passe-t-il VRAIMENT?",pidgin:"You receive WhatsApp code for SMS and your friend dey ask you to forward am. Wetin REALLY dey happen?"},
+  opts:{en:["Your friend genuinely needs the code and you should help them","This is an OTP Forwarding Attack. The hacker controls your friend account and is trying to take over YOUR WhatsApp too","You should forward just the first 3 digits to test","Your friend is locked out of their account and needs help"],fr:["Votre ami a vraiment besoin du code","C est une attaque de transfert OTP. Le hacker controle le compte de votre ami et essaie de prendre le votre","Transmettre juste les 3 premiers chiffres pour tester","Votre ami est bloque hors de son compte"],pidgin:["Your friend genuinely need the code you suppose help dem","Na OTP Forwarding Attack. The hacker don control your friend account and dey try take over YOUR WhatsApp too","You suppose forward just first 3 digits to test","Your friend lock out of their account and need help"]},cor:1,
+  exp:{en:"CORRECT! This is the WhatsApp OTP FORWARDING ATTACK. The hacker already controls your friend account. The code YOU received is YOUR OWN WhatsApp verification code. Forwarding it gives the hacker full control of YOUR WhatsApp. NEVER forward a WhatsApp code to ANYONE.",
+       fr:"C est l ATTAQUE DE TRANSFERT OTP WhatsApp. Le hacker controle deja le compte de votre ami. Le code que VOUS avez recu est VOTRE propre code de verification WhatsApp. Le transmettre donne au hacker le controle de VOTRE WhatsApp. Ne transferez JAMAIS un code WhatsApp a qui que ce soit.",
+       pidgin:"Na WhatsApp OTP FORWARDING ATTACK dis one. The hacker don already control your friend account. The code wey YOU receive na YOUR OWN WhatsApp verification code. If you forward am the hacker go get full control of YOUR WhatsApp. NEVER forward WhatsApp code to ANYBODY."}},
+ quiz:[
+  {q:{en:"Your friend Facebook sends: I am stuck in Douala please send 10000 FCFA via Orange Money urgently! You:",fr:"Le Facebook de votre ami envoie: Je suis bloque a Douala envoyez 10000 FCFA! Vous:",pidgin:"Your friend Facebook message you: I don stuck for Douala send 10000 FCFA Orange Money quick! You:"},
+   opts:{en:["Send money immediately your friend is in trouble","Call your friend directly on their phone BEFORE sending anything","Send 5000 to be partially helpful","Ask their Facebook for more details"],fr:["Envoyer de l argent immediatement","Appeler votre ami directement AVANT d envoyer quoi que ce soit","Envoyer 5000 pour aider","Demander plus de details"],pidgin:["Send money quick friend dey trouble","Call your friend phone BEFORE you send anything","Send 5000 to help small","Ask their Facebook for more detail"]},cor:1,
+   exp:{en:"CORRECT! The account is HACKED. Hackers use compromised accounts to scam contacts. ALWAYS call the person directly before sending any money.",fr:"Le compte est PIRATE. Verifiez TOUJOURS par appel direct avant d envoyer de l argent.",pidgin:"The account don get HACKED. ALWAYS call your friend direct before you send money."}},
+  {q:{en:"The BEST way to protect your WhatsApp account from hacking is:",fr:"La MEILLEURE facon de proteger votre compte WhatsApp:",pidgin:"The BEST way to protect your WhatsApp account na:"},
+   opts:{en:["Using a complex username","Enabling Two-Step Verification PIN in WhatsApp Settings","Logging out after every chat","Using WhatsApp Web only"],fr:["Un nom d utilisateur complexe","Activer la verification en deux etapes PIN dans les Parametres","Se deconnecter apres chaque chat","Uniquement WhatsApp Web"],pidgin:["Use complex username","Enable Two-Step Verification PIN for WhatsApp Settings","Logout after every chat","Use WhatsApp Web only"]},cor:1,
+   exp:{en:"CORRECT! Go to WhatsApp Settings then Account then Two-step verification then Enable. Set a 6-digit PIN. This stops OTP forwarding attacks.",fr:"Allez dans Parametres WhatsApp Compte Verification en deux etapes Activer. Definissez un PIN a 6 chiffres.",pidgin:"Go WhatsApp Settings Account Two-step verification Enable am. Set 6-digit PIN. This go stop OTP forwarding."}},
+  {q:{en:"If your Facebook account is hacked RIGHT NOW your FIRST action is:",fr:"Si votre compte Facebook est pirate EN CE MOMENT votre PREMIERE action est:",pidgin:"If your Facebook don get hacked RIGHT NOW your FIRST action na:"},
+   opts:{en:["Post a public status saying you were hacked","Immediately change password enable 2FA log out all sessions call CIRT 8202","Delete Facebook forever","Wait to see if the hacker leaves on their own"],fr:["Publier un statut d avertissement","Changer immediatement le mot de passe activer 2FA deconnecter toutes sessions signaler au CIRT 8202","Supprimer Facebook","Attendre"],pidgin:["Post status say you don get hacked","Quick quick change password enable 2FA logout all sessions call CIRT 8202","Delete Facebook forever","Wait make hacker comot himself"]},cor:1,
+   exp:{en:"CORRECT! Act FAST. Change password enable 2FA log out all devices call CIRT-Cameroun 8202 or email alerts@cirt.antic.cm. Keep screenshots as evidence.",fr:"Agissez VITE. Changez le mot de passe activez 2FA deconnectez tous appareils appelez le 8202.",pidgin:"Move FAST. Change password enable 2FA logout all devices call CIRT 8202. Keep screenshot as evidence."}},
+  {q:{en:"Someone sends you a WhatsApp message with a 6-digit code and asks you to forward it to them. You should:",fr:"Quelqu un vous envoie un code a 6 chiffres et vous demande de le lui transmettre. Vous devez:",pidgin:"Person send you WhatsApp message with 6-digit code and ask you to forward am. You suppose:"},
+   opts:{en:["Forward it if they say it was sent to you by mistake","NEVER forward a WhatsApp or SMS code to anyone no matter who asks","Forward only the first 3 digits","Call the person asking and then decide"],fr:["Le transmettre s ils disent que c est une erreur","Ne JAMAIS transmettre un code WhatsApp ou SMS a qui que ce soit","Transmettre seulement les 3 premiers chiffres","Appeler la personne puis decider"],pidgin:["Forward am if dem say dem send am by mistake","NEVER forward WhatsApp or SMS code to anybody no matter who ask","Forward only first 3 digits","Call the person asking and then decide"]},cor:1,
+   exp:{en:"CORRECT! That 6-digit code IS your WhatsApp or bank verification code. Forwarding it gives the attacker complete control of your account. NEVER forward verification codes to anyone under any circumstances.",fr:"Ce code a 6 chiffres EST votre code de verification. Le transmettre donne a l attaquant le controle complet de votre compte. Ne transferez JAMAIS un code.",pidgin:"That 6-digit code na your WhatsApp or bank verification code. If you forward am attacker go get complete control of your account. NEVER forward verification code to anybody."}},
+  {q:{en:"What information should you NEVER share publicly on social media?",fr:"Quelles informations ne devriez-vous JAMAIS partager publiquement sur les reseaux sociaux?",pidgin:"Wetin information you should NEVER share publicly for social media?"},
+   opts:{en:["Your favorite food and movies","Your full birthdate home address phone number ID card number and daily routine","Your opinion on local news","Your photos at public events"],fr:["Vos aliments et films preferes","Votre date de naissance complete adresse domicile numero de telephone numero de carte et routine quotidienne","Votre opinion sur les actualites","Vos photos lors d evenements publics"],pidgin:["Your favorite food na movie","Your full birthdate home address phone number ID card number na daily routine","Your opinion on local news","Your photos for public events"]},cor:1,
+   exp:{en:"CORRECT! Your full birthdate home address phone number ID card number and daily routine are goldmines for hackers. This information can be used to guess passwords answer security questions and plan targeted attacks against you.",fr:"Votre date de naissance complete adresse numero de telephone numero de carte et routine quotidienne sont des mines d or pour les hackers.",pidgin:"Your full birthdate home address phone number ID card number na daily routine na gold mine for hackers. This information fit be use to guess password and plan targeted attacks against you."}}
+]},
+{id:8,free:false,icon:"🔐",videoId:"",
+ name:{en:"Data Encryption",fr:"Chiffrement des Donnees",pidgin:"Data Protection"},
+ sc:{type:"url",sender:"",
+  msg:{en:"Look at these two website URLs carefully:\n\nSite A: http://afriland-banque.cm/login\nStatus: NOT SECURE (no padlock)\n\nSite B: https://www.afriland.cm/login\nStatus: SECURE (padlock icon shown)\n\nBoth sites look identical and ask you to enter your username and password to access your bank account.",
+       fr:"Regardez attentivement ces deux URLs:\n\nSite A: http://afriland-banque.cm/login\nStatut: NON SECURISE (pas de cadenas)\n\nSite B: https://www.afriland.cm/login\nStatut: SECURISE (icone cadenas affiche)\n\nLes deux sites semblent identiques et vous demandent votre identifiant et mot de passe.",
+       pidgin:"Look this two website URLs carefully:\n\nSite A: http://afriland-banque.cm/login\nStatus: NOT SECURE (no padlock)\n\nSite B: https://www.afriland.cm/login\nStatus: SECURE (padlock icon dey show)\n\nBoth sites look the same and ask you to enter your username and password to access your bank account."},
+  flags:["http vs https","NOT SECURE","afriland-banque.cm vs afriland.cm","both look identical"],
+  q:{en:"Which site is safe to enter your bank password on?",fr:"Sur quel site est-il sur d entrer votre mot de passe bancaire?",pidgin:"Which site na safe to enter your bank password?"},
+  opts:{en:["Site A (http://afriland-banque.cm) because it mentions Afriland","Site B (https://www.afriland.cm) because it uses HTTPS and has the correct official domain"],fr:["Site A car il mentionne Afriland","Site B car il utilise HTTPS et a le bon domaine officiel"],pidgin:["Site A (http://afriland-banque.cm) because e mention Afriland","Site B (https://www.afriland.cm) because e use HTTPS and get correct official domain"]},cor:1,
+  exp:{en:"CORRECT! Site B is safe for two reasons: 1) HTTPS means the connection is encrypted 2) afriland.cm is the official domain. Site A is dangerous: 1) HTTP means your data travels unencrypted 2) afriland-banque.cm is NOT the official domain. Always check BOTH the HTTPS AND the correct official domain.",
+       fr:"Le Site B est sur pour deux raisons: 1) HTTPS signifie connexion chiffree 2) afriland.cm est le domaine officiel. Le Site A est dangereux: HTTP plus mauvais domaine.",
+       pidgin:"Site B na safe for two reasons: 1) HTTPS mean encrypted connection 2) afriland.cm na the official domain. Site A na dangerous: 1) HTTP mean your data dey travel unencrypted 2) afriland-banque.cm NO be the official domain."}},
+ quiz:[
+  {q:{en:"What is the safest way to send sensitive business documents?",fr:"Quelle est la facon la plus sure d envoyer des documents sensibles?",pidgin:"Wetin be the safest way to send sensitive business document?"},
+   opts:{en:["Regular email such as Gmail or Yahoo","WhatsApp which uses end-to-end encryption or a service like Signal or ProtonMail","A regular SMS text message","A Facebook private message"],fr:["Email ordinaire comme Gmail","WhatsApp avec chiffrement de bout en bout ou Signal ou ProtonMail","SMS","Message prive Facebook"],pidgin:["Regular email like Gmail","WhatsApp wey get end-to-end encryption or Signal or ProtonMail","SMS text message","Facebook private message"]},cor:1,
+   exp:{en:"CORRECT! WhatsApp uses end-to-end encryption. For highly sensitive documents use Signal or ProtonMail for maximum security.",fr:"WhatsApp utilise le chiffrement de bout en bout. Pour les documents tres sensibles utilisez Signal ou ProtonMail.",pidgin:"WhatsApp get end-to-end encryption. For very sensitive document use Signal or ProtonMail."}},
+  {q:{en:"What does HTTPS at the start of a website URL mean?",fr:"Que signifie HTTPS au debut de l URL d un site web?",pidgin:"Wetin HTTPS mean when e dey at the start of website URL?"},
+   opts:{en:["The website is very popular","The connection between you and the website is encrypted and secure","The website is owned by the government","The website will load faster"],fr:["Le site est tres populaire","La connexion entre vous et le site est chiffree et securisee","Le site appartient au gouvernement","Le site se charge plus vite"],pidgin:["The website na popular one","The connection between you and website don get encryption","The website na government own","The website dey load faster"]},cor:1,
+   exp:{en:"CORRECT! HTTPS means the connection is encrypted. Never enter personal data on HTTP websites without the S.",fr:"HTTPS signifie que la connexion est chiffree. Ne jamais entrer de donnees sur des sites HTTP sans le S.",pidgin:"HTTPS means connection get encryption. Never enter personal data for HTTP website without S."}},
+  {q:{en:"How do you protect important files on your phone if it gets stolen?",fr:"Comment proteger les fichiers importants sur votre telephone s il est vole?",pidgin:"How you go protect important files for your phone if dem steal am?"},
+   opts:{en:["Store them in a folder named Private","Enable full device encryption in Android Settings then Security then Encryption","Put only a lock screen PIN on the phone","Store everything in WhatsApp chats"],fr:["Les stocker dans un dossier Prive","Activer le chiffrement complet dans Parametres Android Securite Chiffrement","Mettre un PIN d ecran uniquement","Tout stocker dans WhatsApp"],pidgin:["Store dem inside folder wey you name Private","Enable full device encryption for Android Settings then Security then Encryption","Put lock screen PIN only","Store everything for WhatsApp chat"]},cor:1,
+   exp:{en:"CORRECT! Full device encryption makes your data unreadable without your PIN even if someone removes the storage chip. Find it in Android Settings under Security.",fr:"Le chiffrement complet rend vos donnees illisibles sans votre PIN. Trouvez-le dans Parametres Android Securite.",pidgin:"Full device encryption make your data unreadable without your PIN even if dem remove storage chip. Check Android Settings Security."}},
+  {q:{en:"End-to-end encryption in WhatsApp means:",fr:"Le chiffrement de bout en bout dans WhatsApp signifie:",pidgin:"End-to-end encryption for WhatsApp mean:"},
+   opts:{en:["WhatsApp employees can read your messages for safety","Only you and the recipient can read the messages not even WhatsApp or the government","Your messages are stored permanently on WhatsApp servers","Your messages are automatically translated to English"],fr:["Les employes de WhatsApp peuvent lire vos messages","Seuls vous et le destinataire pouvez lire les messages pas meme WhatsApp","Vos messages sont stockes en permanence","Vos messages sont automatiquement traduits"],pidgin:["WhatsApp employees fit read your messages for safety","Only you and the recipient fit read the messages not even WhatsApp or government","Your messages dey stored permanently on WhatsApp servers","Your messages dey automatically translate to English"]},cor:1,
+   exp:{en:"CORRECT! End-to-end encryption means the message is encrypted on your device and can only be decrypted by the recipient device. Not even WhatsApp your internet provider or the government can read the content of your messages.",fr:"Le chiffrement de bout en bout signifie que le message ne peut etre dechiffre que par l appareil du destinataire. Pas meme WhatsApp ou le gouvernement.",pidgin:"End-to-end encryption mean the message don encrypt for your device and only the recipient device fit decrypt am. Not even WhatsApp internet provider or government fit read the content."}},
+  {q:{en:"Which of these is the MOST secure password?",fr:"Lequel de ces mots de passe est le PLUS securise?",pidgin:"Which one of these na the MOST secure password?"},
+   opts:{en:["237password","myname2001","Cm@9vXp2mT!","123456789"],fr:["237password","monnom2001","Cm@9vXp2mT!","123456789"],pidgin:["237password","myname2001","Cm@9vXp2mT!","123456789"]},cor:2,
+   exp:{en:"CORRECT! Cm@9vXp2mT! is most secure because it is 11 characters long and combines uppercase letters lowercase letters numbers and special characters. It is not a real word. Use a free password manager like Bitwarden to generate and store strong passwords.",fr:"Cm@9vXp2mT! est le plus securise car il a 11 caracteres avec majuscules minuscules chiffres et caracteres speciaux. Utilisez Bitwarden gratuit.",pidgin:"Cm@9vXp2mT! na the most secure because e get 11 characters and combine uppercase lowercase numbers and special characters. Use free password manager like Bitwarden."}}
+]},
+{id:9,free:false,icon:"🧱",videoId:"",
+ name:{en:"Firewalls and Network Security",fr:"Pare-feux et Securite Reseau",pidgin:"Network Protection"},
+ sc:{type:"wifi",sender:"",
+  msg:{en:"You are at a cafe in Yaounde. You see these two WiFi networks:\n\nNetwork 1: Cafe_Yaounde_Free_WiFi\nSecurity: OPEN - No password required\nSignal: Excellent\n\nNetwork 2: Cafe_Yaounde_Secured\nSecurity: WPA3 Protected\nPassword available at the counter\nSignal: Good\n\nYou need to check your bank account balance and transfer money via Mobile Money.",
+       fr:"Vous etes dans un cafe a Yaounde. Vous voyez ces deux reseaux WiFi:\n\nReseau 1: Cafe_Yaounde_Free_WiFi\nSecurite: OUVERT - Aucun mot de passe\nSignal: Excellent\n\nReseau 2: Cafe_Yaounde_Secured\nSecurite: WPA3 Protege\nMot de passe au comptoir\nSignal: Bon\n\nVous devez verifier votre solde bancaire et faire un transfert via Mobile Money.",
+       pidgin:"You dey for cafe for Yaounde. You see this two WiFi networks:\n\nNetwork 1: Cafe_Yaounde_Free_WiFi\nSecurity: OPEN - No password required\nSignal: Excellent\n\nNetwork 2: Cafe_Yaounde_Secured\nSecurity: WPA3 Protected\nPassword dey for counter\nSignal: Good\n\nYou need check your bank account balance and transfer money via Mobile Money."},
+  flags:["OPEN","No password","bank account","transfer money","unencrypted"],
+  q:{en:"Which WiFi network should you use to check your bank account and transfer money?",fr:"Quel reseau WiFi devriez-vous utiliser pour verifier votre compte bancaire et transferer de l argent?",pidgin:"Which WiFi network you suppose use to check your bank account and transfer money?"},
+  opts:{en:["Network 1 Free WiFi because the signal is excellent and it is faster","Network 2 WPA3 Secured because it encrypts all traffic or better still use your mobile data instead","Either network both are provided by the cafe","The open network because you can see if anything suspicious happens"],fr:["Reseau 1 WiFi gratuit car le signal est excellent","Reseau 2 WPA3 car il chiffre tout le trafic ou mieux encore utiliser vos donnees mobiles","Les deux reseaux","Le reseau ouvert car vous pouvez voir ce qui se passe"],pidgin:["Network 1 Free WiFi because signal na excellent and e faster","Network 2 WPA3 Secured because e dey encrypt all traffic or better still use your mobile data instead","Either network both na cafe provide am","The open network because you fit see if anything suspicious dey happen"]},cor:1,
+  exp:{en:"CORRECT! NEVER use open public WiFi for banking or Mobile Money. On an open network anyone nearby can intercept and read all your data. The WPA3 secured network is better but for banking ALWAYS use your MOBILE DATA for maximum security.",
+       fr:"Ne jamais utiliser le WiFi public ouvert pour les operations bancaires. Sur un reseau ouvert n importe qui peut intercepter vos donnees. Pour les operations bancaires utilisez TOUJOURS vos DONNEES MOBILES.",
+       pidgin:"NEVER use open public WiFi for banking or Mobile Money. For open network anybody nearby fit intercept and read all your data. WPA3 na better but for banking ALWAYS use your MOBILE DATA for maximum security."}},
+ quiz:[
+  {q:{en:"What is the MAIN purpose of a firewall?",fr:"Quel est le BUT PRINCIPAL d un pare-feu?",pidgin:"Wetin be the MAIN purpose of firewall?"},
+   opts:{en:["To speed up your internet connection","To monitor and filter network traffic based on security rules","To remove viruses already on your computer","To block all websites equally"],fr:["Accelerer votre connexion internet","Surveiller et filtrer le trafic reseau selon des regles de securite","Supprimer les virus presents","Bloquer tous les sites"],pidgin:["Speed up your internet","Monitor and filter network traffic based on security rules","Remove virus wey don dey your computer","Block all website equally"]},cor:1,
+   exp:{en:"CORRECT! A firewall is a security gatekeeper. It monitors incoming and outgoing traffic and blocks connections that violate its security rules. Windows Defender Firewall is built-in and free.",fr:"Un pare-feu est un gardien de securite. Il surveille le trafic et bloque les connexions non autorisees. Windows Defender Firewall est integre et gratuit.",pidgin:"Firewall na security gatekeeper. E monitor traffic and block bad connections. Windows Defender Firewall na free and e dey inside Windows."}},
+  {q:{en:"What is the main risk of connecting to free public WiFi in a Yaounde cafe?",fr:"Quel est le principal risque du WiFi gratuit dans un cafe a Yaounde?",pidgin:"Wetin be the main risk of free public WiFi for cafe for Yaounde?"},
+   opts:{en:["The WiFi is slower than mobile data","Anyone on the same network can intercept your unencrypted data","It drains your phone battery faster","You might run out of mobile data"],fr:["Le WiFi est plus lent","N importe qui sur le meme reseau peut intercepter vos donnees","Cela decharge la batterie","Vous pourriez manquer de donnees"],pidgin:["WiFi dey slow","Anybody for same network fit intercept your unencrypted data","E dey drain battery fast","You fit exhaust your mobile data"]},cor:1,
+   exp:{en:"CORRECT! Public WiFi is unencrypted. Anyone on the same network can see your passwords and bank logins. Use mobile data or a VPN for sensitive activities.",fr:"Le WiFi public n est pas chiffre. N importe qui peut voir vos mots de passe. Utilisez vos donnees mobiles ou un VPN.",pidgin:"Public WiFi no get encryption. Anybody for same network fit see your password na bank login. Use mobile data or VPN."}},
+  {q:{en:"What is the BEST network security practice for a small business?",fr:"Quelle est la MEILLEURE pratique de securite reseau pour une petite entreprise?",pidgin:"Wetin be the BEST network security practice for small business?"},
+   opts:{en:["Keep the router default admin credentials","Change default router credentials use WPA3 encryption and separate guest from business WiFi","Share the WiFi password with all customers","Turn off the firewall to make the internet faster"],fr:["Garder les identifiants par defaut","Changer les identifiants utiliser WPA3 separer WiFi clients et professionnel","Partager le mot de passe WiFi","Desactiver le pare-feu"],pidgin:["Keep default router credentials","Change router credentials use WPA3 separate guest WiFi from business WiFi","Share WiFi password with all customers","Turn off firewall make internet fast"]},cor:1,
+   exp:{en:"CORRECT! Change router default credentials immediately. Use WPA3 encryption. Create separate WiFi for customers and business devices. NEVER disable your firewall.",fr:"Changez immediatement les identifiants du routeur. Utilisez WPA3. Separezle WiFi client du WiFi professionnel. Ne desactivez JAMAIS le pare-feu.",pidgin:"Change router default login immediately. Use WPA3. Separate customer WiFi from business. NEVER disable your firewall."}},
+  {q:{en:"What does a VPN do to protect you on public WiFi?",fr:"Que fait un VPN pour vous proteger sur le WiFi public?",pidgin:"Wetin VPN dey do to protect you for public WiFi?"},
+   opts:{en:["It makes your internet faster","It encrypts all your internet traffic and hides your real IP address making your data unreadable to others on the network","It blocks all advertising","It gives you unlimited free data"],fr:["Il rend votre internet plus rapide","Il chiffre tout votre trafic internet et masque votre adresse IP rendant vos donnees illisibles","Il bloque toutes les publicites","Il vous donne des donnees gratuites illimitees"],pidgin:["E make your internet faster","E dey encrypt all your internet traffic and hide your real IP address making your data unreadable to others for network","E dey block all advertising","E give you unlimited free data"]},cor:1,
+   exp:{en:"CORRECT! A VPN encrypts all your internet traffic and routes it through a secure server. Even on public WiFi others on the network see only encrypted data they cannot read. Free VPN options include ProtonVPN and Windscribe.",fr:"Un VPN chiffre tout votre trafic internet. Meme sur le WiFi public les autres ne voient que des donnees chiffrees. ProtonVPN et Windscribe sont gratuits.",pidgin:"VPN dey encrypt all your internet traffic and route am through secure server. Even for public WiFi others for network fit only see encrypted data wey dem no fit read. Free VPN options include ProtonVPN and Windscribe."}},
+  {q:{en:"Your Windows Firewall keeps blocking a new application you just installed. What should you do?",fr:"Le pare-feu Windows bloque une nouvelle application que vous venez d installer. Que devez-vous faire?",pidgin:"Your Windows Firewall dey keep blocking new application wey you just install. Wetin you go do?"},
+   opts:{en:["Turn off the firewall completely to let the application work","Research the application online first to confirm it is legitimate and safe before allowing it through the firewall","Always click Allow because the firewall is always wrong","Delete the firewall permanently so applications can work freely"],fr:["Desactiver completement le pare-feu","Rechercher d abord l application en ligne pour confirmer sa legitimite avant de l autoriser","Toujours cliquer sur Autoriser","Supprimer definitivement le pare-feu"],pidgin:["Turn off the firewall completely to make the application work","Research the application online first to confirm say e legitimate and safe before you allow am through firewall","Always click Allow because firewall dey always wrong","Delete the firewall permanently so applications fit work freely"]},cor:1,
+   exp:{en:"CORRECT! Always research an application before allowing it through your firewall. The firewall is protecting you. If you cannot confirm the application is legitimate from a trusted source do not allow it.",fr:"Recherchez toujours une application avant de l autoriser dans votre pare-feu. Le pare-feu vous protege.",pidgin:"Always research application before you allow am through your firewall. The firewall dey protect you. If you no fit confirm say the application na legitimate no allow am."}}
+]}
+];
+
+function g(id){return document.getElementById(id);}
+function now(){return new Date().toLocaleTimeString([],{hour:"2-digit",minute:"2-digit"});}
+
+function goTab(t){
+  g("chatPane").className="pane"+(t==="chat"?" on":"");
+  g("lp").className="pane"+(t==="les"?" on":"");
+  g("tc").className="tb"+(t==="chat"?" on":"");
+  g("tl").className="tb"+(t==="les"?" on":"");
+}
+
+var WT={
+  en:{t:"Welcome to CyberAware Cameroon",s:"Ask me anything about cybersecurity. I answer in English, French or Pidgin.",
+      tips:["How do I recognise a phishing SMS?","How do I secure my Mobile Money?","What makes a strong password?","My Facebook was hacked, what do I do?","How do I report a cybercrime to CIRT?"]},
+  fr:{t:"Bienvenue sur CyberAware Cameroun",s:"Posez vos questions de cybersecurite en francais anglais ou pidgin.",
+      tips:["Comment reconnaitre un SMS de phishing?","Comment securiser mon Mobile Money?","Qu est-ce qu un mot de passe robuste?","Mon Facebook a ete pirate que faire?","Comment signaler une cybercriminalite?"]},
+  pidgin:{t:"Welcome CyberAware Cameroon",s:"Ask me your cybersecurity questions for English Francais na Pidgin.",
+      tips:["How I go know say SMS na scam?","How I go protect my Mobile Money?","Wetin make password strong?","Dem hack my Facebook wetin I go do?","How I go report cybercrime?"]}
 };
-function renderWelcome(){const w=WM[currentLang]||WM.en;document.getElementById('chatContainer').innerHTML=`<div class="welcome-card"><div class="icon">🛡️</div><h2>${w.title}</h2><p>${w.sub}</p><div class="suggestions">${w.tips.map(t=>`<button class="suggestion-btn" onclick="useSuggestion(this)">${t}</button>`).join('')}</div></div>`;}
-function useSuggestion(btn){const text=btn.textContent.replace(/^[\u{1F000}-\u{1FFFF}✅❌⚠️📞🎣📱🔐🚨]\s*/u,'').trim();document.getElementById('messageInput').value=text;sendMessage();}
-function escHtml(t){return t.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
-function md(text){let t=escHtml(text);t=t.replace(/\*\*(.*?)\*\*/g,'<strong>$1</strong>');t=t.replace(/\*(.*?)\*/g,'<em>$1</em>');const lines=t.split('\n');let out='',inList=false;for(const line of lines){const b=line.match(/^[\-•]\s+(.*)/),n=line.match(/^\d+\.\s+(.*)/);if(b||n){if(!inList){out+='<ul>';inList=true;}out+=`<li>${(b||n)[1]}</li>`;}else{if(inList){out+='</ul>';inList=false;}out+=line?`<p>${line}</p>`:'';}};if(inList)out+='</ul>';return out||`<p>${t}</p>`;}
-function nowTime(){return new Date().toLocaleTimeString([],{hour:'2-digit',minute:'2-digit'});}
-function appendMessage(role,text,sources=[]){const c=document.getElementById('chatContainer');const w=c.querySelector('.welcome-card');if(w)w.remove();const row=document.createElement('div');row.className=`msg-row ${role}`;const avatar=role==='bot'?'🛡️':'👤';const content=role==='bot'?md(text):`<p>${escHtml(text)}</p>`;const seen=new Set();const pills=sources.filter(s=>s.topic&&!seen.has(s.topic)&&seen.add(s.topic)).map(s=>`<span class="source-pill" title="${s.source_url||''}">${s.topic.replace(/_/g,' ')}</span>`).join('');const sourcesHtml=pills?`<div class="sources-wrap">${pills}</div>`:'';row.innerHTML=`<div class="avatar">${avatar}</div><div class="bubble-wrap"><div class="bubble">${content}</div>${sourcesHtml}<span class="timestamp">${nowTime()}</span></div>`;c.appendChild(row);c.scrollTop=c.scrollHeight;}
-function showTyping(){const c=document.getElementById('chatContainer');const row=document.createElement('div');row.id='typingRow';row.className='msg-row bot';row.innerHTML=`<div class="avatar">🛡️</div><div class="bubble-wrap"><div class="typing-bubble"><div class="typing-dot"></div><div class="typing-dot"></div><div class="typing-dot"></div></div></div>`;c.appendChild(row);c.scrollTop=c.scrollHeight;}
-function hideTyping(){const r=document.getElementById('typingRow');if(r)r.remove();}
-async function sendMessage(){const input=document.getElementById('messageInput');const text=input.value.trim();if(!text)return;input.value='';input.style.height='auto';document.getElementById('sendBtn').disabled=true;appendMessage('user',text);showTyping();try{const res=await fetch('/chat',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({message:text,language:currentLang})});if(!res.ok)throw new Error(`HTTP ${res.status}`);const data=await res.json();hideTyping();appendMessage('bot',data.answer,data.sources||[]);}catch(err){hideTyping();const e={en:'⚠️ Could not reach the server. Make sure uvicorn is running.',fr:'⚠️ Impossible de joindre le serveur. Vérifiez que uvicorn tourne.',pidgin:'⚠️ I no fit reach server. Check say uvicorn dey run.'};appendMessage('bot',e[currentLang]||e.en);}finally{document.getElementById('sendBtn').disabled=false;}}
-function clearChat(){renderWelcome();}
-const msgInput=document.getElementById('messageInput');
-msgInput.addEventListener('input',function(){this.style.height='auto';this.style.height=Math.min(this.scrollHeight,120)+'px';});
-msgInput.addEventListener('keydown',function(e){if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();sendMessage();}});
-const SR=window.SpeechRecognition||window.webkitSpeechRecognition;
-if(!SR){document.getElementById('micBtn').style.opacity='0.4';document.getElementById('micBtn').style.cursor='not-allowed';document.getElementById('micBtn').onclick=null;document.getElementById('noMicNotice').style.display='block';}
-else{recognition=new SR();recognition.continuous=false;recognition.interimResults=true;recognition.onstart=()=>{document.getElementById('voiceBanner').style.display='block';document.getElementById('micBtn').classList.add('recording');};recognition.onresult=(event)=>{let final='',interim='';for(let i=event.resultIndex;i<event.results.length;i++){const t=event.results[i][0].transcript;if(event.results[i].isFinal)final+=t;else interim+=t;}document.getElementById('messageInput').value=final||interim;};recognition.onend=()=>{isRecording=false;document.getElementById('micBtn').classList.remove('recording');document.getElementById('voiceBanner').style.display='none';};recognition.onerror=(event)=>{isRecording=false;document.getElementById('micBtn').classList.remove('recording');document.getElementById('voiceBanner').style.display='none';if(event.error==='not-allowed')alert('Microphone access denied. Please allow it in browser settings.');};}
-function toggleVoice(){if(!SR)return;if(isRecording){recognition.stop();isRecording=false;}else{const lm={en:'en-US',fr:'fr-FR',pidgin:'en-NG'};recognition.lang=lm[currentLang]||'en-US';try{recognition.start();isRecording=true;}catch(e){}}}
-detectLanguage();
-renderWelcome();
+
+function setLang(v){
+  lang=v;
+  g("tlc").textContent="Chat";
+  g("tll").textContent=lang==="fr"?"Lecons":"Lessons";
+  g("sbt").textContent=lang==="fr"?"Formation Cyber":"Cyber Training";
+  g("spl").textContent=lang==="fr"?"Progres":"Progress";
+  g("lwt").textContent=lang==="fr"?"Bienvenue":lang==="pidgin"?"Welcome":"Welcome to Cyber Training";
+  g("lwb").textContent=lang==="fr"?"Choisissez une lecon. Lecons 1 et 2 sont GRATUITES.":lang==="pidgin"?"Pick lesson. Lessons 1 na 2 na FREE. Subscribe unlock all 10.":"Choose a lesson. Lessons 1 and 2 are FREE. Subscribe to unlock all 10 lessons, live demos, and certificates.";
+  g("mi").placeholder=lang==="fr"?"Tapez votre question...":lang==="pidgin"?"Type your question...":"Type your cybersecurity question...";
+  drawChat();drawSidebar();
+  if(curL!==null){goLesson(curL);}
+}
+
+function drawChat(){
+  var w=WT[lang]||WT.en;
+  var h="<div class='wcard'><div class='wi'>🛡️</div><h2>"+w.t+"</h2><p>"+w.s+"</p><div class='suggs'>";
+  w.tips.forEach(function(tip){h+="<button class='sg' onclick='useTip(this)'>"+tip+"</button>";});
+  h+="</div></div>";
+  g("ca").innerHTML=h;
+}
+function useTip(btn){g("mi").value=btn.textContent;sendMsg();}
+function esc(s){return s.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");}
+function fmt(s){
+  var t=esc(s);
+  t=t.replace(/\*\*(.*?)\*\*/g,"<strong>$1</strong>").replace(/\*(.*?)\*/g,"<em>$1</em>");
+  var lines=t.split("\n"),out="",il=false;
+  lines.forEach(function(ln){
+    var b=ln.match(/^[-\u2022]\s+(.*)/),n=ln.match(/^\d+\.\s+(.*)/);
+    if(b||n){if(!il){out+="<ul>";il=true;}out+="<li>"+(b||n)[1]+"</li>";}
+    else{if(il){out+="</ul>";il=false;}out+=ln?"<p>"+ln+"</p>":"";}
+  });
+  if(il)out+="</ul>";
+  return out||"<p>"+t+"</p>";
+}
+function addMsg(role,text,srcs){
+  var c=g("ca");var w=c.querySelector(".wcard");if(w)w.remove();
+  var r=document.createElement("div");r.className="msg "+role;
+  var av=role==="bot"?"🛡️":"👤";
+  var cnt=role==="bot"?fmt(text):"<p>"+esc(text)+"</p>";
+  var pills="";
+  if(srcs&&srcs.length){var seen={};srcs.forEach(function(s){if(s.topic&&!seen[s.topic]){seen[s.topic]=1;pills+="<span class='sp'>"+s.topic.replace(/_/g," ")+"</span>";}});if(pills)pills="<div class='srcs'>"+pills+"</div>";}
+  r.innerHTML="<div class='av'>"+av+"</div><div class='bw'><div class='bbl'>"+cnt+"</div>"+pills+"<span class='ts'>"+now()+"</span></div>";
+  g("ca").appendChild(r);g("ca").scrollTop=g("ca").scrollHeight;
+}
+function showTyping(){
+  var c=g("ca");var r=document.createElement("div");r.id="typr";r.className="msg bot";
+  r.innerHTML="<div class='av'>🛡️</div><div class='bw'><div class='typing'><div class='td'></div><div class='td'></div><div class='td'></div></div></div>";
+  c.appendChild(r);c.scrollTop=c.scrollHeight;
+}
+function hideTyping(){var r=g("typr");if(r)r.remove();}
+async function sendMsg(){
+  var inp=g("mi");var txt=inp.value.trim();if(!txt)return;
+  inp.value="";inp.style.height="auto";g("sb").disabled=true;
+  addMsg("user",txt,[]);showTyping();
+  try{
+    var res=await fetch("/chat",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({message:txt,language:lang})});
+    if(!res.ok)throw new Error("HTTP "+res.status);
+    var d=await res.json();hideTyping();addMsg("bot",d.answer,d.sources||[]);
+  }catch(e){
+    hideTyping();
+    var em={en:"Could not reach the server. Make sure uvicorn app:app --reload is running then open http://127.0.0.1:8000",fr:"Impossible de joindre le serveur. Verifiez que uvicorn tourne.",pidgin:"I no fit reach server. Check say uvicorn dey run."};
+    addMsg("bot",em[lang]||em.en,[]);
+  }
+  g("sb").disabled=false;
+}
+var mi2=g("mi");
+mi2.addEventListener("input",function(){this.style.height="auto";this.style.height=Math.min(this.scrollHeight,100)+"px";});
+mi2.addEventListener("keydown",function(e){if(e.key==="Enter"&&!e.shiftKey){e.preventDefault();sendMsg();}});
+var SR=window.SpeechRecognition||window.webkitSpeechRecognition;
+var recog=null,isRec=false;
+if(!SR){g("mb").style.opacity=".4";g("mb").disabled=true;g("nm").style.display="block";}
+else{
+  recog=new SR();recog.continuous=false;recog.interimResults=true;
+  recog.onstart=function(){g("vb").style.display="block";g("mb").classList.add("rec");};
+  recog.onresult=function(e){var f="",it="";for(var i=e.resultIndex;i<e.results.length;i++){var tx=e.results[i][0].transcript;if(e.results[i].isFinal)f+=tx;else it+=tx;}g("mi").value=f||it;};
+  recog.onend=function(){isRec=false;g("mb").classList.remove("rec");g("vb").style.display="none";};
+  recog.onerror=function(){isRec=false;g("mb").classList.remove("rec");g("vb").style.display="none";};
+}
+function toggleMic(){
+  if(!SR)return;
+  if(isRec){recog.stop();isRec=false;}
+  else{var lm={en:"en-US",fr:"fr-FR",pidgin:"en-NG"};recog.lang=lm[lang]||"en-US";try{recog.start();isRec=true;}catch(ex){}}
+}
+
+function drawSidebar(){
+  var el=g("llist");el.innerHTML="";
+  LS.forEach(function(l,i){
+    var locked=!l.free&&!premium;var isDone=done.indexOf(i)>=0;var isOn=curL===i;
+    var nm=l.name[lang]||l.name.en;
+    var badge=isDone?"<span class='bdg bd'>✓ Done</span>":l.free?"<span class='bdg bf'>FREE</span>":"<span class='bdg bp'>PAID</span>";
+    var lk=locked?"<span class='lk'>🔒</span>":isDone?"<span class='lk'>✅</span>":"";
+    var d=document.createElement("div");d.className="li"+(isOn?" on":"");
+    d.innerHTML="<div class='lic'>"+l.icon+"</div><div class='lin'><div class='lnm'>"+nm+"</div>"+badge+"</div>"+lk;
+    (function(idx){d.onclick=function(){goLesson(idx);};})(i);
+    el.appendChild(d);
+  });
+  var pct=Math.round((done.length/LS.length)*100);
+  g("prf").style.width=pct+"%";g("spn").textContent=done.length+"/10";
+}
+
+function goLesson(i){
+  curL=i;curQ=0;score=0;answered=false;
+  drawSidebar();
+  var l=LS[i];var locked=!l.free&&!premium;
+  var main=g("lmain");main.scrollTop=0;
+  if(locked){renderLock(main);return;}
+  renderLesson(i,main);
+}
+
+function renderLock(main){
+  var perks=lang==="fr"?"<li>✅ 10 lecons completes</li><li>✅ Scenarios live interactifs</li><li>✅ Quiz 5 questions par lecon</li><li>✅ Videos explicatives</li><li>✅ Certificat de reussite</li><li>✅ EN FR et Pidgin</li>":
+             lang==="pidgin"?"<li>✅ 10 complete lessons</li><li>✅ Interactive live scenarios</li><li>✅ 5-question quiz per lesson</li><li>✅ Video explanation</li><li>✅ Certificate of completion</li><li>✅ English French and Pidgin</li>":
+             "<li>✅ 10 complete lessons</li><li>✅ Interactive live scenarios</li><li>✅ 5-question MCQ quizzes</li><li>✅ Video explanations</li><li>✅ Certificate of completion</li><li>✅ English French and Pidgin</li>";
+  var btxt=lang==="fr"?"S abonner via Mobile Money":lang==="pidgin"?"Subscribe via Mobile Money":"Subscribe via Mobile Money";
+  var ptxt=lang==="fr"?"Lecon Premium":lang==="pidgin"?"Premium Lesson":"Premium Lesson";
+  var bdytxt=lang==="fr"?"Abonnez-vous pour acceder aux 10 lecons avec scenarios live quiz videos et certificats.":lang==="pidgin"?"Subscribe make you access all 10 lessons with live scenarios quiz videos and certificates.":"Subscribe to access all 10 lessons with live scenarios, quizzes, videos, and your certificate of completion.";
+  main.innerHTML="<div class='lw'><div class='lbig'>🔒</div><h3>"+ptxt+"</h3><p>"+bdytxt+"</p><div class='pbox'><div class='price'>2,500 FCFA/month</div><ul>"+perks+"</ul></div><button class='subbtn' onclick='openModal()'>"+btxt+"</button></div>";
+}
+
+function buildSc(l){
+  var sc=l.sc;
+  var content=sc.msg[lang]||sc.msg.en;
+  var q=sc.q[lang]||sc.q.en;
+  var opts=sc.opts[lang]||sc.opts.en;
+  var scLbl=lang==="fr"?"🔴 Scenario Live Interactif":lang==="pidgin"?"🔴 Live Interactive Scenario":"🔴 Live Interactive Scenario";
+  var lines=content.split("\n");
+  var inner="";
+
+  if(sc.type==="sms"){
+    var smsHtml="";
+    lines.forEach(function(ln){
+      if(!ln.trim())return;
+      var h=esc(ln);
+      sc.flags.forEach(function(f){h=h.split(esc(f)).join("<span class='rf'>"+esc(f)+"</span>");});
+      smsHtml+=h+"<br>";
+    });
+    inner="<div class='phone-wrap'><div class='phone-hdr'><div class='phone-av'>📱</div><div><div class='phone-nm'>"+esc(sc.sender)+"</div><div class='phone-sub'>SMS</div></div></div><div class='sms-bbl'>"+smsHtml+"</div></div>";
+  } else if(sc.type==="whatsapp"){
+    var waHtml="";
+    lines.forEach(function(ln){
+      if(!ln.trim())return;
+      var h=esc(ln);
+      sc.flags.forEach(function(f){h=h.split(esc(f)).join("<span class='rf'>"+esc(f)+"</span>");});
+      waHtml+=h+"<br>";
+    });
+    inner="<div class='wa-wrap'><div class='wa-hdr'><div class='phone-av' style='background:#128C7E;color:#fff;font-size:11px;font-weight:700'>WA</div><div><div class='wa-nm'>"+esc(sc.sender)+"</div><div class='wa-st'>online</div></div></div><div class='wa-bbl'>"+waHtml+"</div></div>";
+  } else if(sc.type==="call"){
+    var callHtml="";
+    lines.forEach(function(ln){
+      if(!ln.trim())return;
+      var h=esc(ln);
+      sc.flags.forEach(function(f){h=h.split(esc(f)).join("<span class='rf'>"+esc(f)+"</span>");});
+      callHtml+=h+"<br>";
+    });
+    inner="<div class='wa-wrap'><div class='wa-hdr'><div class='phone-av' style='background:#25D366;color:#fff'>📞</div><div><div class='wa-nm'>"+esc(sc.sender)+"</div><div class='wa-st'>Incoming call scenario</div></div></div><div class='wa-bbl'>"+callHtml+"</div></div>";
+  } else if(sc.type==="ransom"){
+    var rsHtml="";var rsTitle="";
+    lines.forEach(function(ln,i){
+      if(!ln.trim())return;
+      var h=esc(ln);
+      sc.flags.forEach(function(f){h=h.split(esc(f)).join("<span class='rf'>"+esc(f)+"</span>");});
+      if(i===0){rsTitle=h;}else{rsHtml+=h+"<br>";}
+    });
+    inner="<div class='rs-wrap'><div class='rs-title'>⚠️ "+rsTitle+"</div><div class='rs-msg'>"+rsHtml+"</div></div>";
+  } else {
+    var preHtml="";
+    lines.forEach(function(ln){
+      var h=esc(ln);
+      sc.flags.forEach(function(f){h=h.split(esc(f)).join("<span class='rf'>"+esc(f)+"</span>");});
+      preHtml+=h+"\n";
+    });
+    inner="<div class='pre-wrap'>"+preHtml+"</div>";
+  }
+
+  var optHtml="";
+  opts.forEach(function(o,j){optHtml+="<button class='sc-opt' id='sco"+j+"' onclick='pickSc("+j+","+sc.cor+")'>"+esc(o)+"</button>";});
+  return "<div class='sc-card'><div class='sc-title'>"+scLbl+"</div>"+inner+"<div class='sc-q'>"+esc(q)+"</div><div class='sc-opts'>"+optHtml+"</div><div class='sc-exp' id='scexp'></div></div>";
+}
+
+function pickSc(chosen,cor){
+  var l=LS[curL];var sc=l.sc;
+  var ok=chosen===cor;
+  var opts=sc.opts[lang]||sc.opts.en;
+  opts.forEach(function(_,j){
+    var b=g("sco"+j);b.disabled=true;
+    if(j===cor)b.classList.add("sc-ok");
+    else if(j===chosen&&!ok)b.classList.add("sc-bad");
+  });
+  var exp=g("scexp");exp.style.display="block";
+  var et=sc.exp[lang]||sc.exp.en;
+  if(ok){exp.className="sc-exp";exp.innerHTML=esc(et);}
+  else{exp.className="sc-exp bad";exp.innerHTML=esc(et);}
+  if(sc.flags&&sc.flags.length){
+    var fl="<br><br><strong>"+(lang==="fr"?"Signaux d alerte detectes:":lang==="pidgin"?"Red flags dem identify:":"Red flags identified:")+"</strong> ";
+    sc.flags.forEach(function(f){fl+="<span class='sc-flag'>⚠ "+esc(f)+"</span>";});
+    exp.innerHTML+=fl;
+  }
+}
+
+function renderLesson(i,main){
+  var l=LS[i];curQ=0;score=0;answered=false;
+  var nm=l.name[lang]||l.name.en;
+  var vt=lang==="fr"?"📹 Video":lang==="pidgin"?"📹 Lesson Video":"📹 Lesson Video";
+  var vl=lang==="fr"?"Cliquer pour lire la video":lang==="pidgin"?"Click to play video":"Click to play video";
+  var vn=lang==="fr"?"Ajoutez l ID de votre video YouTube dans LS["+i+"].videoId dans index.html":lang==="pidgin"?"Add your YouTube video ID inside LS["+i+"].videoId for index.html":"Add your YouTube video ID to LS["+i+"].videoId in index.html";
+  var qt=lang==="fr"?"🧠 Quiz ("+l.quiz.length+" questions)":lang==="pidgin"?"🧠 Quiz ("+l.quiz.length+" questions)":"🧠 Quiz ("+l.quiz.length+" questions)";
+  var pb=premium?"<div class='pbn'><span style='font-size:20px'>🌟</span><div><h4>"+(lang==="fr"?"Premium Actif":lang==="pidgin"?"Premium Active":"Premium Active")+"</h4><p>"+(lang==="fr"?"Toutes les lecons sont debloquees":lang==="pidgin"?"All 10 lessons don unlock":"All 10 lessons unlocked")+"</p></div></div>":"";
+  main.innerHTML=pb+buildSc(l)+
+    "<div class='vc'><h3>"+vt+": "+nm+"</h3><div class='vph' onclick='playVid("+i+")'><div class='play'>▶</div><div class='vl'>"+vl+"</div></div><p class='vn'>"+vn+"</p></div>"+
+    "<div class='qc' id='qcard'><div class='qh'><h3>"+qt+"</h3><span class='qpg' id='qpg'>Q 1 of "+l.quiz.length+"</span></div><div id='qbody'></div><div class='qnav'><button class='nxt' id='nxtbtn'>Next ➤</button></div></div>"+
+    "<div class='sc2' id='scard'></div><div class='cert' id='cert'></div>";
+  drawQ(l,0);
+}
+
+function drawQ(l,qi){
+  var q=l.quiz[qi];
+  g("qpg").textContent="Q "+(qi+1)+" of "+l.quiz.length;
+  g("nxtbtn").style.display="none";answered=false;
+  var lets=["A","B","C","D"];var opts=q.opts[lang]||q.opts.en;var qtext=q.q[lang]||q.q.en;
+  var html="<div class='qtx'>"+esc(qtext)+"</div><div class='opts'>";
+  opts.forEach(function(o,j){html+="<button class='opt' id='op"+j+"' onclick='pick("+j+","+q.cor+","+qi+")'>"+
+    "<span class='ol'>"+lets[j]+"</span>"+esc(o)+"</button>";});
+  html+="</div><div class='exp' id='exp'></div>";
+  g("qbody").innerHTML=html;
+}
+
+function pick(chosen,cor,qi){
+  if(answered)return;answered=true;var ok=chosen===cor;if(ok)score++;
+  var l=LS[curL];var q=l.quiz[qi];var opts=q.opts[lang]||q.opts.en;var lets=["A","B","C","D"];
+  opts.forEach(function(_,j){
+    var b=g("op"+j);b.disabled=true;
+    if(j===cor)b.classList.add("ok");else if(j===chosen&&!ok)b.classList.add("bad");
+  });
+  var exp=g("exp");exp.style.display="block";var et=q.exp[lang]||q.exp.en;
+  if(ok){exp.className="exp ok";exp.textContent=et;}
+  else{exp.className="exp bad";exp.textContent=(lang==="fr"?"Bonne reponse: ":lang==="pidgin"?"Correct answer: ":"Correct answer: ")+lets[cor]+". "+opts[cor]+". "+et;}
+  var nb=g("nxtbtn");nb.style.display="block";
+  var last=qi>=l.quiz.length-1;
+  nb.textContent=last?(lang==="fr"?"Voir les Resultats":lang==="pidgin"?"See Results":"See Results"):(lang==="fr"?"Suivant ➤":"Next ➤");
+  if(last){nb.onclick=function(){showScore(l);};}else{nb.onclick=function(){curQ++;drawQ(l,curQ);};}
+}
+
+function showScore(l){
+  var pct=Math.round((score/l.quiz.length)*100);
+  g("qcard").style.display="none";var sc2=g("scard");sc2.style.display="block";
+  var em="😟",msg=lang==="fr"?"Continuez a pratiquer!":lang==="pidgin"?"Practice more!":"Keep practising!";
+  if(pct===100){em="🎉";msg=lang==="fr"?"Excellent! Score parfait!":lang==="pidgin"?"Excellent! Perfect score!":"Excellent! Perfect score!";}
+  else if(pct>=67){em="😊";msg=lang==="fr"?"Bon travail!":lang==="pidgin"?"E good so!":"Good job!";}
+  if(pct>=67&&done.indexOf(curL)<0){done.push(curL);localStorage.setItem("cad",JSON.stringify(done));drawSidebar();}
+  var ni=curL+1<LS.length?curL+1:null;var canN=ni!==null&&(LS[ni].free||premium);
+  var retry=lang==="fr"?"Reessayer":lang==="pidgin"?"Try Again":"Retry Quiz";
+  var nxtL=lang==="fr"?"Lecon Suivante ➤":lang==="pidgin"?"Next Lesson ➤":"Next Lesson ➤";
+  var certB=(pct>=67&&premium)?"<button class='cb' onclick='showCert(\""+esc(l.name[lang]||l.name.en)+"\")'>🏆 Get Certificate</button>":"";
+  var noC=(pct>=67&&!premium)?"<p style='font-size:11px;color:var(--g5);margin-top:8px'>"+(lang==="fr"?"Abonnez-vous pour obtenir votre certificat!":lang==="pidgin"?"Subscribe to get your certificate!":"Subscribe to unlock your certificate!")+"</p>":"";
+  sc2.innerHTML="<div class='sem'>"+em+"</div><div class='sn'>"+score+"/"+l.quiz.length+"</div><p>"+pct+"% — "+msg+"</p><div class='sa'>"+
+    "<button class='rb' onclick='goLesson("+curL+")'>"+retry+"</button>"+
+    (canN?"<button class='nb' onclick='goLesson("+ni+")'>"+nxtL+"</button>":"")+certB+"</div>"+noC;
+}
+
+function showCert(nm){
+  var cc=g("cert");cc.style.display="block";var today=new Date().toLocaleDateString("en-GB");
+  cc.innerHTML="<div style='border:2px solid var(--bd);border-radius:10px;padding:20px;text-align:center'>"+
+    "<div style='font-size:11px;color:var(--blue);letter-spacing:2px;font-weight:700;margin-bottom:8px'>CERTIFICATE OF COMPLETION</div>"+
+    "<div style='font-size:11px;color:var(--g5);margin-bottom:6px'>This is to certify that</div>"+
+    "<div style='font-size:18px;font-weight:700;color:var(--g9);margin:8px 0'>Mbiydzenyuy Wendy Bongsisi</div>"+
+    "<div style='font-size:11px;color:var(--g5);margin-bottom:6px'>has successfully completed the course</div>"+
+    "<div style='font-size:14px;color:var(--blue);font-weight:700;margin-bottom:16px'>"+nm+" — CyberAware Cameroon</div>"+
+    "<div style='display:flex;justify-content:space-between;font-size:10px;color:var(--g4);border-top:1px solid var(--g2);padding-top:10px'>"+
+    "<span>🛡️ CyberAware Cameroon</span><span>"+today+"</span><span>CIRT: 8202</span></div>"+
+    "<button onclick='window.print()' style='margin-top:14px;background:var(--blue);color:#fff;border:none;border-radius:7px;padding:8px 20px;font-size:12px;font-weight:600;cursor:pointer;font-family:Inter,sans-serif'>⬇ Download / Print Certificate</button>"+
+    "</div>";
+  cc.scrollIntoView({behavior:"smooth"});
+}
+
+function playVid(i){
+  var l=LS[i];
+  if(l.videoId&&l.videoId!==""){window.open("https://www.youtube.com/watch?v="+l.videoId,"_blank");}
+  else{alert("To add your video:\n1. Upload your lesson video to YouTube\n2. Copy the video ID from the YouTube URL\n   Example URL: youtube.com/watch?v=dQw4w9WgXcQ\n   Video ID: dQw4w9WgXcQ\n3. In index.html find LS["+i+"] and set videoId to your ID");}
+}
+
+function openModal(){g("modal").classList.add("open");}
+function closeModal(){g("modal").classList.remove("open");}
+
+async function activate(){
+  var v=g("acode").value.trim().toUpperCase();
+  if(!v){alert("Please enter an access code.");return;}
+  var btn=g("actbtn");btn.textContent="Checking...";btn.disabled=true;
+  try{
+    var res=await fetch("/validate-code",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({code:v})});
+    var d=await res.json();
+    if(d.valid){
+      premium=true;localStorage.setItem("cap","1");closeModal();
+      alert("✅ All 10 lessons are now unlocked! You can now earn certificates.");
+      drawSidebar();goLesson(curL);
+    } else {
+      alert("❌ Invalid code. Check your SMS or contact support.");
+    }
+  } catch(e){
+    alert("Could not verify code. Make sure the server is running.");
+  }
+  btn.textContent="Activate ✓";btn.disabled=false;
+}
+
+drawChat();drawSidebar();
 </script>
 </body>
 </html>
