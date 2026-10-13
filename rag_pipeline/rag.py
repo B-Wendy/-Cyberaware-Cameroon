@@ -1,6 +1,6 @@
 """
 rag.py
-Retrieval using offline TF-IDF embeddings + answer generation via Gemini API.
+Retrieval using offline TF-IDF embeddings + answer generation via Groq API (Llama 3.1).
 
 CLI test:
     py rag.py

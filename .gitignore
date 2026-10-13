@@ -1,0 +1,13 @@
+# Virtual environments (never upload these)
+venv/
+.venv/
+
+# Secrets
+.env
+
+# Python junk
+__pycache__/
+*.pyc
+
+# Stray empty file created by a mistyped command
+/cd

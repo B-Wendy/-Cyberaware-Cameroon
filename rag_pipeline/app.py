@@ -71,4 +71,4 @@ async def validate_code(req: CodeRequest):
 
 @app.get("/health")
 async def health():
-    return {"status": "ok", "service": "CyberAware Cameroon"}
+    return {"status": "ok", "service": "CyberAware Cameroon"}   
