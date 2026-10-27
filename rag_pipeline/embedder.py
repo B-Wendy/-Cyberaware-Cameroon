@@ -13,9 +13,45 @@ from pathlib import Path
 import numpy as np
 
 
+# Very common "glue" words.  They appear in almost every sentence, so they say
+# nothing about the TOPIC of a question, and keeping them lets an off-topic
+# question like "What is the capital of France?" look similar to our passages
+# just because both contain "what", "is", "the", "of".  Removing them (from the
+# passages AND from the questions) makes the similarity scores meaningful.
+STOPWORDS = set("""
+an the of to in on at for from by with about as is are was were be been being am do does did done
+have has had having me my mine we us our you your he she it its they them their this that these
+those there here and or but if so than then too very can could should would will shall may might
+must not no nor what which who whom whose when where why how also just only any some all each every
+more most other such own same into over under again further once up down out off while during
+before after between both few ever get got make made use used using one two
+le la les un une des de du au aux et ou mais donc ni car que qui quoi dont ce cet cette ces ça ca
+est sont suis es sommes êtes etre être été ont ai as avons avez avoir il elle on nous vous ils
+elles je tu te se mon ma mes ton ta tes son sa ses notre nos votre vos leur leurs en dans sur sous
+avec sans pour par plus moins très comment pourquoi quand quel quelle quels quelles ne pas faire
+fait peut peux puis dois doit
+na di dem dey wey don wan fit go
+""".split())
+
+
+def normalise(text: str) -> str:
+    """Tidy a piece of text before it is embedded: remove control characters,
+    lowercase it and collapse runs of spaces/new lines into single spaces."""
+    text = re.sub(r"[\x00-\x08\x0b-\x1f\x7f]", " ", text or "")
+    return re.sub(r"\s+", " ", text.lower()).strip()
+
+
 def tokenize(text: str) -> list:
-    """Lowercase and extract word tokens (handles EN, FR, Pidgin)."""
-    return re.findall(r"\b[a-zA-ZÀ-ÿ]{2,}\b", text.lower())
+    """Lowercase and extract word tokens (handles EN, FR, Pidgin).
+    Punctuation and numbers are dropped, single letters and stop-words are ignored."""
+    words = re.findall(r"\b[a-zA-ZÀ-ÿ]{2,}\b", normalise(text))
+    return [w for w in words if w not in STOPWORDS]
+
+
+def is_zero_vector(vec) -> bool:
+    """True when a vector has no signal at all, i.e. NONE of the words in the
+    question exist in the knowledge base vocabulary."""
+    return not any(vec)
 
 
 class TFIDFEmbedder:

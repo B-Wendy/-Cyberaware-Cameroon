@@ -1,0 +1,56 @@
+query,language,expected_topic,kind,source
+How do I know if a message is a phishing attempt?,en,phishing_online_scams,in_scope,faq_dataset.csv
+Comment savoir si un message est une tentative de phishing ?,fr,phishing_online_scams,in_scope,faq_dataset.csv
+I received an SMS saying I won money from MTN/Orange but I need to pay a fee first. Is this real?,en,phishing_online_scams,in_scope,faq_dataset.csv
+J'ai reçu un SMS disant que j'ai gagné de l'argent avec MTN/Orange mais je dois payer des frais. Est-ce vrai ?,fr,phishing_online_scams,in_scope,faq_dataset.csv
+Someone sent me money by Mobile Money 'by mistake' and asked me to refund it. What should I do?,en,mobile_money_fraud,in_scope,faq_dataset.csv
+Quelqu'un m'a envoyé de l'argent par Mobile Money « par erreur » et me demande de le rembourser. Que faire ?,fr,mobile_money_fraud,in_scope,faq_dataset.csv
+Is it safe to give my Mobile Money PIN to an agent in a shop?,en,mobile_money_fraud,in_scope,faq_dataset.csv
+Est-il sûr de donner mon code PIN Mobile Money à un agent en boutique ?,fr,mobile_money_fraud,in_scope,faq_dataset.csv
+What makes a password strong?,en,passwords,in_scope,faq_dataset.csv
+Qu'est-ce qui rend un mot de passe robuste ?,fr,passwords,in_scope,faq_dataset.csv
+Should I write my passwords down or use the same one everywhere?,en,passwords,in_scope,faq_dataset.csv
+Dois-je noter mes mots de passe ou utiliser le même partout ?,fr,passwords,in_scope,faq_dataset.csv
+What is two-factor authentication and why should I use it?,en,two_factor_authentication,in_scope,faq_dataset.csv
+Qu'est-ce que l'authentification à deux facteurs et pourquoi l'utiliser ?,fr,two_factor_authentication,in_scope,faq_dataset.csv
+A friend on WhatsApp asked me to forward a code sent to my phone 'by mistake.' Should I?,en,two_factor_authentication,in_scope,faq_dataset.csv
+Un ami sur WhatsApp m'a demandé de transférer un code reçu « par erreur ». Dois-je le faire ?,fr,two_factor_authentication,in_scope,faq_dataset.csv
+Is it safe to post that I'm going on vacation?,en,social_media_privacy,in_scope,faq_dataset.csv
+Est-il prudent de publier que je pars en vacances ?,fr,social_media_privacy,in_scope,faq_dataset.csv
+How can I check what strangers can see on my Facebook profile?,en,social_media_privacy,in_scope,faq_dataset.csv
+Comment vérifier ce que des inconnus peuvent voir sur mon profil Facebook ?,fr,social_media_privacy,in_scope,faq_dataset.csv
+Is it safe to install apps from outside the Play Store?,en,malware_antivirus,in_scope,faq_dataset.csv
+Est-il prudent d'installer des applications hors du Play Store ?,fr,malware_antivirus,in_scope,faq_dataset.csv
+I found a USB drive — is it safe to plug it in?,en,malware_antivirus,in_scope,faq_dataset.csv
+J'ai trouvé une clé USB — puis-je la brancher sans risque ?,fr,malware_antivirus,in_scope,faq_dataset.csv
+What is ransomware and how can I protect myself?,en,ransomware_backup,in_scope,faq_dataset.csv
+Qu'est-ce qu'un ransomware et comment se protéger ?,fr,ransomware_backup,in_scope,faq_dataset.csv
+My Facebook account was hacked. What should I do first?,en,reporting_incidents,in_scope,faq_dataset.csv
+Mon compte Facebook a été piraté. Que faire en premier ?,fr,reporting_incidents,in_scope,faq_dataset.csv
+How do I contact ANTIC or CIRT to report a cybercrime?,en,reporting_incidents,in_scope,faq_dataset.csv
+Comment contacter l'ANTIC ou le CIRT pour signaler une cybercriminalité ?,fr,reporting_incidents,in_scope,faq_dataset.csv
+How I go know say SMS na scam?,pidgin,phishing_online_scams,in_scope,authored - REVIEW the Pidgin
+Wetin make password strong?,pidgin,passwords,in_scope,authored - REVIEW the Pidgin
+Dem hack my Facebook wetin I go do?,pidgin,reporting_incidents,in_scope,authored - REVIEW the Pidgin
+How I go report cybercrime?,pidgin,reporting_incidents,in_scope,authored - REVIEW the Pidgin
+"Person send me message say I win money for MTN, na true?",pidgin,phishing_online_scams,in_scope,authored - REVIEW the Pidgin
+How I go protect my Mobile Money?,pidgin,mobile_money_fraud,in_scope,authored - REVIEW the Pidgin
+Wetin be ransomware?,pidgin,ransomware_backup,in_scope,authored - REVIEW the Pidgin
+How I go put two factor for my account?,pidgin,two_factor_authentication,in_scope,authored - REVIEW the Pidgin
+"Dem don lock my files and dem want money, wetin I go do?",pidgin,ransomware_backup,in_scope,authored - REVIEW the Pidgin
+Which antivirus I fit use for my phone?,pidgin,malware_antivirus,in_scope,authored - REVIEW the Pidgin
+What is the capital of France?,en,,out_of_scope,authored
+recipe for jollof rice,en,,out_of_scope,authored
+Who won the football match yesterday?,en,,out_of_scope,authored
+tell me a joke,en,,out_of_scope,authored
+What is the weather in Douala today?,en,,out_of_scope,authored
+How do I fix my car engine?,en,,out_of_scope,authored
+Explain quantum physics,en,,out_of_scope,authored
+Quelle est la capitale de la France ?,fr,,out_of_scope,authored
+Comment faire un gâteau au chocolat ?,fr,,out_of_scope,authored
+Wetin be di price of fish for market?,pidgin,,out_of_scope,authored
+Who is the president of Brazil?,en,,out_of_scope,authored
+How do I learn to play guitar?,en,,out_of_scope,authored
+Best football team in Africa,en,,out_of_scope,authored
+Où acheter un téléphone pas cher ?,fr,,out_of_scope,authored
+What is the price of petrol in Yaounde?,en,,out_of_scope,authored

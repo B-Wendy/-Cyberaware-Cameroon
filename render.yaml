@@ -6,10 +6,20 @@ services:
     region: frankfurt
     rootDir: rag_pipeline
     buildCommand: pip install -r requirements.txt && python ingest.py
-    startCommand: uvicorn app:app --host 0.0.0.0 --port $PORT
-    healthCheckPath: /health
+    startCommand: uvicorn app:app --host 0.0.0.0 --port $PORT --no-proxy-headers
+    healthCheckPath: /api/health
     envVars:
       - key: PYTHON_VERSION
         value: 3.12.10
+      - key: PROXY_HOPS
+        value: "1"
       - key: GROQ_API_KEY
         sync: false
+      - key: ACCESS_CODES
+        sync: false
+      - key: ADMIN_ACCESS_CODE
+        sync: false
+      - key: PAYMENT_NUMBER
+        sync: false
+      - key: TOKEN_SECRET
+        generateValue: true

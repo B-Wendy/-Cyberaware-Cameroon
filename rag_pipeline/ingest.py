@@ -1,30 +1,30 @@
 """
 ingest.py
-Parses the bilingual markdown knowledge base into chunks and stores them
+Parses the markdown knowledge base (EN + FR, and optional PCM = Pidgin sections)
+into chunks and stores them
 in ChromaDB using offline TF-IDF embeddings (no internet / no API needed).
 
 Run once, and again whenever you edit knowledge_base files:
-    py ingest.py
+    python ingest.py
+
+It REBUILDS the index from scratch each time (it deletes the old collection
+first), so old, stale vectors can never be left behind.
 """
 
-import os
 import re
-from pathlib import Path
 
-import chromadb
-from dotenv import load_dotenv
-from embedder import TFIDFEmbedder
-
-load_dotenv()
-
-BASE_DIR        = Path(__file__).parent
-KB_DIR          = BASE_DIR / "knowledge_base"
-CHROMA_DIR      = BASE_DIR / "chroma_db"
-EMBEDDER_PATH   = BASE_DIR / "tfidf_embedder.json"
-COLLECTION_NAME = "cyberkb"
+from config import KB_DIR, CHROMA_DIR, EMBEDDER_PATH, COLLECTION_NAME
+from embedder import TFIDFEmbedder, normalise
 
 SKIP_FILES = {"00_README.md", "sources.md", "faq_dataset.csv"}
 MAX_WORDS_PER_CHUNK = 180
+REQUIRED_FRONTMATTER = ("topic", "source", "last_updated")
+REQUIRED_LANGUAGES = ("EN", "FR")
+OPTIONAL_LANGUAGES = ("PCM",)      # Cameroonian Pidgin: used when a topic file has a "## PCM" section
+
+
+class CorpusError(Exception):
+    """Raised when a knowledge-base file is missing something it must have."""
 
 
 def parse_frontmatter(text: str):
@@ -42,7 +42,7 @@ def parse_frontmatter(text: str):
 
 def split_by_language(body: str):
     sections = {}
-    parts = re.split(r"^##\s+(EN|FR)\s*$", body, flags=re.MULTILINE)
+    parts = re.split(r"^##\s+(EN|FR|PCM)\s*$", body, flags=re.MULTILINE)
     it = iter(parts[1:])
     for lang, content in zip(it, it):
         sections[lang] = content.strip()
@@ -65,14 +65,28 @@ def chunk_text(text: str, max_words: int = MAX_WORDS_PER_CHUNK):
     return chunks
 
 
-def load_markdown_chunks():
+def validate_file(path_name: str, meta: dict, sections: dict):
+    """Stop with a clear message if a file is missing required information.
+    This is what keeps a half-finished file from silently entering the index."""
+    missing = [k for k in REQUIRED_FRONTMATTER if not meta.get(k)]
+    if missing:
+        raise CorpusError(f"{path_name}: missing frontmatter field(s): {', '.join(missing)}")
+    lacking = [l for l in REQUIRED_LANGUAGES if not sections.get(l)]
+    if lacking:
+        raise CorpusError(f"{path_name}: missing language section(s): {', '.join(lacking)} "
+                          f"(every topic needs both EN and FR)")
+
+
+def load_markdown_chunks(kb_dir=None):
+    kb_dir = kb_dir or KB_DIR
     records = []
-    for path in sorted(KB_DIR.glob("*.md")):
+    for path in sorted(kb_dir.glob("*.md")):
         if path.name in SKIP_FILES:
             continue
         raw = path.read_text(encoding="utf-8")
         meta, body = parse_frontmatter(raw)
         sections = split_by_language(body)
+        validate_file(path.name, meta, sections)
         for lang, content in sections.items():
             for i, chunk in enumerate(chunk_text(content)):
                 records.append({
@@ -80,12 +94,27 @@ def load_markdown_chunks():
                     "text": chunk,
                     "metadata": {
                         "source_file": path.name,
-                        "topic":       meta.get("topic", path.stem),
+                        "topic":       meta["topic"],
                         "language":    lang,
-                        "source_url":  meta.get("source", ""),
+                        "source_url":  meta["source"],
+                        "review_date": meta["last_updated"],
                     },
                 })
     return records
+
+
+def check_counterparts(records: list) -> list:
+    """Return warnings for topics whose EN and FR parts differ in size."""
+    counts = {}
+    for r in records:
+        key = (r["metadata"]["source_file"], r["metadata"]["language"])
+        counts[key] = counts.get(key, 0) + 1
+    warnings = []
+    for fname in sorted({k[0] for k in counts}):
+        en, fr = counts.get((fname, "EN"), 0), counts.get((fname, "FR"), 0)
+        if en != fr:
+            warnings.append(f"{fname}: {en} EN chunk(s) but {fr} FR chunk(s)")
+    return warnings
 
 
 def main():
@@ -99,23 +128,28 @@ def main():
     print(f"Parsed {len(records)} chunks from {KB_DIR}")
     for r in records[:3]:
         print(f"  {r['id']} | {r['metadata']['topic']} | {r['metadata']['language']}")
+    for w in check_counterparts(records):
+        print(f"  note: {w}")
 
     # Build and save TF-IDF embedder
     print("\nBuilding TF-IDF embeddings (offline, no internet needed)...")
     embedder = TFIDFEmbedder()
-    texts = [r["text"] for r in records]
+    texts = [normalise(r["text"]) for r in records]
     embedder.fit(texts)
     embeddings = embedder.embed_many(texts)
     embedder.save(str(EMBEDDER_PATH))
 
     # Store in ChromaDB with pre-computed embeddings
     print("\nSaving to ChromaDB...")
+    import chromadb   # imported here so the checks above can be tested without it
     client = chromadb.PersistentClient(path=str(CHROMA_DIR))
 
-    try:
-        client.delete_collection(COLLECTION_NAME)
-    except Exception:
-        pass
+    # Start clean: remove the current collection and the old pre-v2 one ("cyberkb")
+    for name in (COLLECTION_NAME, "cyberkb"):
+        try:
+            client.delete_collection(name)
+        except Exception:
+            pass
 
     # embedding_function=None because we supply our own embeddings
     collection = client.create_collection(
@@ -132,7 +166,7 @@ def main():
     )
 
     print(f"\nDone! Ingested {len(records)} chunks into ChromaDB at {CHROMA_DIR}")
-    print("Next: run `py rag.py` to test the chatbot.")
+    print("Next: start the app with `uvicorn app:app --reload`.")
 
 
 if __name__ == "__main__":

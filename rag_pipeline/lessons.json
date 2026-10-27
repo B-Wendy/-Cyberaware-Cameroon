@@ -1,0 +1,2233 @@
+[
+ {
+  "id": 0,
+  "free": true,
+  "icon": "🎣",
+  "videoId": "Pfc2IllE830",
+  "name": {
+   "en": "Phishing",
+   "fr": "Hameconnage",
+   "pidgin": "Phishing"
+  },
+  "sc": {
+   "type": "sms",
+   "sender": "MTN CM Official",
+   "msg": {
+    "en": "Dear Customer, Your MTN account has been SUSPENDED due to suspicious activity. Click http://mtn-verify-cm.xyz/unlock to restore access within 24hrs or your account will be permanently closed. MTN Security Team",
+    "fr": "Cher Client, Votre compte MTN a ete SUSPENDU. Cliquez http://mtn-verify-cm.xyz/unlock pour restaurer acces dans 24h ou votre compte sera ferme. Equipe MTN",
+    "pidgin": "Dear Customer, Your MTN account don get SUSPENDED. Click http://mtn-verify-cm.xyz/unlock to restore am within 24hrs or dem go close your account. MTN Security"
+   },
+   "flags": [
+    "mtn-verify-cm.xyz",
+    "SUSPENDED",
+    "24hrs",
+    "permanently closed"
+   ],
+   "q": {
+    "en": "Is this SMS genuine from MTN or a SCAM?",
+    "fr": "Ce SMS est-il reel de MTN ou une ARNAQUE?",
+    "pidgin": "This SMS na real MTN message or na SCAM?"
+   },
+   "opts": {
+    "en": [
+     "This is REAL from MTN",
+     "This is a SCAM"
+    ],
+    "fr": [
+     "C est REEL de MTN",
+     "C est une ARNAQUE"
+    ],
+    "pidgin": [
+     "This na real MTN",
+     "This na SCAM"
+    ]
+   },
+   "cor": 1,
+   "exp": {
+    "en": "SCAM! Red flags: 1) MTN real domain is mtn.cm NOT mtn-verify-cm.xyz 2) MTN never sends suspension threats by SMS 3) Urgency (24hrs) is a manipulation tactic. Call MTN 1200 to verify anything suspicious.",
+    "fr": "ARNAQUE! Signaux: 1) Le vrai domaine MTN est mtn.cm PAS mtn-verify-cm.xyz 2) MTN n envoie jamais de menaces par SMS 3) L urgence est une tactique de manipulation.",
+    "pidgin": "SCAM! Red flags: 1) MTN real domain na mtn.cm NOT mtn-verify-cm.xyz 2) MTN no dey send suspension threat for SMS 3) Urgency na manipulation trick. Call MTN 1200 verify anything suspicious."
+   }
+  },
+  "quiz": [
+   {
+    "q": {
+     "en": "You get an SMS: Your MTN account will be blocked. Click mtn-secure.xyz to verify. What do you do?",
+     "fr": "Votre compte MTN sera bloque. Cliquez mtn-secure.xyz. Que faites-vous?",
+     "pidgin": "SMS say MTN go block your account. Click mtn-secure.xyz. Wetin you go do?"
+    },
+    "opts": {
+     "en": [
+      "Call MTN 1200 to verify",
+      "Click the link immediately",
+      "Send your PIN to unblock",
+      "Forward to friends"
+     ],
+     "fr": [
+      "Appeler le 1200",
+      "Cliquer le lien",
+      "Envoyer votre PIN",
+      "Transferer"
+     ],
+     "pidgin": [
+      "Call MTN 1200",
+      "Click the link quick",
+      "Send your PIN",
+      "Carry give friends"
+     ]
+    },
+    "cor": 0,
+    "exp": {
+     "en": "CORRECT! Always call MTN 1200 or Orange 100 to verify. Never click links in suspicious SMS.",
+     "fr": "Verifiez en appelant le 1200 ou 100. Ne cliquez jamais sur des liens suspects.",
+     "pidgin": "Always call MTN 1200 or Orange 100 first. No click link for suspicious SMS."
+    }
+   },
+   {
+    "q": {
+     "en": "Which website link is FAKE?",
+     "fr": "Quel lien est FAUX?",
+     "pidgin": "Which link na fake?"
+    },
+    "opts": {
+     "en": [
+      "https://mtn.cm/account",
+      "https://mtn-secure-verify.xyz",
+      "https://orange.cm/login",
+      "https://cirt.cm"
+     ],
+     "fr": [
+      "https://mtn.cm/account",
+      "https://mtn-secure-verify.xyz",
+      "https://orange.cm/login",
+      "https://cirt.cm"
+     ],
+     "pidgin": [
+      "https://mtn.cm/account",
+      "https://mtn-secure-verify.xyz",
+      "https://orange.cm/login",
+      "https://cirt.cm"
+     ]
+    },
+    "cor": 1,
+    "exp": {
+     "en": "CORRECT! mtn-secure-verify.xyz is NOT the real MTN domain. The real one is mtn.cm. Scammers copy names to fool you.",
+     "fr": "mtn-secure-verify.xyz n est PAS le domaine officiel MTN. Le vrai est mtn.cm.",
+     "pidgin": "mtn-secure-verify.xyz na fake domain. The real MTN website na mtn.cm."
+    }
+   },
+   {
+    "q": {
+     "en": "A QR code in a shop says Scan to win 50000 FCFA! What do you do?",
+     "fr": "Un QR code dit Scannez pour gagner 50000 FCFA! Que faites-vous?",
+     "pidgin": "QR code say Scan win 50000 FCFA! Wetin you go do?"
+    },
+    "opts": {
+     "en": [
+      "Scan immediately",
+      "Ignore it, unsolicited prizes are scams",
+      "Scan if a friend won",
+      "Share on WhatsApp"
+     ],
+     "fr": [
+      "Scanner",
+      "Ignorer, c est une arnaque",
+      "Scanner si un ami a gagne",
+      "Partager"
+     ],
+     "pidgin": [
+      "Scan am quick",
+      "Leave am, na scam",
+      "Scan if your friend win",
+      "Share WhatsApp"
+     ]
+    },
+    "cor": 1,
+    "exp": {
+     "en": "CORRECT! Unsolicited prize QR codes are almost always scams. Scanning could install malware on your phone.",
+     "fr": "Les QR codes de prix non sollicites sont des arnaques. Scanner pourrait installer un malware.",
+     "pidgin": "Free prize QR code na scam. Bad QR code fit install malware for your phone."
+    }
+   },
+   {
+    "q": {
+     "en": "What is a sign that an email link is dangerous?",
+     "fr": "Quel est un signe qu un lien dans un email est dangereux?",
+     "pidgin": "Wetin be sign say email link na dangerous?"
+    },
+    "opts": {
+     "en": [
+      "The email has your correct name",
+      "The link domain is different from the official company website",
+      "The email was sent in the morning",
+      "The email has a company logo"
+     ],
+     "fr": [
+      "L email a votre nom",
+      "Le domaine du lien est different du site officiel",
+      "L email a ete envoye le matin",
+      "L email a un logo"
+     ],
+     "pidgin": [
+      "Email get your correct name",
+      "The link domain different from official company website",
+      "Email dey send for morning",
+      "Email get company logo"
+     ]
+    },
+    "cor": 1,
+    "exp": {
+     "en": "CORRECT! Always check the domain in a link. If it differs from the official website even by one letter it is fake. Logos and names can be copied by anyone.",
+     "fr": "Verifiez toujours le domaine d un lien. S il differe du site officiel c est faux. Les logos peuvent etre copies.",
+     "pidgin": "Always check the domain for link. If e different from official website even by one letter e na fake. Logo na name fit be copy."
+    }
+   },
+   {
+    "q": {
+     "en": "If you accidentally clicked a suspicious link, what should you do FIRST?",
+     "fr": "Si vous avez clique accidentellement sur un lien suspect, que faire EN PREMIER?",
+     "pidgin": "If you don click suspicious link by mistake, wetin you go do FIRST?"
+    },
+    "opts": {
+     "en": [
+      "Do nothing, it was probably harmless",
+      "Delete the SMS and forget about it",
+      "Call your friends to warn them",
+      "Immediately close the browser, disconnect WiFi, run an antivirus scan, and report to CIRT 8202"
+     ],
+     "fr": [
+      "Ne rien faire",
+      "Supprimer le SMS",
+      "Appeler vos amis",
+      "Fermer le navigateur, deconnecter le WiFi, lancer un antivirus et signaler au CIRT 8202"
+     ],
+     "pidgin": [
+      "Do nothing e probably no harm",
+      "Delete the SMS forget am",
+      "Call your friends warn dem",
+      "Close browser immediately, disconnect WiFi, run antivirus scan, and report to CIRT 8202"
+     ]
+    },
+    "cor": 3,
+    "exp": {
+     "en": "CORRECT! Act fast. Close the browser, disconnect internet, run a full antivirus scan, and report to CIRT-Cameroun at 8202 or alerts@cirt.antic.cm.",
+     "fr": "Agissez vite. Fermez le navigateur, deconnectez internet, lancez un antivirus et signalez au CIRT 8202.",
+     "pidgin": "Move fast. Close browser, disconnect internet, run antivirus scan, and report to CIRT 8202."
+    }
+   }
+  ]
+ },
+ {
+  "id": 1,
+  "free": true,
+  "icon": "🧠",
+  "videoId": "iHbHn1dSFVY",
+  "name": {
+   "en": "Social Engineering",
+   "fr": "Ingenierie Sociale",
+   "pidgin": "Mind Manipulation"
+  },
+  "sc": {
+   "type": "call",
+   "sender": "Unknown +237 6XX XXX XXX",
+   "msg": {
+    "en": "CALLER (crying): Hello? Is this the parent of (your child name)? I am calling from General Hospital Yaounde. Your child was brought in 20 minutes ago after an accident at school. The doctors need 75,000 FCFA URGENTLY for emergency surgery RIGHT NOW or they cannot proceed. Please send the money immediately! There is NO TIME!",
+    "fr": "APPELANT (pleurant): Allo? Je suis de l Hopital General de Yaounde. Votre enfant a ete amene il y a 20 minutes suite a un accident. Les medecins ont besoin de 75000 FCFA IMMEDIATEMENT pour l operation d urgence. Envoyez l argent maintenant! Il n y a PAS DE TEMPS!",
+    "pidgin": "CALLER (dey cry): Hello? Na you be (your pikin name) parent? I dey call from General Hospital Yaounde. Your pikin dem don bring am here 20 minutes ago after accident for school. Doctor need 75000 FCFA IMMEDIATELY for emergency surgery RIGHT NOW or dem no fit do am. Send money quick! NO TIME!"
+   },
+   "flags": [
+    "20 minutes ago",
+    "URGENTLY",
+    "RIGHT NOW",
+    "immediately",
+    "NO TIME",
+    "crying"
+   ],
+   "q": {
+    "en": "This call creates extreme urgency and fear. What should you do FIRST?",
+    "fr": "Cet appel cree une urgence extreme. Que devez-vous faire EN PREMIER?",
+    "pidgin": "This call dey create extreme urgency na fear. Wetin you go do FIRST?"
+   },
+   "opts": {
+    "en": [
+     "Send money immediately, the child could die",
+     "Stay calm, hang up, call your child directly on their own number",
+     "Ask the caller for the hospital account number",
+     "Ask a neighbour to send the money for you"
+    ],
+    "fr": [
+     "Envoyer l argent immediatement",
+     "Rester calme, raccrocher, appeler votre enfant directement",
+     "Demander le numero de compte",
+     "Demander a un voisin"
+    ],
+    "pidgin": [
+     "Send money quick quick, pikin fit die",
+     "Stay calm, cut call, call your pikin direct for their own number",
+     "Ask caller for hospital account number",
+     "Ask neighbour send the money"
+    ]
+   },
+   "cor": 1,
+   "exp": {
+    "en": "CORRECT! This is SOCIAL ENGINEERING using FEAR and URGENCY. ALWAYS hang up and call your child directly first. Real hospitals have official payment processes and give you time. No legitimate emergency requires random Mobile Money transfers to strangers.",
+    "fr": "C est de l INGENIERIE SOCIALE utilisant la PEUR et l URGENCE. Raccrochez toujours et appelez votre enfant directement. Les vrais hopitaux ont des processus officiels.",
+    "pidgin": "Na SOCIAL ENGINEERING dis one. ALWAYS cut call and call your pikin direct. Real hospital get official payment process and dem go give you time. No real emergency require random Mobile Money transfer to stranger."
+   }
+  },
+  "quiz": [
+   {
+    "q": {
+     "en": "Someone calls crying: Your child is in hospital and needs money NOW! Your FIRST step?",
+     "fr": "Quelqu un appelle: Votre enfant est a l hopital, il a besoin d argent MAINTENANT! Votre PREMIERE reaction?",
+     "pidgin": "Person dey cry say your pikin dey hospital, e need money NOW! Wetin you go do FIRST?"
+    },
+    "opts": {
+     "en": [
+      "Stay calm, hang up, call your child directly",
+      "Send money immediately",
+      "Ask the caller for bank details",
+      "Ask a neighbour to send money"
+     ],
+     "fr": [
+      "Rester calme, raccrocher, appeler votre enfant",
+      "Envoyer de l argent",
+      "Demander les coordonnees bancaires",
+      "Demander a un voisin"
+     ],
+     "pidgin": [
+      "Calm down, cut call, call your pikin direct",
+      "Send money quick",
+      "Ask caller for account number",
+      "Ask neighbour send money"
+     ]
+    },
+    "cor": 0,
+    "exp": {
+     "en": "CORRECT! STAY CALM. Social engineers create urgency to stop clear thinking. Always call the person directly first.",
+     "fr": "RESTEZ CALME. Les attaquants creent l urgence. Verifiez toujours en appelant directement.",
+     "pidgin": "CALM DOWN! Bad people create urgency so you no go think. Always call your pikin direct first."
+    }
+   },
+   {
+    "q": {
+     "en": "An email says: Your account will be DELETED in 2 hours if you do not update NOW! This is:",
+     "fr": "Un email dit: Votre compte sera SUPPRIME dans 2 heures! C est:",
+     "pidgin": "Email say: Dem go DELETE your account in 2 hours! Wetin be dis?"
+    },
+    "opts": {
+     "en": [
+      "A real security warning",
+      "Normal account maintenance",
+      "A social engineering attack using urgency and fear",
+      "A message from CIRT-Cameroun"
+     ],
+     "fr": [
+      "Un vrai avertissement",
+      "Maintenance normale",
+      "Une attaque utilisant l urgence et la peur",
+      "Un message du CIRT"
+     ],
+     "pidgin": [
+      "Real security warning",
+      "Normal account update",
+      "Social engineering attack using urgency na fear",
+      "Message from CIRT"
+     ]
+    },
+    "cor": 2,
+    "exp": {
+     "en": "CORRECT! Artificial urgency combined with fear is a classic social engineering trigger. Real companies never threaten immediate deletion.",
+     "fr": "L urgence artificielle avec la peur est un declencheur classique. Les vraies entreprises ne menacent jamais.",
+     "pidgin": "Urgency plus fear na classic social engineering trick. Real companies no dey threaten you like dat."
+    }
+   },
+   {
+    "q": {
+     "en": "Which of these is a social engineering technique?",
+     "fr": "Laquelle est une technique d ingenierie sociale?",
+     "pidgin": "Which one na social engineering trick?"
+    },
+    "opts": {
+     "en": [
+      "Pretending to be your bank manager to get your account number",
+      "Sending a virus by email",
+      "Breaking into a building",
+      "Stealing your phone"
+     ],
+     "fr": [
+      "Se faire passer pour votre directeur de banque",
+      "Envoyer un virus",
+      "Penetrer dans un batiment",
+      "Voler votre telephone"
+     ],
+     "pidgin": [
+      "Pretend to be your bank manager to get account number",
+      "Send virus for email",
+      "Break into building",
+      "Steal your phone"
+     ]
+    },
+    "cor": 0,
+    "exp": {
+     "en": "CORRECT! Social engineering is psychological manipulation. Impersonation and pressure steal your information without any technical tools.",
+     "fr": "L ingenierie sociale est une manipulation psychologique basee sur l usurpation d identite et la pression.",
+     "pidgin": "Social engineering na mind trick. Dem use fake identity na pressure to collect your information."
+    }
+   },
+   {
+    "q": {
+     "en": "A stranger WhatsApps you: I am your old classmate stranded in Douala, need 50000 FCFA urgently. You:",
+     "fr": "Un inconnu vous WhatsApp: Je suis votre ancien camarade bloque a Douala, besoin de 50000 FCFA. Vous:",
+     "pidgin": "Stranger WhatsApp you: I be your old classmate stuck for Douala, need 50000 FCFA urgently. You:"
+    },
+    "opts": {
+     "en": [
+      "Send money, they might really be a classmate",
+      "Ask them to send a photo first",
+      "Call them on voice to verify their identity BEFORE sending anything",
+      "Send 10000 FCFA to help a little"
+     ],
+     "fr": [
+      "Envoyer l argent",
+      "Leur demander une photo",
+      "Les appeler pour verifier leur identite AVANT d envoyer",
+      "Envoyer 10000 FCFA"
+     ],
+     "pidgin": [
+      "Send money, dem fit really be your classmate",
+      "Ask dem send photo first",
+      "Call dem for voice to verify their identity BEFORE you send anything",
+      "Send 10000 FCFA to help small"
+     ]
+    },
+    "cor": 2,
+    "exp": {
+     "en": "CORRECT! ALWAYS verify by calling before sending any money. Anyone can claim to know you on WhatsApp. A voice call quickly reveals if they are genuine.",
+     "fr": "Verifiez TOUJOURS en appelant avant d envoyer de l argent. N importe qui peut pretendre vous connaitre.",
+     "pidgin": "ALWAYS call to verify before you send money. Anybody fit claim say dem know you for WhatsApp. Voice call go quickly show if dem na real."
+    }
+   },
+   {
+    "q": {
+     "en": "Which psychological triggers do social engineers most commonly exploit?",
+     "fr": "Quels declencheurs psychologiques les ingenieurs sociaux exploitent-ils le plus?",
+     "pidgin": "Which psychological triggers social engineers dey exploit most?"
+    },
+    "opts": {
+     "en": [
+      "Happiness and celebration",
+      "Pride and competition",
+      "Boredom and curiosity",
+      "Fear, urgency, and authority"
+     ],
+     "fr": [
+      "Bonheur et celebration",
+      "Fierte et competition",
+      "Ennui et curiosite",
+      "Peur, urgence et autorite"
+     ],
+     "pidgin": [
+      "Happiness na celebration",
+      "Pride na competition",
+      "Boredom na curiosity",
+      "Fear, urgency, na authority"
+     ]
+    },
+    "cor": 3,
+    "exp": {
+     "en": "CORRECT! Fear, urgency, and authority are the three most powerful social engineering triggers. When someone makes you feel afraid or pressed for time, PAUSE and verify before acting.",
+     "fr": "La peur, l urgence et l autorite sont les trois principaux declencheurs. Quand quelqu un vous fait peur ou vous presse, FAITES UNE PAUSE et verifiez.",
+     "pidgin": "Fear, urgency, na authority na the three most powerful social engineering triggers. When person make you fear or dey rush you, PAUSE and verify before you act."
+    }
+   }
+  ]
+ },
+ {
+  "id": 2,
+  "free": false,
+  "icon": "🎭",
+  "videoId": "",
+  "name": {
+   "en": "Spoofing",
+   "fr": "Usurpation",
+   "pidgin": "Fake Identity"
+  },
+  "sc": {
+   "type": "whatsapp",
+   "sender": "Orange Money Official",
+   "msg": {
+    "en": "Hello valued customer. We have detected unusual activity on your Orange Money account. To avoid suspension, please reply with your 5-digit PIN and the last 4 digits of your phone number to our security team immediately. This is URGENT. Orange Money Security",
+    "fr": "Cher client, Nous avons detecte une activite inhabituelle sur votre compte Orange Money. Pour eviter la suspension, veuillez repondre avec votre PIN et les 4 derniers chiffres de votre numero. URGENT. Securite Orange Money",
+    "pidgin": "Hello valued customer. We don detect unusual activity for your Orange Money account. To avoid suspension, please reply with your 5-digit PIN and last 4 digits of your phone number immediately. This na URGENT. Orange Money Security"
+   },
+   "flags": [
+    "unusual activity",
+    "suspension",
+    "reply with your PIN",
+    "5-digit PIN",
+    "last 4 digits",
+    "URGENT"
+   ],
+   "q": {
+    "en": "This WhatsApp claims to be Orange Money security. What is it REALLY?",
+    "fr": "Ce WhatsApp pretend etre la securite Orange Money. Qu est-ce que c est VRAIMENT?",
+    "pidgin": "This WhatsApp claim say na Orange Money security. Wetin e REALLY be?"
+   },
+   "opts": {
+    "en": [
+     "Spoofing - a fake message designed to steal your PIN",
+     "A genuine security check from Orange Money"
+    ],
+    "fr": [
+     "Usurpation - un faux message pour voler votre PIN",
+     "Un veritable controle de securite"
+    ],
+    "pidgin": [
+     "Spoofing - fake message wey want steal your PIN",
+     "Real security check from Orange Money"
+    ]
+   },
+   "cor": 0,
+   "exp": {
+    "en": "CORRECT! This is SPOOFING! No legitimate organisation will EVER ask for your PIN by WhatsApp. Orange Money will NEVER ask you to send your PIN in a message. Report immediately to CIRT at 8202.",
+    "fr": "C est de l USURPATION! Aucune organisation legitime ne demandera jamais votre PIN par WhatsApp. Signalez au CIRT 8202.",
+    "pidgin": "Na SPOOFING! No real organisation go ever ask your PIN for WhatsApp message. Report am to CIRT 8202 immediately."
+   }
+  },
+  "quiz": [
+   {
+    "q": {
+     "en": "Orange Money Official on WhatsApp asks for your PIN. What do you do?",
+     "fr": "Orange Money Officiel sur WhatsApp demande votre PIN. Que faites-vous?",
+     "pidgin": "Orange Money Official WhatsApp ask for your PIN. Wetin you go do?"
+    },
+    "opts": {
+     "en": [
+      "Give your PIN, it looks official",
+      "Block them after sending",
+      "Send just the first 2 digits",
+      "Never share your PIN, report to CIRT 8202"
+     ],
+     "fr": [
+      "Donner votre PIN",
+      "Bloquer apres",
+      "Envoyer les 2 premiers chiffres",
+      "Ne jamais partager, signaler au CIRT 8202"
+     ],
+     "pidgin": [
+      "Give dem PIN, e look official",
+      "Block dem after you send",
+      "Send first 2 number only",
+      "Never share PIN, call CIRT 8202"
+     ]
+    },
+    "cor": 3,
+    "exp": {
+     "en": "CORRECT! No real organisation will EVER ask for your PIN by message. Call 8202 to report.",
+     "fr": "Aucune organisation legitime ne demandera jamais votre PIN. Appelez le 8202.",
+     "pidgin": "No real organisation go ever ask your PIN. Call 8202 to report am."
+    }
+   },
+   {
+    "q": {
+     "en": "Caller ID shows ANTICAM-Official. They ask you to install software for security. This is:",
+     "fr": "Identifiant appelant ANTICAM-Officiel. On vous demande d installer un logiciel. C est:",
+     "pidgin": "Caller ID show ANTICAM-Official. Dem ask you install software. Wetin be dis?"
+    },
+    "opts": {
+     "en": [
+      "Caller ID spoofing, IDs can be faked",
+      "A legitimate security check",
+      "A routine software update",
+      "An ANTIC awareness campaign"
+     ],
+     "fr": [
+      "Usurpation, les IDs peuvent etre falsifies",
+      "Un controle legitime",
+      "Une mise a jour",
+      "Campagne de l ANTIC"
+     ],
+     "pidgin": [
+      "Caller ID spoofing, dem fit fake caller ID",
+      "Real security check",
+      "Normal software update",
+      "ANTIC awareness campaign"
+     ]
+    },
+    "cor": 0,
+    "exp": {
+     "en": "CORRECT! Caller IDs can be easily faked. ANTIC will never call you to install software. Hang up and call CIRT at 8202.",
+     "fr": "Les IDs appelant peuvent etre falsifies. L ANTIC ne vous appellera jamais pour installer un logiciel.",
+     "pidgin": "Caller ID fit be fake. ANTIC no go call you to install software. Cut call and call 8202."
+    }
+   },
+   {
+    "q": {
+     "en": "An email from support@banque-secure-cm.net claims to be Afriland Bank. This email is:",
+     "fr": "Un email de support@banque-secure-cm.net pretend etre Afriland Bank. C est:",
+     "pidgin": "Email from support@banque-secure-cm.net claim say na Afriland Bank. This email na:"
+    },
+    "opts": {
+     "en": [
+      "Spoofing, that is not Afriland official domain",
+      "Legitimate, it mentions your bank",
+      "Spam but harmless",
+      "From a bank partner"
+     ],
+     "fr": [
+      "Usurpation, ce n est pas le domaine officiel",
+      "Legitime",
+      "Spam inoffensif",
+      "D un partenaire"
+     ],
+     "pidgin": [
+      "Spoofing, e no be Afriland real domain",
+      "Real, e mention your bank",
+      "Spam but no harm",
+      "From bank partner"
+     ]
+    },
+    "cor": 0,
+    "exp": {
+     "en": "CORRECT! Afriland real email domain is not banque-secure-cm.net. Always check the EXACT domain before trusting any email.",
+     "fr": "Le vrai domaine d Afriland n est pas banque-secure-cm.net. Verifiez toujours le domaine EXACT.",
+     "pidgin": "Afriland real domain no be banque-secure-cm.net. Always check exact domain. If you no sure, call your bank."
+    }
+   },
+   {
+    "q": {
+     "en": "You receive an SMS appearing to come from 8202 (CIRT-Cameroun) asking for personal details. This is:",
+     "fr": "Vous recevez un SMS semblant provenir du 8202 (CIRT) demandant vos donnees. C est:",
+     "pidgin": "You receive SMS wey appear come from 8202 (CIRT) asking you send personal details. This na:"
+    },
+    "opts": {
+     "en": [
+      "A real message from CIRT-Cameroun",
+      "SMS spoofing, sender numbers can be faked",
+      "A routine security check",
+      "A verification you must comply with"
+     ],
+     "fr": [
+      "Un vrai message du CIRT",
+      "Usurpation SMS, le numero peut etre falsifie",
+      "Un controle de routine",
+      "Une verification a laquelle repondre"
+     ],
+     "pidgin": [
+      "Real message from CIRT",
+      "SMS spoofing, sender number fit be fake",
+      "Routine security check",
+      "Verification wey you must comply with"
+     ]
+    },
+    "cor": 1,
+    "exp": {
+     "en": "CORRECT! SMS sender numbers can be spoofed. CIRT-Cameroun will NEVER ask for personal details by SMS. Always call 8202 directly to verify any communication claiming to be from CIRT.",
+     "fr": "Les numeros d expediteur SMS peuvent etre usurpes. Le CIRT ne demandera JAMAIS de donnees personnelles par SMS.",
+     "pidgin": "SMS sender number fit be faked. CIRT-Cameroun go NEVER ask for personal details by SMS. Always call 8202 direct to verify."
+    }
+   },
+   {
+    "q": {
+     "en": "The best way to verify if a call is really from your bank is:",
+     "fr": "La meilleure facon de verifier si un appel est vraiment de votre banque:",
+     "pidgin": "The best way to verify if call na really from your bank na:"
+    },
+    "opts": {
+     "en": [
+      "Hang up and call your bank using the official number from their website or your card",
+      "Trust the caller if they know your account name",
+      "Ask the caller to prove they are from the bank",
+      "Give only your account number to verify"
+     ],
+     "fr": [
+      "Raccrocher et rappeler votre banque sur le numero officiel",
+      "Faire confiance si ils connaissent votre nom",
+      "Demander au caller de prouver",
+      "Donner juste votre numero de compte"
+     ],
+     "pidgin": [
+      "Hang up and call your bank using official number from their website or your card",
+      "Trust caller if dem know your account name",
+      "Ask caller to prove dem be from the bank",
+      "Give dem just your account number to verify"
+     ]
+    },
+    "cor": 0,
+    "exp": {
+     "en": "CORRECT! ALWAYS hang up and call the bank using the number on their official website or on the back of your bank card. Never use a number the caller gives you.",
+     "fr": "Raccrochez TOUJOURS et rappelez la banque sur le numero de son site officiel ou au dos de votre carte. N utilisez jamais un numero que l appelant vous donne.",
+     "pidgin": "ALWAYS hang up and call bank using number from official website or back of your bank card. Never use number wey the caller give you, e fit be fake."
+    }
+   }
+  ]
+ },
+ {
+  "id": 3,
+  "free": false,
+  "icon": "📱",
+  "videoId": "",
+  "name": {
+   "en": "Mobile Money Fraud",
+   "fr": "Fraude Mobile Money",
+   "pidgin": "Mobile Money Scam"
+  },
+  "sc": {
+   "type": "sms",
+   "sender": "+237 691 XX XX XX",
+   "msg": {
+    "en": "Hello! I accidentally transferred 25,000 FCFA to your number by mistake. I am so sorry! Please can you send it back to me on 691XXXXXX? I really need it urgently for my child medicine. God bless you.",
+    "fr": "Bonjour! J ai accidentellement transfere 25000 FCFA sur votre numero par erreur. Pouvez-vous me le renvoyer au 691XXXXXX? J en ai vraiment besoin pour les medicaments de mon enfant. Dieu vous benisse.",
+    "pidgin": "Hello! I don mistakenly transfer 25000 FCFA go your number by mistake. I sorry too much! Please fit you send am back to me for 691XXXXXX? I really need am urgently for my pikin medicine. God bless you."
+   },
+   "flags": [
+    "accidentally",
+    "by mistake",
+    "urgently",
+    "child medicine",
+    "God bless"
+   ],
+   "q": {
+    "en": "Someone claims they sent you 25,000 FCFA by mistake and begs you to refund. What do you do?",
+    "fr": "Quelqu un pretend avoir envoye 25000 FCFA par erreur et vous supplie de rembourser. Que faites-vous?",
+    "pidgin": "Person claim say dem send you 25000 FCFA by mistake and dey beg you to refund. Wetin you go do?"
+   },
+   "opts": {
+    "en": [
+     "Refund immediately, they seem desperate",
+     "Call your mobile operator first to verify if you actually received any transfer",
+     "Send half now and half after confirmation",
+     "Ignore the message completely"
+    ],
+    "fr": [
+     "Rembourser immediatement",
+     "Appeler votre operateur pour verifier si vous avez recu un transfert",
+     "Envoyer la moitie",
+     "Ignorer"
+    ],
+    "pidgin": [
+     "Refund immediately, dem seem desperate",
+     "Call your mobile operator first to verify if you really receive any transfer",
+     "Send half now and half after",
+     "Ignore the message completely"
+    ]
+   },
+   "cor": 1,
+   "exp": {
+    "en": "CORRECT! This is the MISTAKEN TRANSFER SCAM. What happens: 1) Scammer sends you money 2) You refund it 3) Scammer reverses original transfer 4) You lose YOUR money. ALWAYS call MTN 1200 or Orange 100 first to verify before refunding anything.",
+    "fr": "C est l ARNAQUE DU TRANSFERT ERRONE. Ce qui se passe: 1) L arnaqueur vous envoie de l argent 2) Vous remboursez 3) Il annule le transfert original 4) Vous perdez votre propre argent. Appelez TOUJOURS le 1200 ou 100 d abord.",
+    "pidgin": "Na MISTAKEN TRANSFER SCAM dis one. Wetin dey happen: 1) Scammer send you money 2) You refund am 3) Scammer reverse original transfer 4) You lose YOUR money. ALWAYS call MTN 1200 or Orange 100 first to verify before you refund anything."
+   }
+  },
+  "quiz": [
+   {
+    "q": {
+     "en": "Someone sends 5000 FCFA by mistake and asks you to refund immediately. What do you do?",
+     "fr": "Quelqu un envoie 5000 FCFA par erreur et demande un remboursement immediat. Que faites-vous?",
+     "pidgin": "Person send you 5000 FCFA by mistake and immediately ask you to refund. Wetin you go do?"
+    },
+    "opts": {
+     "en": [
+      "Refund immediately, it was a mistake",
+      "Contact your operator first to verify before refunding",
+      "Keep the money",
+      "Refund half now half later"
+     ],
+     "fr": [
+      "Rembourser immediatement",
+      "Contacter votre operateur pour verifier",
+      "Garder l argent",
+      "Rembourser la moitie"
+     ],
+     "pidgin": [
+      "Refund quick e be mistake",
+      "Contact your operator first to verify",
+      "Keep the money",
+      "Refund half now half later"
+     ]
+    },
+    "cor": 1,
+    "exp": {
+     "en": "CORRECT! This is the classic Mistaken Transfer Scam. The original transaction is reversed later. ALWAYS verify with your operator first.",
+     "fr": "C est l arnaque du transfert errone. La transaction est annulee. Verifiez TOUJOURS avec votre operateur.",
+     "pidgin": "Na Wrong Transfer Scam dis one. Dem go reverse the original transfer. ALWAYS verify with your operator first."
+    }
+   },
+   {
+    "q": {
+     "en": "An MTN agent calls and asks you to dial a USSD code to secure your account. This is:",
+     "fr": "Un agent MTN vous demande de composer un code USSD pour securiser votre compte. C est:",
+     "pidgin": "MTN agent call you ask you dial USSD code to secure your account. Na wetin be dis?"
+    },
+    "opts": {
+     "en": [
+      "A legitimate security update from MTN",
+      "A routine account upgrade",
+      "USSD fraud, they are stealing your account access",
+      "A free security service from MTN"
+     ],
+     "fr": [
+      "Une mise a jour legitime",
+      "Une mise a niveau",
+      "Fraude USSD, ils volent votre acces",
+      "Service gratuit MTN"
+     ],
+     "pidgin": [
+      "Real security update from MTN",
+      "Normal account upgrade",
+      "USSD fraud dem wan steal your access",
+      "Free MTN security service"
+     ]
+    },
+    "cor": 2,
+    "exp": {
+     "en": "CORRECT! Real MTN and Orange agents NEVER ask you to dial codes over the phone. Hang up and call MTN 1200 or Orange 100.",
+     "fr": "Les vrais agents ne vous demandent JAMAIS de composer des codes. Raccrochez et appelez le 1200 ou 100.",
+     "pidgin": "Real agent no go ever ask you dial code for phone. Cut call and call MTN 1200 or Orange 100."
+    }
+   },
+   {
+    "q": {
+     "en": "What is the SAFEST habit for your Mobile Money PIN?",
+     "fr": "Quelle est l habitude la plus sure pour votre PIN Mobile Money?",
+     "pidgin": "Wetin be the SAFEST habit for your Mobile Money PIN?"
+    },
+    "opts": {
+     "en": [
+      "Use your birth year as PIN",
+      "Share your PIN with your spouse for emergencies",
+      "NEVER share your PIN with ANYONE, change it regularly",
+      "Write your PIN somewhere safe at home"
+     ],
+     "fr": [
+      "Utiliser votre annee de naissance",
+      "Partager avec votre conjoint",
+      "Ne JAMAIS partager votre PIN",
+      "L ecrire quelque part"
+     ],
+     "pidgin": [
+      "Use your birth year",
+      "Share with your partner for emergency",
+      "NEVER share PIN with ANYBODY",
+      "Write am somewhere safe"
+     ]
+    },
+    "cor": 2,
+    "exp": {
+     "en": "CORRECT! NEVER share your Mobile Money PIN with anyone including family or agents. Change it regularly and immediately if compromised.",
+     "fr": "Ne JAMAIS partager votre PIN avec personne. Changez-le regulierement.",
+     "pidgin": "NEVER share your PIN with anybody even family. Change am regular. If dem get am change am fast fast."
+    }
+   },
+   {
+    "q": {
+     "en": "You receive an SMS saying you won 500,000 FCFA from MTN and must pay 5,000 FCFA to claim it. This is:",
+     "fr": "Vous recevez un SMS disant que vous avez gagne 500000 FCFA de MTN et devez payer 5000 FCFA de frais. C est:",
+     "pidgin": "You receive SMS say you win 500000 FCFA from MTN and you must pay 5000 FCFA processing fee. This na:"
+    },
+    "opts": {
+     "en": [
+      "A classic advance fee scam, MTN never requests fees to release prizes",
+      "A real MTN prize you should claim",
+      "A promotion you won by chance",
+      "A message you should forward to claim the prize"
+     ],
+     "fr": [
+      "Une arnaque classique, MTN ne demande jamais de frais",
+      "Un vrai prix MTN",
+      "Une promotion gagnee",
+      "Un message a transferer"
+     ],
+     "pidgin": [
+      "Classic advance fee scam MTN no dey request fee to release prize",
+      "Real MTN prize wey you suppose claim",
+      "Promotion wey you win by chance",
+      "Message wey you suppose forward to claim prize"
+     ]
+    },
+    "cor": 0,
+    "exp": {
+     "en": "CORRECT! This is an ADVANCE FEE SCAM. You pay the fee and never receive the prize. MTN and Orange never require fees to receive prizes.",
+     "fr": "C est une ARNAQUE A L AVANCE. Vous payez les frais et ne recevez jamais le prix. MTN et Orange ne demandent jamais de frais.",
+     "pidgin": "Na ADVANCE FEE SCAM dis one. You go pay the fee and never receive the prize. MTN na Orange no dey ever request fee to receive prize."
+    }
+   },
+   {
+    "q": {
+     "en": "The correct way to report Mobile Money fraud in Cameroon is:",
+     "fr": "La bonne facon de signaler une fraude Mobile Money au Cameroun:",
+     "pidgin": "The correct way to report Mobile Money fraud for Cameroon na:"
+    },
+    "opts": {
+     "en": [
+      "Call CIRT-Cameroun at 8202 (free 24/7) and/or email alerts@cirt.antic.cm and preserve all evidence",
+      "Post about it on Facebook only",
+      "Call MTN customer service only",
+      "Wait to see if the money comes back on its own"
+     ],
+     "fr": [
+      "Appeler le CIRT au 8202 et/ou envoyer un email a alerts@cirt.antic.cm",
+      "Publier sur Facebook",
+      "Appeler uniquement le service client MTN",
+      "Attendre"
+     ],
+     "pidgin": [
+      "Call CIRT-Cameroun for 8202 (free 24/7) and/or email alerts@cirt.antic.cm and keep all evidence",
+      "Post am for Facebook only",
+      "Call MTN customer service only",
+      "Wait see if money go come back by itself"
+     ]
+    },
+    "cor": 0,
+    "exp": {
+     "en": "CORRECT! Report to CIRT-Cameroun immediately at 8202 (free 24/7) or alerts@cirt.antic.cm. Preserve all screenshots, messages, and transaction records as evidence.",
+     "fr": "Signalez au CIRT-Cameroun immediatement au 8202 ou alerts@cirt.antic.cm. Conservez toutes les captures d ecran comme preuves.",
+     "pidgin": "Report to CIRT-Cameroun immediately for 8202 (free 24/7) or alerts@cirt.antic.cm. Keep all screenshots messages and transaction record as evidence."
+    }
+   }
+  ]
+ },
+ {
+  "id": 4,
+  "free": false,
+  "icon": "💀",
+  "videoId": "",
+  "name": {
+   "en": "Ransomware",
+   "fr": "Rancongiciel",
+   "pidgin": "Data Hostage"
+  },
+  "sc": {
+   "type": "ransom",
+   "sender": "",
+   "msg": {
+    "en": "YOUR FILES HAVE BEEN ENCRYPTED\n\nAll your documents, photos, videos and databases have been encrypted using AES-256 military-grade encryption.\n\nYou have 72 HOURS to pay 500,000 FCFA in Bitcoin to:\nBTC: 1A2b3C4d5E6f7G8h9I0j\n\nAfter 72 hours the price DOUBLES.\nAfter 7 days your files are DELETED PERMANENTLY.\n\nTimer: 71:43:22",
+    "fr": "VOS FICHIERS ONT ETE CHIFFRES\n\nTous vos fichiers ont ete chiffres avec AES-256.\n\nVous avez 72 HEURES pour payer 500000 FCFA en Bitcoin:\nBTC: 1A2b3C4d5E6f7G8h9I0j\n\nApres 72 heures le prix DOUBLE.\nApres 7 jours vos fichiers sont SUPPRIMES DEFINITIVEMENT.\n\nMinuterie: 71:43:22",
+    "pidgin": "YOUR FILES DON GET ENCRYPTED\n\nAll your document photo video na database don get encrypted with AES-256.\n\nYou get 72 HOURS to pay 500000 FCFA Bitcoin:\nBTC: 1A2b3C4d5E6f7G8h9I0j\n\nAfter 72 hours price go DOUBLE.\nAfter 7 days your files go DELETE PERMANENTLY.\n\nTimer: 71:43:22"
+   },
+   "flags": [
+    "72 HOURS",
+    "500,000 FCFA",
+    "Bitcoin",
+    "DOUBLES",
+    "DELETED PERMANENTLY",
+    "71:43:22"
+   ],
+   "q": {
+    "en": "This ransomware screen just appeared on your computer. What should you do?",
+    "fr": "Cet ecran de rancongiciel vient d apparaitre. Que devez-vous faire?",
+    "pidgin": "This ransomware screen just appear for your computer. Wetin you go do?"
+   },
+   "opts": {
+    "en": [
+     "Pay the ransom immediately to get your files back",
+     "Wait to see if the timer runs out",
+     "Pay half the ransom to negotiate",
+     "Do NOT pay. Disconnect internet, report to CIRT 8202, restore files from your backup"
+    ],
+    "fr": [
+     "Payer la rancon immediatement",
+     "Attendre",
+     "Payer la moitie",
+     "NE PAS payer. Deconnecter internet signaler au CIRT 8202 restaurer depuis la sauvegarde"
+    ],
+    "pidgin": [
+     "Pay the ransom immediately",
+     "Wait see if the timer run out",
+     "Pay half to negotiate",
+     "NO PAY. Disconnect internet report to CIRT 8202 restore files from your backup"
+    ]
+   },
+   "cor": 3,
+   "exp": {
+    "en": "CORRECT! DO NOT PAY! Payment funds criminals, does NOT guarantee recovery, and marks you as willing to pay again. The ONLY solution is: 1) Disconnect internet 2) Report to CIRT 8202 3) Restore from your offline backup. This is why the 3-2-1 backup rule is critical.",
+    "fr": "NE PAYEZ PAS! Le paiement finance les criminels, NE garantit PAS la recuperation. La SEULE solution: 1) Deconnecter internet 2) Signaler au CIRT 8202 3) Restaurer depuis votre sauvegarde hors ligne.",
+    "pidgin": "NO PAY! Payment dey fund criminals and NO guarantee you go recover files. The ONLY solution na: 1) Disconnect internet 2) Report to CIRT 8202 3) Restore from your offline backup."
+   }
+  },
+  "quiz": [
+   {
+    "q": {
+     "en": "Your computer shows: All files encrypted. Pay 500000 FCFA Bitcoin. Best prior protection was:",
+     "fr": "Vos fichiers sont chiffres. Payez 500000 FCFA Bitcoin. La meilleure protection prealable etait:",
+     "pidgin": "Your computer show files encrypted. Pay 500000 FCFA Bitcoin. Wetin be the BEST protection before?"
+    },
+    "opts": {
+     "en": [
+      "Having a strong password",
+      "Using incognito mode",
+      "Regular offline backups following the 3-2-1 rule",
+      "Installing any free antivirus"
+     ],
+     "fr": [
+      "Un mot de passe fort",
+      "Navigation privee",
+      "Sauvegardes hors ligne selon la regle 3-2-1",
+      "Installer un antivirus gratuit"
+     ],
+     "pidgin": [
+      "Get strong password",
+      "Use incognito mode",
+      "Regular offline backup using 3-2-1 rule",
+      "Install any free antivirus"
+     ]
+    },
+    "cor": 2,
+    "exp": {
+     "en": "CORRECT! The 3-2-1 rule: 3 copies on 2 different media with 1 stored OFFLINE. This makes ransomware powerless. Just restore from backup.",
+     "fr": "Regle 3-2-1: 3 copies 2 supports differents 1 copie HORS LIGNE. Cela rend le rancongiciel inefficace.",
+     "pidgin": "3-2-1 rule: 3 copy 2 different place 1 copy OFFLINE. If ransomware hit you just restore from backup."
+    }
+   },
+   {
+    "q": {
+     "en": "Should you PAY the ransom if your files are encrypted?",
+     "fr": "Devriez-vous PAYER la rancon?",
+     "pidgin": "You go PAY the ransom if dem encrypt your files?"
+    },
+    "opts": {
+     "en": [
+      "Yes, you will get your files back",
+      "NO. It funds criminals, no recovery guarantee, and marks you as a target again",
+      "Pay only half to negotiate",
+      "Yes but via Mobile Money only"
+     ],
+     "fr": [
+      "Oui vous recupererez vos fichiers",
+      "NON. Cela finance les criminels et ne garantit pas la recuperation",
+      "Payer la moitie",
+      "Oui via Mobile Money"
+     ],
+     "pidgin": [
+      "Yes dem go give you back your files",
+      "NO. Payment dey fund criminals and no guarantee you go recover",
+      "Pay half only",
+      "Yes use Mobile Money"
+     ]
+    },
+    "cor": 1,
+    "exp": {
+     "en": "CORRECT! DO NOT PAY. Payment funds criminals, does not guarantee recovery, and signals you will pay again. Report to CIRT 8202.",
+     "fr": "NE PAYEZ PAS. Cela finance les criminels et ne garantit pas la recuperation. Signalez au CIRT 8202.",
+     "pidgin": "NO PAY! Payment dey fund criminals and dem go target you again. Call CIRT 8202 to report."
+    }
+   },
+   {
+    "q": {
+     "en": "Which action PREVENTS ransomware infection?",
+     "fr": "Quelle action PREVIENT une infection?",
+     "pidgin": "Wetin fit PREVENT ransomware infection?"
+    },
+    "opts": {
+     "en": [
+      "Opening all email attachments to check them",
+      "Using free WiFi to download faster",
+      "Sharing your computer password",
+      "Never clicking suspicious links or opening unexpected attachments"
+     ],
+     "fr": [
+      "Ouvrir toutes les pieces jointes",
+      "Utiliser le WiFi gratuit",
+      "Partager votre mot de passe",
+      "Ne jamais cliquer sur des liens suspects"
+     ],
+     "pidgin": [
+      "Open all email attachment to check dem",
+      "Use free WiFi to download fast",
+      "Share your computer password",
+      "Never click suspicious link or open unexpected attachment"
+     ]
+    },
+    "cor": 3,
+    "exp": {
+     "en": "CORRECT! Ransomware spreads through malicious email attachments. Never open unexpected attachments. Scan USB drives before use.",
+     "fr": "Les rancongiciels se propagent par les pieces jointes. Ne jamais ouvrir les pieces jointes inattendues.",
+     "pidgin": "Ransomware dey spread through bad attachment. No open unexpected attachment. Scan USB before use."
+    }
+   },
+   {
+    "q": {
+     "en": "What does the 3-2-1 backup rule mean?",
+     "fr": "Que signifie la regle de sauvegarde 3-2-1?",
+     "pidgin": "Wetin the 3-2-1 backup rule mean?"
+    },
+    "opts": {
+     "en": [
+      "Back up 3 files 2 times a week",
+      "3 antivirus programs 2 firewalls 1 VPN",
+      "3 passwords 2 email accounts 1 phone number",
+      "3 copies of your data on 2 different types of media with 1 copy stored offline"
+     ],
+     "fr": [
+      "Sauvegarder 3 fichiers 2 fois par semaine",
+      "3 antivirus 2 pare-feux 1 VPN",
+      "3 mots de passe 2 comptes email 1 telephone",
+      "3 copies sur 2 types de supports differents avec 1 copie hors ligne"
+     ],
+     "pidgin": [
+      "Backup 3 files 2 times per week",
+      "3 antivirus 2 firewall 1 VPN",
+      "3 password 2 email account 1 phone number",
+      "3 copy of your data for 2 different types of media with 1 copy offline"
+     ]
+    },
+    "cor": 3,
+    "exp": {
+     "en": "CORRECT! 3-2-1 means: 3 copies of your data, stored on 2 different types of media, with 1 copy completely OFFLINE. This ensures ransomware cannot reach all your copies.",
+     "fr": "3-2-1 signifie: 3 copies sur 2 types de supports differents avec 1 copie HORS LIGNE. Cela garantit que le rancongiciel ne peut pas atteindre toutes vos copies.",
+     "pidgin": "3-2-1 mean: 3 copy of your data for 2 different types of media with 1 copy completely OFFLINE. This ensure ransomware no fit reach all your copies."
+    }
+   },
+   {
+    "q": {
+     "en": "Free backup services accessible in Cameroon include:",
+     "fr": "Les services de sauvegarde gratuits accessibles au Cameroun comprennent:",
+     "pidgin": "Free backup services accessible for Cameroon include:"
+    },
+    "opts": {
+     "en": [
+      "Google Drive (15GB free) OneDrive (5GB free) and MEGA (20GB free)",
+      "Only paid services work for backups",
+      "You must buy a special backup device from a cybersecurity company",
+      "Backing up is only for big companies"
+     ],
+     "fr": [
+      "Google Drive (15 Go gratuit) OneDrive (5 Go gratuit) et MEGA (20 Go gratuit)",
+      "Seuls les services payants fonctionnent",
+      "Vous devez acheter un appareil special",
+      "La sauvegarde est uniquement pour les grandes entreprises"
+     ],
+     "pidgin": [
+      "Google Drive (15GB free) OneDrive (5GB free) and MEGA (20GB free)",
+      "Only paid services work for backup",
+      "You must buy special backup device",
+      "Backup na only for big companies"
+     ]
+    },
+    "cor": 0,
+    "exp": {
+     "en": "CORRECT! Google Drive (15GB), OneDrive (5GB), and MEGA (20GB) are all free and accessible in Cameroon. Use them alongside an external hard drive stored offline for maximum protection.",
+     "fr": "Google Drive (15 Go) OneDrive (5 Go) et MEGA (20 Go) sont tous gratuits et accessibles au Cameroun. Utilisez-les avec un disque dur externe hors ligne.",
+     "pidgin": "Google Drive (15GB) OneDrive (5GB) and MEGA (20GB) all na free and accessible for Cameroon. Use dem alongside external hard drive stored offline for maximum protection."
+    }
+   }
+  ]
+ },
+ {
+  "id": 5,
+  "free": false,
+  "icon": "💉",
+  "videoId": "",
+  "name": {
+   "en": "SQL Injection",
+   "fr": "Injection SQL",
+   "pidgin": "Database Attack"
+  },
+  "sc": {
+   "type": "form",
+   "sender": "",
+   "msg": {
+    "en": "A website login form has a Username field.\n\nA hacker types this into the Username field:\nadmin--\n\nThe database query becomes:\nSELECT * FROM users WHERE username=admin-- AND password=anything\n\nThe -- comments out the password check entirely.\nResult: The hacker logs in as ADMIN with NO password.",
+    "fr": "Un formulaire de connexion a un champ Nom d utilisateur.\n\nUn hacker tape:\nadmin--\n\nLa requete devient:\nSELECT * FROM users WHERE username=admin-- AND password=anything\n\nLe -- commente la verification du mot de passe.\nResultat: Le hacker se connecte en tant qu ADMIN sans mot de passe.",
+    "pidgin": "Website login form get Username field.\n\nHacker type this inside Username field:\nadmin--\n\nThe database query become:\nSELECT * FROM users WHERE username=admin-- AND password=anything\n\nThe -- dey comment out the password check.\nResult: The hacker login as ADMIN with NO password."
+   },
+   "flags": [
+    "admin--",
+    "--",
+    "comments out",
+    "NO password"
+   ],
+   "q": {
+    "en": "This attack allows login WITHOUT any password. What type of attack is this?",
+    "fr": "Cette attaque permet de se connecter SANS mot de passe. Quel type d attaque est-ce?",
+    "pidgin": "This attack allow login WITHOUT any password. Wetin type of attack be dis?"
+   },
+   "opts": {
+    "en": [
+     "SQL Injection",
+     "Phishing",
+     "Ransomware",
+     "Spoofing"
+    ],
+    "fr": [
+     "Injection SQL",
+     "Hameconnage",
+     "Rancongiciel",
+     "Usurpation"
+    ],
+    "pidgin": [
+     "SQL Injection",
+     "Phishing",
+     "Ransomware",
+     "Spoofing"
+    ]
+   },
+   "cor": 0,
+   "exp": {
+    "en": "CORRECT! This is SQL INJECTION. By inserting special characters the attacker breaks the SQL query structure and bypasses authentication entirely. Websites must use PARAMETERIZED QUERIES which treat user input as data, never as code.",
+    "fr": "C est de l INJECTION SQL. En inserant des caracteres speciaux l attaquant contourne l authentification. Les sites doivent utiliser des REQUETES PARAMETREES.",
+    "pidgin": "Na SQL INJECTION dis one. By inserting special characters the attacker dey break SQL query structure and bypass authentication entirely. Websites must use PARAMETERIZED QUERIES wey treat user input as data never as code."
+   }
+  },
+  "quiz": [
+   {
+    "q": {
+     "en": "An attacker types special code into a login form to bypass the password check. This is called:",
+     "fr": "Un attaquant tape du code special pour contourner le mot de passe. Cette attaque s appelle:",
+     "pidgin": "Attacker type special code inside login form to bypass password check. Dis attack na:"
+    },
+    "opts": {
+     "en": [
+      "Phishing",
+      "SQL Injection",
+      "Ransomware",
+      "Spoofing"
+     ],
+     "fr": [
+      "Hameconnage",
+      "Injection SQL",
+      "Rancongiciel",
+      "Usurpation"
+     ],
+     "pidgin": [
+      "Phishing",
+      "SQL Injection",
+      "Ransomware",
+      "Spoofing"
+     ]
+    },
+    "cor": 1,
+    "exp": {
+     "en": "CORRECT! SQL Injection inserts malicious code into database queries to bypass login or steal data. Websites must use parameterized queries to prevent this.",
+     "fr": "L injection SQL insere du code malveillant dans les requetes. Les sites doivent utiliser des requetes parametrees.",
+     "pidgin": "SQL Injection dey insert bad code inside database query. This fit bypass login without password."
+    }
+   },
+   {
+    "q": {
+     "en": "A website suddenly shows all users personal data to everyone. This could be caused by:",
+     "fr": "Un site web affiche soudainement les donnees personnelles de tous. Cela pourrait etre cause par:",
+     "pidgin": "Website suddenly show everybody personal data. Wetin fit cause dis?"
+    },
+    "opts": {
+     "en": [
+      "The website being very popular",
+      "A website update glitch",
+      "A successful SQL injection that exposed the database",
+      "Slow internet connection"
+     ],
+     "fr": [
+      "Le site est tres populaire",
+      "Un bug de mise a jour",
+      "Une injection SQL reussie qui a expose la base de donnees",
+      "Connexion lente"
+     ],
+     "pidgin": [
+      "Website too popular",
+      "Website update glitch",
+      "SQL injection wey expose the database",
+      "Slow internet connection"
+     ]
+    },
+    "cor": 2,
+    "exp": {
+     "en": "CORRECT! Mass data exposure is often caused by SQL injection. Report to CIRT-Cameroun at 8202.",
+     "fr": "L exposition massive de donnees est souvent causee par une injection SQL. Signalez au CIRT 8202.",
+     "pidgin": "Mass data exposure na usually SQL injection result. Report to CIRT-Cameroun 8202."
+    }
+   },
+   {
+    "q": {
+     "en": "As a website user, what protects you MOST from SQL injection?",
+     "fr": "En tant qu utilisateur qu est-ce qui vous protege le PLUS?",
+     "pidgin": "As website user wetin protect you MOST from SQL injection?"
+    },
+    "opts": {
+     "en": [
+      "Using a strong personal password",
+      "Using reputable regularly updated websites and reporting suspicious behavior",
+      "Using incognito mode",
+      "Never typing your name in forms"
+     ],
+     "fr": [
+      "Un mot de passe fort",
+      "Utiliser des sites reputes et regulierement mis a jour",
+      "Navigation privee",
+      "Ne jamais taper votre nom"
+     ],
+     "pidgin": [
+      "Use strong password",
+      "Use reputable websites wey dem update am regular",
+      "Use incognito mode",
+      "Never type your name for form"
+     ]
+    },
+    "cor": 1,
+    "exp": {
+     "en": "CORRECT! As a user you cannot control the site code. Use reputable updated websites and report anything suspicious to CIRT-Cameroun at 8202.",
+     "fr": "En tant qu utilisateur vous ne controlez pas le code du site. Utilisez des sites reputes et signalez au CIRT 8202.",
+     "pidgin": "As user you no fit control website code. Use reputable websites and report suspicious thing to CIRT 8202."
+    }
+   },
+   {
+    "q": {
+     "en": "The best protection for website developers against SQL injection is:",
+     "fr": "La meilleure protection pour les developpeurs contre les injections SQL:",
+     "pidgin": "The best protection for website developers against SQL injection na:"
+    },
+    "opts": {
+     "en": [
+      "Using a strong admin password",
+      "Adding a CAPTCHA to the login form",
+      "Making the website private",
+      "Using parameterized queries that treat all user input as data not code"
+     ],
+     "fr": [
+      "Un mot de passe admin fort",
+      "Ajouter un CAPTCHA",
+      "Rendre le site prive",
+      "Utiliser des requetes parametrees qui traitent les entrees comme des donnees"
+     ],
+     "pidgin": [
+      "Use strong admin password",
+      "Add CAPTCHA to login form",
+      "Make the website private",
+      "Use parameterized queries wey treat all user input as data not code"
+     ]
+    },
+    "cor": 3,
+    "exp": {
+     "en": "CORRECT! Parameterized queries treat all user input as pure data, never as executable code. This prevents SQL injection completely. Every developer must implement this.",
+     "fr": "Les requetes parametrees traitent toutes les entrees utilisateur comme des donnees pures. Cela previent completement les injections SQL.",
+     "pidgin": "Parameterized queries dey treat all user input as pure data never as executable code. This dey prevent SQL injection completely. Every developer must implement this."
+    }
+   },
+   {
+    "q": {
+     "en": "After logging into a website, a user can see other users private messages. This most likely indicates:",
+     "fr": "Apres la connexion un utilisateur peut voir les messages prives des autres. Cela indique probablement:",
+     "pidgin": "After user login for website dem fit see other users private messages. This most likely indicate:"
+    },
+    "opts": {
+     "en": [
+      "The website is working correctly",
+      "The user has special administrator access",
+      "A browser display glitch",
+      "A SQL injection or authorization vulnerability exposing other users data"
+     ],
+     "fr": [
+      "Le site fonctionne correctement",
+      "L utilisateur a un acces admin",
+      "Un bug d affichage",
+      "Une vulnerabilite SQL exposant les donnees d autres utilisateurs"
+     ],
+     "pidgin": [
+      "The website dey work correctly",
+      "The user get special admin access",
+      "Browser display glitch",
+      "SQL injection or authorization vulnerability wey expose other users data"
+     ]
+    },
+    "cor": 3,
+    "exp": {
+     "en": "CORRECT! If users can access other users data this is a serious SQL injection or authorization vulnerability. Report immediately to your developer and to CIRT-Cameroun at 8202.",
+     "fr": "Si des utilisateurs peuvent acceder aux donnees d autres utilisateurs c est une grave vulnerabilite SQL. Signalez immediatement a votre developpeur et au CIRT 8202.",
+     "pidgin": "If users fit access other users data this na serious SQL injection vulnerability. Report immediately to your developer and to CIRT-Cameroun at 8202."
+    }
+   }
+  ]
+ },
+ {
+  "id": 6,
+  "free": false,
+  "icon": "🕸️",
+  "videoId": "",
+  "name": {
+   "en": "XSS Cross-Site Scripting",
+   "fr": "Script Inter-Sites XSS",
+   "pidgin": "Website Injection"
+  },
+  "sc": {
+   "type": "popup",
+   "sender": "",
+   "msg": {
+    "en": "You are logged into your bank website at afriland.cm\nThe URL bar shows: https://afriland.cm/dashboard\n\nSuddenly a popup box appears:\n\n+----------------------------------+\n| Session Security Alert           |\n| Your session has expired.        |\n| Please re-enter your password    |\n| to continue your banking session.|\n|                                  |\n| Password: [_________________]    |\n| [Confirm]  [Cancel]              |\n+----------------------------------+",
+    "fr": "Vous etes connecte a votre banque sur afriland.cm\nL URL montre: https://afriland.cm/dashboard\n\nSoudain un popup apparait:\n\n+----------------------------------+\n| Alerte de Securite Session       |\n| Votre session a expire.          |\n| Veuillez ressaisir votre         |\n| mot de passe pour continuer.     |\n|                                  |\n| Mot de passe: [______________]   |\n| [Confirmer] [Annuler]            |\n+----------------------------------+",
+    "pidgin": "You don login for your bank website for afriland.cm\nURL bar show: https://afriland.cm/dashboard\n\nSuddenly popup box appear:\n\n+----------------------------------+\n| Session Security Alert           |\n| Your session don expire.         |\n| Please enter your password again |\n| to continue your banking.        |\n|                                  |\n| Password: [_________________]    |\n| [Confirm]  [Cancel]              |\n+----------------------------------+"
+   },
+   "flags": [
+    "popup appeared",
+    "session has expired",
+    "re-enter your password",
+    "while URL looks correct"
+   ],
+   "q": {
+    "en": "The URL looks correct but a popup asks for your password mid-session. What should you do?",
+    "fr": "L URL semble correcte mais un popup demande votre mot de passe. Que devez-vous faire?",
+    "pidgin": "The URL look correct but popup dey ask for your password in the middle of session. Wetin you go do?"
+   },
+   "opts": {
+    "en": [
+     "Enter your password, the URL looks genuine",
+     "Enter your password then change it immediately after",
+     "Close the popup immediately, log out, and call your bank to report",
+     "Refresh the page and try again"
+    ],
+    "fr": [
+     "Entrer votre mot de passe l URL semble genuine",
+     "Entrer le mot de passe puis le changer immediatement",
+     "Fermer le popup immediatement se deconnecter et appeler votre banque",
+     "Rafraichir la page"
+    ],
+    "pidgin": [
+     "Enter your password the URL look genuine",
+     "Enter your password then change am immediately after",
+     "Close the popup immediately logout and call your bank to report",
+     "Refresh the page and try again"
+    ]
+   },
+   "cor": 2,
+   "exp": {
+    "en": "CORRECT! This is a CROSS-SITE SCRIPTING (XSS) attack. A malicious script was injected INTO the legitimate bank website and created a fake popup. The URL still looks correct because you ARE on the real website but malicious code was injected into it. Legitimate websites NEVER ask for your password through mid-session popups.",
+    "fr": "C est une attaque XSS. Un script malveillant a ete injecte dans le site bancaire legitime pour creer un faux popup. L URL semble correcte parce que vous ETES sur le vrai site mais du code malveillant y a ete injecte.",
+    "pidgin": "Na CROSS-SITE SCRIPTING (XSS) attack dis one. Malicious script don inject inside the legitimate bank website and create fake popup. The URL still look correct because you dey on the real website but bad code don inject inside am."
+   }
+  },
+  "quiz": [
+   {
+    "q": {
+     "en": "You visit your bank website and a popup suddenly asks for your password. This is likely:",
+     "fr": "Vous visitez votre banque et un popup demande votre mot de passe. C est:",
+     "pidgin": "You visit your bank website and popup suddenly ask for your password. Na wetin be dis?"
+    },
+    "opts": {
+     "en": [
+      "A normal security session renewal",
+      "A browser update notification",
+      "A Cross-Site Scripting attack injecting fake content",
+      "A routine account check by your bank"
+     ],
+     "fr": [
+      "Un renouvellement de session normal",
+      "Une notification de mise a jour",
+      "Une attaque XSS injectant du faux contenu",
+      "Un controle de compte"
+     ],
+     "pidgin": [
+      "Normal session renewal",
+      "Browser update notification",
+      "XSS attack wey inject fake content",
+      "Routine account check from bank"
+     ]
+    },
+    "cor": 2,
+    "exp": {
+     "en": "CORRECT! Legitimate websites NEVER ask for your password through mid-session popups. This is XSS. Close it and call your bank immediately.",
+     "fr": "Les sites legitimes ne demandent JAMAIS le mot de passe via des popups. C est du XSS. Fermez et appelez votre banque.",
+     "pidgin": "Real websites no go ever ask your password through popup. Na XSS attack. Close the popup and call your bank."
+    }
+   },
+   {
+    "q": {
+     "en": "Which browser habit best reduces XSS risk?",
+     "fr": "Quelle habitude reduit le mieux le risque XSS?",
+     "pidgin": "Which browser habit dey reduce XSS risk best?"
+    },
+    "opts": {
+     "en": [
+      "Using the same tab for everything",
+      "Disabling your browser security warnings",
+      "Using only public WiFi",
+      "Keeping your browser updated and never ignoring security warnings"
+     ],
+     "fr": [
+      "Utiliser le meme onglet",
+      "Desactiver les avertissements",
+      "WiFi public uniquement",
+      "Maintenir votre navigateur a jour et ne jamais ignorer les avertissements"
+     ],
+     "pidgin": [
+      "Use same tab for everything",
+      "Disable browser security warning",
+      "Use public WiFi only",
+      "Keep browser updated and never ignore security warning"
+     ]
+    },
+    "cor": 3,
+    "exp": {
+     "en": "CORRECT! Updated browsers block known XSS patterns. NEVER ignore browser security warnings. They exist to protect you.",
+     "fr": "Les navigateurs mis a jour bloquent les patterns XSS connus. Ne jamais ignorer les avertissements.",
+     "pidgin": "Updated browser dey block XSS patterns. NEVER ignore browser security warning. E dey protect you."
+    }
+   },
+   {
+    "q": {
+     "en": "FREE DATA! Click here appears in a social media comment. Clicking it could:",
+     "fr": "DATA GRATUIT! Cliquez ici apparait dans un commentaire. Cliquer pourrait:",
+     "pidgin": "FREE DATA! Click here appear for social media comment. If you click am:"
+    },
+    "opts": {
+     "en": [
+      "Get you free data from your operator",
+      "Trigger malicious code or redirect to a phishing site",
+      "Take you to a legitimate promotions page",
+      "Download a useful app for free"
+     ],
+     "fr": [
+      "Vous donner du data gratuit",
+      "Declencher du code malveillant ou du phishing",
+      "Une page promotionnelle",
+      "Telecharger une application"
+     ],
+     "pidgin": [
+      "Give you free data",
+      "Trigger bad code or send you to phishing site",
+      "Take you to real promo page",
+      "Download useful app free"
+     ]
+    },
+    "cor": 1,
+    "exp": {
+     "en": "CORRECT! Shortened URLs and free data offers in comments are classic vectors for malicious scripts and phishing. Never click unsolicited links on social media.",
+     "fr": "Les URL raccourcies et offres de data gratuit sont des vecteurs classiques. Ne cliquez jamais.",
+     "pidgin": "Free data offer for comment na classic phishing vector. No click unsolicited link for social media."
+    }
+   },
+   {
+    "q": {
+     "en": "How can website developers protect against XSS attacks?",
+     "fr": "Comment les developpeurs peuvent-ils se proteger contre les attaques XSS?",
+     "pidgin": "How website developers fit protect against XSS attacks?"
+    },
+    "opts": {
+     "en": [
+      "By using a very strong admin password",
+      "By adding more images to the website",
+      "By making the website load faster",
+      "By sanitizing and escaping all user input before displaying it on the page"
+     ],
+     "fr": [
+      "Un mot de passe admin fort",
+      "En ajoutant plus d images",
+      "En rendant le site plus rapide",
+      "En assainissant et echappant toutes les entrees utilisateur avant de les afficher"
+     ],
+     "pidgin": [
+      "By using very strong admin password",
+      "By adding more images to website",
+      "By making website load faster",
+      "By sanitizing and escaping all user input before displaying am for the page"
+     ]
+    },
+    "cor": 3,
+    "exp": {
+     "en": "CORRECT! Developers must sanitize and escape all user input before displaying it on the page. This prevents injected scripts from executing.",
+     "fr": "Les developpeurs doivent assainir et echapper toutes les entrees utilisateur. Cela empeche l execution des scripts injectes.",
+     "pidgin": "Developers must sanitize and escape all user input before displaying am for the page. This prevent injected scripts from executing."
+    }
+   },
+   {
+    "q": {
+     "en": "What does a red padlock or NOT SECURE in the browser address bar mean?",
+     "fr": "Que signifie un cadenas rouge ou NOT SECURE dans la barre d adresse?",
+     "pidgin": "Wetin e mean when your browser show red padlock or say NOT SECURE for address bar?"
+    },
+    "opts": {
+     "en": [
+      "The connection is not encrypted meaning data can be intercepted and you should not enter personal information",
+      "The website is simply not popular enough",
+      "The website is under maintenance",
+      "Your internet connection is slow"
+     ],
+     "fr": [
+      "La connexion n est pas chiffree vos donnees peuvent etre interceptees ne saisissez pas d informations personnelles",
+      "Le site n est pas assez populaire",
+      "Le site est en maintenance",
+      "Votre connexion est lente"
+     ],
+     "pidgin": [
+      "The connection no get encryption meaning data fit be intercepted and you no suppose enter personal information",
+      "The website no popular enough",
+      "The website dey under maintenance",
+      "Your internet connection slow"
+     ]
+    },
+    "cor": 0,
+    "exp": {
+     "en": "CORRECT! A red padlock or NOT SECURE means the site uses HTTP not HTTPS. Your data travels unencrypted and can be intercepted. Never enter passwords PINs or personal information on HTTP sites.",
+     "fr": "Un cadenas rouge signifie que le site utilise HTTP pas HTTPS. Vos donnees voyagent non chiffrees. Ne jamais entrer des informations personnelles sur des sites HTTP.",
+     "pidgin": "Red padlock or NOT SECURE mean the site use HTTP not HTTPS. Your data dey travel unencrypted and fit be intercepted. Never enter password PIN or personal information for HTTP sites."
+    }
+   }
+  ]
+ },
+ {
+  "id": 7,
+  "free": false,
+  "icon": "🔓",
+  "videoId": "",
+  "name": {
+   "en": "Account Hacking",
+   "fr": "Piratage de Compte",
+   "pidgin": "Account Hack"
+  },
+  "sc": {
+   "type": "whatsapp",
+   "sender": "MTN CM (SMS)",
+   "msg": {
+    "en": "[SMS received at 11:47 PM]\nFrom: MTN CM\n247897 is your WhatsApp code. Do not share this code.\n\n[5 minutes later - WhatsApp message from Friend]\nFriend: Hi! I accidentally sent you a code to your number by mistake. Can you please forward it to me? I need it urgently to log in to my account. Just the 6 digits!",
+    "fr": "[SMS recu a 23h47]\nDe: MTN CM\n247897 est votre code WhatsApp. Ne partagez pas ce code.\n\n[5 minutes plus tard - WhatsApp d un Ami]\nAmi: Bonjour! Je t ai envoye un code par erreur. Peux-tu me le transmettre? J en ai besoin d urgence pour me connecter. Juste les 6 chiffres!",
+    "pidgin": "[SMS receive for 11:47 PM]\nFrom: MTN CM\n247897 na your WhatsApp code. No share this code.\n\n[5 minutes later - WhatsApp from Friend]\nFriend: Hi! I don send you code by mistake to your number. Please fit you forward am give me? I need am urgently to login my account. Just the 6 digits!"
+   },
+   "flags": [
+    "WhatsApp code",
+    "Do not share this code",
+    "forward it to me",
+    "urgently",
+    "just the 6 digits"
+   ],
+   "q": {
+    "en": "You received a WhatsApp code by SMS and your friend asks you to forward it. What is REALLY happening?",
+    "fr": "Vous avez recu un code WhatsApp par SMS et votre ami vous demande de le transmettre. Que se passe-t-il VRAIMENT?",
+    "pidgin": "You receive WhatsApp code for SMS and your friend dey ask you to forward am. Wetin REALLY dey happen?"
+   },
+   "opts": {
+    "en": [
+     "Your friend genuinely needs the code and you should help them",
+     "Your friend is locked out of their account and needs help",
+     "You should forward just the first 3 digits to test",
+     "This is an OTP Forwarding Attack. The hacker controls your friend account and is trying to take over YOUR WhatsApp too"
+    ],
+    "fr": [
+     "Votre ami a vraiment besoin du code",
+     "Votre ami est bloque hors de son compte",
+     "Transmettre juste les 3 premiers chiffres pour tester",
+     "C est une attaque de transfert OTP. Le hacker controle le compte de votre ami et essaie de prendre le votre"
+    ],
+    "pidgin": [
+     "Your friend genuinely need the code you suppose help dem",
+     "Your friend lock out of their account and need help",
+     "You suppose forward just first 3 digits to test",
+     "Na OTP Forwarding Attack. The hacker don control your friend account and dey try take over YOUR WhatsApp too"
+    ]
+   },
+   "cor": 3,
+   "exp": {
+    "en": "CORRECT! This is the WhatsApp OTP FORWARDING ATTACK. The hacker already controls your friend account. The code YOU received is YOUR OWN WhatsApp verification code. Forwarding it gives the hacker full control of YOUR WhatsApp. NEVER forward a WhatsApp code to ANYONE.",
+    "fr": "C est l ATTAQUE DE TRANSFERT OTP WhatsApp. Le hacker controle deja le compte de votre ami. Le code que VOUS avez recu est VOTRE propre code de verification WhatsApp. Le transmettre donne au hacker le controle de VOTRE WhatsApp. Ne transferez JAMAIS un code WhatsApp a qui que ce soit.",
+    "pidgin": "Na WhatsApp OTP FORWARDING ATTACK dis one. The hacker don already control your friend account. The code wey YOU receive na YOUR OWN WhatsApp verification code. If you forward am the hacker go get full control of YOUR WhatsApp. NEVER forward WhatsApp code to ANYBODY."
+   }
+  },
+  "quiz": [
+   {
+    "q": {
+     "en": "Your friend Facebook sends: I am stuck in Douala please send 10000 FCFA via Orange Money urgently! You:",
+     "fr": "Le Facebook de votre ami envoie: Je suis bloque a Douala envoyez 10000 FCFA! Vous:",
+     "pidgin": "Your friend Facebook message you: I don stuck for Douala send 10000 FCFA Orange Money quick! You:"
+    },
+    "opts": {
+     "en": [
+      "Call your friend directly on their phone BEFORE sending anything",
+      "Send money immediately your friend is in trouble",
+      "Send 5000 to be partially helpful",
+      "Ask their Facebook for more details"
+     ],
+     "fr": [
+      "Appeler votre ami directement AVANT d envoyer quoi que ce soit",
+      "Envoyer de l argent immediatement",
+      "Envoyer 5000 pour aider",
+      "Demander plus de details"
+     ],
+     "pidgin": [
+      "Call your friend phone BEFORE you send anything",
+      "Send money quick friend dey trouble",
+      "Send 5000 to help small",
+      "Ask their Facebook for more detail"
+     ]
+    },
+    "cor": 0,
+    "exp": {
+     "en": "CORRECT! The account is HACKED. Hackers use compromised accounts to scam contacts. ALWAYS call the person directly before sending any money.",
+     "fr": "Le compte est PIRATE. Verifiez TOUJOURS par appel direct avant d envoyer de l argent.",
+     "pidgin": "The account don get HACKED. ALWAYS call your friend direct before you send money."
+    }
+   },
+   {
+    "q": {
+     "en": "The BEST way to protect your WhatsApp account from hacking is:",
+     "fr": "La MEILLEURE facon de proteger votre compte WhatsApp:",
+     "pidgin": "The BEST way to protect your WhatsApp account na:"
+    },
+    "opts": {
+     "en": [
+      "Using a complex username",
+      "Enabling Two-Step Verification PIN in WhatsApp Settings",
+      "Logging out after every chat",
+      "Using WhatsApp Web only"
+     ],
+     "fr": [
+      "Un nom d utilisateur complexe",
+      "Activer la verification en deux etapes PIN dans les Parametres",
+      "Se deconnecter apres chaque chat",
+      "Uniquement WhatsApp Web"
+     ],
+     "pidgin": [
+      "Use complex username",
+      "Enable Two-Step Verification PIN for WhatsApp Settings",
+      "Logout after every chat",
+      "Use WhatsApp Web only"
+     ]
+    },
+    "cor": 1,
+    "exp": {
+     "en": "CORRECT! Go to WhatsApp Settings then Account then Two-step verification then Enable. Set a 6-digit PIN. This stops OTP forwarding attacks.",
+     "fr": "Allez dans Parametres WhatsApp Compte Verification en deux etapes Activer. Definissez un PIN a 6 chiffres.",
+     "pidgin": "Go WhatsApp Settings Account Two-step verification Enable am. Set 6-digit PIN. This go stop OTP forwarding."
+    }
+   },
+   {
+    "q": {
+     "en": "If your Facebook account is hacked RIGHT NOW your FIRST action is:",
+     "fr": "Si votre compte Facebook est pirate EN CE MOMENT votre PREMIERE action est:",
+     "pidgin": "If your Facebook don get hacked RIGHT NOW your FIRST action na:"
+    },
+    "opts": {
+     "en": [
+      "Post a public status saying you were hacked",
+      "Wait to see if the hacker leaves on their own",
+      "Delete Facebook forever",
+      "Immediately change password enable 2FA log out all sessions call CIRT 8202"
+     ],
+     "fr": [
+      "Publier un statut d avertissement",
+      "Attendre",
+      "Supprimer Facebook",
+      "Changer immediatement le mot de passe activer 2FA deconnecter toutes sessions signaler au CIRT 8202"
+     ],
+     "pidgin": [
+      "Post status say you don get hacked",
+      "Wait make hacker comot himself",
+      "Delete Facebook forever",
+      "Quick quick change password enable 2FA logout all sessions call CIRT 8202"
+     ]
+    },
+    "cor": 3,
+    "exp": {
+     "en": "CORRECT! Act FAST. Change password enable 2FA log out all devices call CIRT-Cameroun 8202 or email alerts@cirt.antic.cm. Keep screenshots as evidence.",
+     "fr": "Agissez VITE. Changez le mot de passe activez 2FA deconnectez tous appareils appelez le 8202.",
+     "pidgin": "Move FAST. Change password enable 2FA logout all devices call CIRT 8202. Keep screenshot as evidence."
+    }
+   },
+   {
+    "q": {
+     "en": "Someone sends you a WhatsApp message with a 6-digit code and asks you to forward it to them. You should:",
+     "fr": "Quelqu un vous envoie un code a 6 chiffres et vous demande de le lui transmettre. Vous devez:",
+     "pidgin": "Person send you WhatsApp message with 6-digit code and ask you to forward am. You suppose:"
+    },
+    "opts": {
+     "en": [
+      "Forward it if they say it was sent to you by mistake",
+      "Forward only the first 3 digits",
+      "NEVER forward a WhatsApp or SMS code to anyone no matter who asks",
+      "Call the person asking and then decide"
+     ],
+     "fr": [
+      "Le transmettre s ils disent que c est une erreur",
+      "Transmettre seulement les 3 premiers chiffres",
+      "Ne JAMAIS transmettre un code WhatsApp ou SMS a qui que ce soit",
+      "Appeler la personne puis decider"
+     ],
+     "pidgin": [
+      "Forward am if dem say dem send am by mistake",
+      "Forward only first 3 digits",
+      "NEVER forward WhatsApp or SMS code to anybody no matter who ask",
+      "Call the person asking and then decide"
+     ]
+    },
+    "cor": 2,
+    "exp": {
+     "en": "CORRECT! That 6-digit code IS your WhatsApp or bank verification code. Forwarding it gives the attacker complete control of your account. NEVER forward verification codes to anyone under any circumstances.",
+     "fr": "Ce code a 6 chiffres EST votre code de verification. Le transmettre donne a l attaquant le controle complet de votre compte. Ne transferez JAMAIS un code.",
+     "pidgin": "That 6-digit code na your WhatsApp or bank verification code. If you forward am attacker go get complete control of your account. NEVER forward verification code to anybody."
+    }
+   },
+   {
+    "q": {
+     "en": "What information should you NEVER share publicly on social media?",
+     "fr": "Quelles informations ne devriez-vous JAMAIS partager publiquement sur les reseaux sociaux?",
+     "pidgin": "Wetin information you should NEVER share publicly for social media?"
+    },
+    "opts": {
+     "en": [
+      "Your favorite food and movies",
+      "Your opinion on local news",
+      "Your full birthdate home address phone number ID card number and daily routine",
+      "Your photos at public events"
+     ],
+     "fr": [
+      "Vos aliments et films preferes",
+      "Votre opinion sur les actualites",
+      "Votre date de naissance complete adresse domicile numero de telephone numero de carte et routine quotidienne",
+      "Vos photos lors d evenements publics"
+     ],
+     "pidgin": [
+      "Your favorite food na movie",
+      "Your opinion on local news",
+      "Your full birthdate home address phone number ID card number na daily routine",
+      "Your photos for public events"
+     ]
+    },
+    "cor": 2,
+    "exp": {
+     "en": "CORRECT! Your full birthdate home address phone number ID card number and daily routine are goldmines for hackers. This information can be used to guess passwords answer security questions and plan targeted attacks against you.",
+     "fr": "Votre date de naissance complete adresse numero de telephone numero de carte et routine quotidienne sont des mines d or pour les hackers.",
+     "pidgin": "Your full birthdate home address phone number ID card number na daily routine na gold mine for hackers. This information fit be use to guess password and plan targeted attacks against you."
+    }
+   }
+  ]
+ },
+ {
+  "id": 8,
+  "free": false,
+  "icon": "🔐",
+  "videoId": "",
+  "name": {
+   "en": "Data Encryption",
+   "fr": "Chiffrement des Donnees",
+   "pidgin": "Data Protection"
+  },
+  "sc": {
+   "type": "url",
+   "sender": "",
+   "msg": {
+    "en": "Look at these two website URLs carefully:\n\nSite A: http://afriland-banque.cm/login\nStatus: NOT SECURE (no padlock)\n\nSite B: https://www.afriland.cm/login\nStatus: SECURE (padlock icon shown)\n\nBoth sites look identical and ask you to enter your username and password to access your bank account.",
+    "fr": "Regardez attentivement ces deux URLs:\n\nSite A: http://afriland-banque.cm/login\nStatut: NON SECURISE (pas de cadenas)\n\nSite B: https://www.afriland.cm/login\nStatut: SECURISE (icone cadenas affiche)\n\nLes deux sites semblent identiques et vous demandent votre identifiant et mot de passe.",
+    "pidgin": "Look this two website URLs carefully:\n\nSite A: http://afriland-banque.cm/login\nStatus: NOT SECURE (no padlock)\n\nSite B: https://www.afriland.cm/login\nStatus: SECURE (padlock icon dey show)\n\nBoth sites look the same and ask you to enter your username and password to access your bank account."
+   },
+   "flags": [
+    "http vs https",
+    "NOT SECURE",
+    "afriland-banque.cm vs afriland.cm",
+    "both look identical"
+   ],
+   "q": {
+    "en": "Which site is safe to enter your bank password on?",
+    "fr": "Sur quel site est-il sur d entrer votre mot de passe bancaire?",
+    "pidgin": "Which site na safe to enter your bank password?"
+   },
+   "opts": {
+    "en": [
+     "Site B (https://www.afriland.cm) because it uses HTTPS and has the correct official domain",
+     "Site A (http://afriland-banque.cm) because it mentions Afriland"
+    ],
+    "fr": [
+     "Site B car il utilise HTTPS et a le bon domaine officiel",
+     "Site A car il mentionne Afriland"
+    ],
+    "pidgin": [
+     "Site B (https://www.afriland.cm) because e use HTTPS and get correct official domain",
+     "Site A (http://afriland-banque.cm) because e mention Afriland"
+    ]
+   },
+   "cor": 0,
+   "exp": {
+    "en": "CORRECT! Site B is safe for two reasons: 1) HTTPS means the connection is encrypted 2) afriland.cm is the official domain. Site A is dangerous: 1) HTTP means your data travels unencrypted 2) afriland-banque.cm is NOT the official domain. Always check BOTH the HTTPS AND the correct official domain.",
+    "fr": "Le Site B est sur pour deux raisons: 1) HTTPS signifie connexion chiffree 2) afriland.cm est le domaine officiel. Le Site A est dangereux: HTTP plus mauvais domaine.",
+    "pidgin": "Site B na safe for two reasons: 1) HTTPS mean encrypted connection 2) afriland.cm na the official domain. Site A na dangerous: 1) HTTP mean your data dey travel unencrypted 2) afriland-banque.cm NO be the official domain."
+   }
+  },
+  "quiz": [
+   {
+    "q": {
+     "en": "What is the safest way to send sensitive business documents?",
+     "fr": "Quelle est la facon la plus sure d envoyer des documents sensibles?",
+     "pidgin": "Wetin be the safest way to send sensitive business document?"
+    },
+    "opts": {
+     "en": [
+      "Regular email such as Gmail or Yahoo",
+      "A regular SMS text message",
+      "WhatsApp which uses end-to-end encryption or a service like Signal or ProtonMail",
+      "A Facebook private message"
+     ],
+     "fr": [
+      "Email ordinaire comme Gmail",
+      "SMS",
+      "WhatsApp avec chiffrement de bout en bout ou Signal ou ProtonMail",
+      "Message prive Facebook"
+     ],
+     "pidgin": [
+      "Regular email like Gmail",
+      "SMS text message",
+      "WhatsApp wey get end-to-end encryption or Signal or ProtonMail",
+      "Facebook private message"
+     ]
+    },
+    "cor": 2,
+    "exp": {
+     "en": "CORRECT! WhatsApp uses end-to-end encryption. For highly sensitive documents use Signal or ProtonMail for maximum security.",
+     "fr": "WhatsApp utilise le chiffrement de bout en bout. Pour les documents tres sensibles utilisez Signal ou ProtonMail.",
+     "pidgin": "WhatsApp get end-to-end encryption. For very sensitive document use Signal or ProtonMail."
+    }
+   },
+   {
+    "q": {
+     "en": "What does HTTPS at the start of a website URL mean?",
+     "fr": "Que signifie HTTPS au debut de l URL d un site web?",
+     "pidgin": "Wetin HTTPS mean when e dey at the start of website URL?"
+    },
+    "opts": {
+     "en": [
+      "The website is very popular",
+      "The website will load faster",
+      "The website is owned by the government",
+      "The connection between you and the website is encrypted and secure"
+     ],
+     "fr": [
+      "Le site est tres populaire",
+      "Le site se charge plus vite",
+      "Le site appartient au gouvernement",
+      "La connexion entre vous et le site est chiffree et securisee"
+     ],
+     "pidgin": [
+      "The website na popular one",
+      "The website dey load faster",
+      "The website na government own",
+      "The connection between you and website don get encryption"
+     ]
+    },
+    "cor": 3,
+    "exp": {
+     "en": "CORRECT! HTTPS means the connection is encrypted. Never enter personal data on HTTP websites without the S.",
+     "fr": "HTTPS signifie que la connexion est chiffree. Ne jamais entrer de donnees sur des sites HTTP sans le S.",
+     "pidgin": "HTTPS means connection get encryption. Never enter personal data for HTTP website without S."
+    }
+   },
+   {
+    "q": {
+     "en": "How do you protect important files on your phone if it gets stolen?",
+     "fr": "Comment proteger les fichiers importants sur votre telephone s il est vole?",
+     "pidgin": "How you go protect important files for your phone if dem steal am?"
+    },
+    "opts": {
+     "en": [
+      "Store them in a folder named Private",
+      "Store everything in WhatsApp chats",
+      "Put only a lock screen PIN on the phone",
+      "Enable full device encryption in Android Settings then Security then Encryption"
+     ],
+     "fr": [
+      "Les stocker dans un dossier Prive",
+      "Tout stocker dans WhatsApp",
+      "Mettre un PIN d ecran uniquement",
+      "Activer le chiffrement complet dans Parametres Android Securite Chiffrement"
+     ],
+     "pidgin": [
+      "Store dem inside folder wey you name Private",
+      "Store everything for WhatsApp chat",
+      "Put lock screen PIN only",
+      "Enable full device encryption for Android Settings then Security then Encryption"
+     ]
+    },
+    "cor": 3,
+    "exp": {
+     "en": "CORRECT! Full device encryption makes your data unreadable without your PIN even if someone removes the storage chip. Find it in Android Settings under Security.",
+     "fr": "Le chiffrement complet rend vos donnees illisibles sans votre PIN. Trouvez-le dans Parametres Android Securite.",
+     "pidgin": "Full device encryption make your data unreadable without your PIN even if dem remove storage chip. Check Android Settings Security."
+    }
+   },
+   {
+    "q": {
+     "en": "End-to-end encryption in WhatsApp means:",
+     "fr": "Le chiffrement de bout en bout dans WhatsApp signifie:",
+     "pidgin": "End-to-end encryption for WhatsApp mean:"
+    },
+    "opts": {
+     "en": [
+      "WhatsApp employees can read your messages for safety",
+      "Your messages are stored permanently on WhatsApp servers",
+      "Only you and the recipient can read the messages not even WhatsApp or the government",
+      "Your messages are automatically translated to English"
+     ],
+     "fr": [
+      "Les employes de WhatsApp peuvent lire vos messages",
+      "Vos messages sont stockes en permanence",
+      "Seuls vous et le destinataire pouvez lire les messages pas meme WhatsApp",
+      "Vos messages sont automatiquement traduits"
+     ],
+     "pidgin": [
+      "WhatsApp employees fit read your messages for safety",
+      "Your messages dey stored permanently on WhatsApp servers",
+      "Only you and the recipient fit read the messages not even WhatsApp or government",
+      "Your messages dey automatically translate to English"
+     ]
+    },
+    "cor": 2,
+    "exp": {
+     "en": "CORRECT! End-to-end encryption means the message is encrypted on your device and can only be decrypted by the recipient device. Not even WhatsApp your internet provider or the government can read the content of your messages.",
+     "fr": "Le chiffrement de bout en bout signifie que le message ne peut etre dechiffre que par l appareil du destinataire. Pas meme WhatsApp ou le gouvernement.",
+     "pidgin": "End-to-end encryption mean the message don encrypt for your device and only the recipient device fit decrypt am. Not even WhatsApp internet provider or government fit read the content."
+    }
+   },
+   {
+    "q": {
+     "en": "Which of these is the MOST secure password?",
+     "fr": "Lequel de ces mots de passe est le PLUS securise?",
+     "pidgin": "Which one of these na the MOST secure password?"
+    },
+    "opts": {
+     "en": [
+      "237password",
+      "myname2001",
+      "Cm@9vXp2mT!",
+      "123456789"
+     ],
+     "fr": [
+      "237password",
+      "monnom2001",
+      "Cm@9vXp2mT!",
+      "123456789"
+     ],
+     "pidgin": [
+      "237password",
+      "myname2001",
+      "Cm@9vXp2mT!",
+      "123456789"
+     ]
+    },
+    "cor": 2,
+    "exp": {
+     "en": "CORRECT! Cm@9vXp2mT! is most secure because it is 11 characters long and combines uppercase letters lowercase letters numbers and special characters. It is not a real word. Use a free password manager like Bitwarden to generate and store strong passwords.",
+     "fr": "Cm@9vXp2mT! est le plus securise car il a 11 caracteres avec majuscules minuscules chiffres et caracteres speciaux. Utilisez Bitwarden gratuit.",
+     "pidgin": "Cm@9vXp2mT! na the most secure because e get 11 characters and combine uppercase lowercase numbers and special characters. Use free password manager like Bitwarden."
+    }
+   }
+  ]
+ },
+ {
+  "id": 9,
+  "free": false,
+  "icon": "🧱",
+  "videoId": "",
+  "name": {
+   "en": "Firewalls and Network Security",
+   "fr": "Pare-feux et Securite Reseau",
+   "pidgin": "Network Protection"
+  },
+  "sc": {
+   "type": "wifi",
+   "sender": "",
+   "msg": {
+    "en": "You are at a cafe in Yaounde. You see these two WiFi networks:\n\nNetwork 1: Cafe_Yaounde_Free_WiFi\nSecurity: OPEN - No password required\nSignal: Excellent\n\nNetwork 2: Cafe_Yaounde_Secured\nSecurity: WPA3 Protected\nPassword available at the counter\nSignal: Good\n\nYou need to check your bank account balance and transfer money via Mobile Money.",
+    "fr": "Vous etes dans un cafe a Yaounde. Vous voyez ces deux reseaux WiFi:\n\nReseau 1: Cafe_Yaounde_Free_WiFi\nSecurite: OUVERT - Aucun mot de passe\nSignal: Excellent\n\nReseau 2: Cafe_Yaounde_Secured\nSecurite: WPA3 Protege\nMot de passe au comptoir\nSignal: Bon\n\nVous devez verifier votre solde bancaire et faire un transfert via Mobile Money.",
+    "pidgin": "You dey for cafe for Yaounde. You see this two WiFi networks:\n\nNetwork 1: Cafe_Yaounde_Free_WiFi\nSecurity: OPEN - No password required\nSignal: Excellent\n\nNetwork 2: Cafe_Yaounde_Secured\nSecurity: WPA3 Protected\nPassword dey for counter\nSignal: Good\n\nYou need check your bank account balance and transfer money via Mobile Money."
+   },
+   "flags": [
+    "OPEN",
+    "No password",
+    "bank account",
+    "transfer money",
+    "unencrypted"
+   ],
+   "q": {
+    "en": "Which WiFi network should you use to check your bank account and transfer money?",
+    "fr": "Quel reseau WiFi devriez-vous utiliser pour verifier votre compte bancaire et transferer de l argent?",
+    "pidgin": "Which WiFi network you suppose use to check your bank account and transfer money?"
+   },
+   "opts": {
+    "en": [
+     "Network 1 Free WiFi because the signal is excellent and it is faster",
+     "Either network both are provided by the cafe",
+     "Network 2 WPA3 Secured because it encrypts all traffic or better still use your mobile data instead",
+     "The open network because you can see if anything suspicious happens"
+    ],
+    "fr": [
+     "Reseau 1 WiFi gratuit car le signal est excellent",
+     "Les deux reseaux",
+     "Reseau 2 WPA3 car il chiffre tout le trafic ou mieux encore utiliser vos donnees mobiles",
+     "Le reseau ouvert car vous pouvez voir ce qui se passe"
+    ],
+    "pidgin": [
+     "Network 1 Free WiFi because signal na excellent and e faster",
+     "Either network both na cafe provide am",
+     "Network 2 WPA3 Secured because e dey encrypt all traffic or better still use your mobile data instead",
+     "The open network because you fit see if anything suspicious dey happen"
+    ]
+   },
+   "cor": 2,
+   "exp": {
+    "en": "CORRECT! NEVER use open public WiFi for banking or Mobile Money. On an open network anyone nearby can intercept and read all your data. The WPA3 secured network is better but for banking ALWAYS use your MOBILE DATA for maximum security.",
+    "fr": "Ne jamais utiliser le WiFi public ouvert pour les operations bancaires. Sur un reseau ouvert n importe qui peut intercepter vos donnees. Pour les operations bancaires utilisez TOUJOURS vos DONNEES MOBILES.",
+    "pidgin": "NEVER use open public WiFi for banking or Mobile Money. For open network anybody nearby fit intercept and read all your data. WPA3 na better but for banking ALWAYS use your MOBILE DATA for maximum security."
+   }
+  },
+  "quiz": [
+   {
+    "q": {
+     "en": "What is the MAIN purpose of a firewall?",
+     "fr": "Quel est le BUT PRINCIPAL d un pare-feu?",
+     "pidgin": "Wetin be the MAIN purpose of firewall?"
+    },
+    "opts": {
+     "en": [
+      "To speed up your internet connection",
+      "To monitor and filter network traffic based on security rules",
+      "To remove viruses already on your computer",
+      "To block all websites equally"
+     ],
+     "fr": [
+      "Accelerer votre connexion internet",
+      "Surveiller et filtrer le trafic reseau selon des regles de securite",
+      "Supprimer les virus presents",
+      "Bloquer tous les sites"
+     ],
+     "pidgin": [
+      "Speed up your internet",
+      "Monitor and filter network traffic based on security rules",
+      "Remove virus wey don dey your computer",
+      "Block all website equally"
+     ]
+    },
+    "cor": 1,
+    "exp": {
+     "en": "CORRECT! A firewall is a security gatekeeper. It monitors incoming and outgoing traffic and blocks connections that violate its security rules. Windows Defender Firewall is built-in and free.",
+     "fr": "Un pare-feu est un gardien de securite. Il surveille le trafic et bloque les connexions non autorisees. Windows Defender Firewall est integre et gratuit.",
+     "pidgin": "Firewall na security gatekeeper. E monitor traffic and block bad connections. Windows Defender Firewall na free and e dey inside Windows."
+    }
+   },
+   {
+    "q": {
+     "en": "What is the main risk of connecting to free public WiFi in a Yaounde cafe?",
+     "fr": "Quel est le principal risque du WiFi gratuit dans un cafe a Yaounde?",
+     "pidgin": "Wetin be the main risk of free public WiFi for cafe for Yaounde?"
+    },
+    "opts": {
+     "en": [
+      "The WiFi is slower than mobile data",
+      "Anyone on the same network can intercept your unencrypted data",
+      "It drains your phone battery faster",
+      "You might run out of mobile data"
+     ],
+     "fr": [
+      "Le WiFi est plus lent",
+      "N importe qui sur le meme reseau peut intercepter vos donnees",
+      "Cela decharge la batterie",
+      "Vous pourriez manquer de donnees"
+     ],
+     "pidgin": [
+      "WiFi dey slow",
+      "Anybody for same network fit intercept your unencrypted data",
+      "E dey drain battery fast",
+      "You fit exhaust your mobile data"
+     ]
+    },
+    "cor": 1,
+    "exp": {
+     "en": "CORRECT! Public WiFi is unencrypted. Anyone on the same network can see your passwords and bank logins. Use mobile data or a VPN for sensitive activities.",
+     "fr": "Le WiFi public n est pas chiffre. N importe qui peut voir vos mots de passe. Utilisez vos donnees mobiles ou un VPN.",
+     "pidgin": "Public WiFi no get encryption. Anybody for same network fit see your password na bank login. Use mobile data or VPN."
+    }
+   },
+   {
+    "q": {
+     "en": "What is the BEST network security practice for a small business?",
+     "fr": "Quelle est la MEILLEURE pratique de securite reseau pour une petite entreprise?",
+     "pidgin": "Wetin be the BEST network security practice for small business?"
+    },
+    "opts": {
+     "en": [
+      "Change default router credentials use WPA3 encryption and separate guest from business WiFi",
+      "Keep the router default admin credentials",
+      "Share the WiFi password with all customers",
+      "Turn off the firewall to make the internet faster"
+     ],
+     "fr": [
+      "Changer les identifiants utiliser WPA3 separer WiFi clients et professionnel",
+      "Garder les identifiants par defaut",
+      "Partager le mot de passe WiFi",
+      "Desactiver le pare-feu"
+     ],
+     "pidgin": [
+      "Change router credentials use WPA3 separate guest WiFi from business WiFi",
+      "Keep default router credentials",
+      "Share WiFi password with all customers",
+      "Turn off firewall make internet fast"
+     ]
+    },
+    "cor": 0,
+    "exp": {
+     "en": "CORRECT! Change router default credentials immediately. Use WPA3 encryption. Create separate WiFi for customers and business devices. NEVER disable your firewall.",
+     "fr": "Changez immediatement les identifiants du routeur. Utilisez WPA3. Separezle WiFi client du WiFi professionnel. Ne desactivez JAMAIS le pare-feu.",
+     "pidgin": "Change router default login immediately. Use WPA3. Separate customer WiFi from business. NEVER disable your firewall."
+    }
+   },
+   {
+    "q": {
+     "en": "What does a VPN do to protect you on public WiFi?",
+     "fr": "Que fait un VPN pour vous proteger sur le WiFi public?",
+     "pidgin": "Wetin VPN dey do to protect you for public WiFi?"
+    },
+    "opts": {
+     "en": [
+      "It encrypts all your internet traffic and hides your real IP address making your data unreadable to others on the network",
+      "It makes your internet faster",
+      "It blocks all advertising",
+      "It gives you unlimited free data"
+     ],
+     "fr": [
+      "Il chiffre tout votre trafic internet et masque votre adresse IP rendant vos donnees illisibles",
+      "Il rend votre internet plus rapide",
+      "Il bloque toutes les publicites",
+      "Il vous donne des donnees gratuites illimitees"
+     ],
+     "pidgin": [
+      "E dey encrypt all your internet traffic and hide your real IP address making your data unreadable to others for network",
+      "E make your internet faster",
+      "E dey block all advertising",
+      "E give you unlimited free data"
+     ]
+    },
+    "cor": 0,
+    "exp": {
+     "en": "CORRECT! A VPN encrypts all your internet traffic and routes it through a secure server. Even on public WiFi others on the network see only encrypted data they cannot read. Free VPN options include ProtonVPN and Windscribe.",
+     "fr": "Un VPN chiffre tout votre trafic internet. Meme sur le WiFi public les autres ne voient que des donnees chiffrees. ProtonVPN et Windscribe sont gratuits.",
+     "pidgin": "VPN dey encrypt all your internet traffic and route am through secure server. Even for public WiFi others for network fit only see encrypted data wey dem no fit read. Free VPN options include ProtonVPN and Windscribe."
+    }
+   },
+   {
+    "q": {
+     "en": "Your Windows Firewall keeps blocking a new application you just installed. What should you do?",
+     "fr": "Le pare-feu Windows bloque une nouvelle application que vous venez d installer. Que devez-vous faire?",
+     "pidgin": "Your Windows Firewall dey keep blocking new application wey you just install. Wetin you go do?"
+    },
+    "opts": {
+     "en": [
+      "Turn off the firewall completely to let the application work",
+      "Delete the firewall permanently so applications can work freely",
+      "Always click Allow because the firewall is always wrong",
+      "Research the application online first to confirm it is legitimate and safe before allowing it through the firewall"
+     ],
+     "fr": [
+      "Desactiver completement le pare-feu",
+      "Supprimer definitivement le pare-feu",
+      "Toujours cliquer sur Autoriser",
+      "Rechercher d abord l application en ligne pour confirmer sa legitimite avant de l autoriser"
+     ],
+     "pidgin": [
+      "Turn off the firewall completely to make the application work",
+      "Delete the firewall permanently so applications fit work freely",
+      "Always click Allow because firewall dey always wrong",
+      "Research the application online first to confirm say e legitimate and safe before you allow am through firewall"
+     ]
+    },
+    "cor": 3,
+    "exp": {
+     "en": "CORRECT! Always research an application before allowing it through your firewall. The firewall is protecting you. If you cannot confirm the application is legitimate from a trusted source do not allow it.",
+     "fr": "Recherchez toujours une application avant de l autoriser dans votre pare-feu. Le pare-feu vous protege.",
+     "pidgin": "Always research application before you allow am through your firewall. The firewall dey protect you. If you no fit confirm say the application na legitimate no allow am."
+    }
+   }
+  ]
+ }
+]

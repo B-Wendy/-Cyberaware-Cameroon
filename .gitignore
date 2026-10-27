@@ -11,3 +11,9 @@ __pycache__/
 
 # Stray empty file created by a mistyped command
 /cd
+
+# Added before deploying to Render
+.venv312/
+.vscode/
+*.bak*
+.gitignore.before_render

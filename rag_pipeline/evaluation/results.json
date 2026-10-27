@@ -1,0 +1,46 @@
+{
+  "k": 5,
+  "threshold": 0.1,
+  "languages": {
+    "en": {
+      "in_scope_queries": 15,
+      "out_of_scope_queries": 11,
+      "P@5": 0.387,
+      "R@5": 0.822,
+      "Hit@5": 1.0,
+      "MRR": 0.933,
+      "answered": 1.0,
+      "rejected": 0.727
+    },
+    "fr": {
+      "in_scope_queries": 15,
+      "out_of_scope_queries": 3,
+      "P@5": 0.36,
+      "R@5": 0.733,
+      "Hit@5": 0.933,
+      "MRR": 0.8,
+      "answered": 0.867,
+      "rejected": 0.667
+    },
+    "pidgin": {
+      "in_scope_queries": 10,
+      "out_of_scope_queries": 1,
+      "P@5": 0.38,
+      "R@5": 0.767,
+      "Hit@5": 0.9,
+      "MRR": 0.8,
+      "answered": 1.0,
+      "rejected": 1.0
+    }
+  },
+  "overall": {
+    "in_scope_queries": 40,
+    "out_of_scope_queries": 15,
+    "P@5": 0.375,
+    "R@5": 0.775,
+    "Hit@5": 0.95,
+    "MRR": 0.85,
+    "answered": 0.95,
+    "rejected": 0.733
+  }
+}
